@@ -94,4 +94,8 @@ router.post("/cadastro", function(req, res){
 	});
 });
 
+router.get("/sucess",function(req, res){
+    res.send("<h1>SUCCESS</h1>");
+}
+
 module.exports = router;
