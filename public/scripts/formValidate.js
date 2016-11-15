@@ -50,7 +50,7 @@ $(document).ready(function(){
 			}
 		});
 
-		var pass = $("input[name='password']");
+		var pass = $("input[name='regpassword']");
 		var repass = $("input[name='repassword']");
 
 		if(pass.val().length < 6) {
