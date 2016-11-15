@@ -54,7 +54,7 @@
 }
 .form-style-10 h1 > span{
     display: block;
-    margin-top: 2px;
+    margin-top: 3px;
     font-size: 13px;
 }
 .form-style-10 label{
@@ -106,8 +106,9 @@
     color: #fff;
     margin-top: -3px;
 }
-.form-style-10 input[type="button"], 
+.form-style-10 input[type="button"],
 .form-style-10 input[type="submit"]{
+    float: right;
     background: #2A88AD;
     padding: 8px 20px 8px 20px;
     border-radius: 5px;
