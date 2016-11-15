@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cadastro</title>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="stylesheets/header.css">
+		<link rel="stylesheet" type="text/css" href="stylesheets/register.css">
+		<script   src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../scripts/formValidate.js"></script>
+		<meta name="viewport" content="width=device-width" />
+	</head>
+	<body>
+		<% include partials/header %>
+		<div class="form-style-10">
+			<h1>Vamos começar!<span>Basta preencher este simples formulário para se inscrever!</span></h1>
+			<form id="registerForm" action="/cadastro" method="post">
+    			<div class="section"><span>1</span>Nome &amp; Endereço</div>
+    			<div class="inner-wrap">
+        			<label>Seu Nome Completo <input type="text" name="name"></label>
+        			<label>Endereço <textarea name="address"></textarea></label>
+    			</div>
+
+    			<div class="section"><span>2</span>E-mail &amp; Telefone</div>
+    			<div class="inner-wrap">
+        			<label>E-mail <input type="email" name="email"></label>
+        			<label>Telefone <input type="text" name="phone"></label>
+    			</div>
+
+    			<div class="section"><span>3</span>Senha</div>
+        		<div class="inner-wrap">
+        			<label>Senha <input type="password" name="password"></label>
+        			<label>Confirmar Senha <input type="password" name="repassword"></label>
+    			</div>
+    			<div class="button-section">
+     				<input type="submit" name="Sign Up" value="Enviar" />
+     				<span class="error"></span>
+    			</div>
+			</form>
+		</div>
+	</body>
+</html>

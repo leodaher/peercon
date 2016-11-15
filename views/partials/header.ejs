@@ -1,0 +1,39 @@
+		<script type="text/javascript" src="scripts/loginValidate.js"></script>
+		<nav class="navbar navbar-inverse header-login-signup">
+		  	<div class="container-fluid header-limiter">
+		    	<div class="navbar-header">
+			      	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			        	<span class="icon-bar"></span>
+			        	<span class="icon-bar"></span>
+			        	<span class="icon-bar"></span>
+			      	</button>
+			      	<h1><a href="#">Peer<span>Con</span></a><h1>
+			    </div>
+			    <div class="collapse navbar-collapse" id="myNavbar">
+			      	<ul class="nav navbar-nav">
+			        	<li class="active"><a href="#">Home</a></li>
+			        	<li><a href="#">Sobre</a></li>
+			        	<li><a href="#">Ajuda</a></li>
+			        	<li><a href="#">Contato</a></li>
+			      	</ul>
+			      	<ul class="nav navbar-nav navbar-right">
+			        	<li><a class="login-window" href="#login-box"><span class="glyphicon glyphicon-user"></span> Entrar</a></li>
+			        	<li><a href="/cadastro"><span class="glyphicon glyphicon-log-in"></span> Cadastrar</a></li>
+			      	</ul>
+		    	</div>
+			</div>
+		</nav>
+		<div id="login-box" class="form-style">
+			<h1>Login<span>X</span></h1>
+			<form method="post" action="/portfolios" id="loginForm">
+				<div class="inner-wrap">
+					<label>E-mail <input type="text" name="email"></label>
+					<label>Senha <input type="password" name="password"></label>
+				</div>
+				<div class="button-section">
+     				<input type="submit" name="Sign Up" value="Enviar" />
+     				<span class="error"></span>
+    			</div>
+			</form>
+		</div>
+	  
