@@ -20,7 +20,7 @@
 }
 
 .form-style-10{
-    width:30%;
+    width:90%;
     padding:30px;
     margin:40px auto;
     background: #FFF;
@@ -89,8 +89,7 @@
     -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
 }
 
-.form-style-10 .section{
-    font: normal 20px 'Bitter', serif;
+.form-style-10 .section .fonte-padrao{
     color: #2A88AD;
     margin-bottom: 5px;
 }
@@ -160,4 +159,12 @@
 .error {
 	color: red;
 	float: right;
+}
+
+@media screen and (min-width: 550px){
+	.form-style-10{width:70%};
+}
+
+@media screen and (min-width: 767px){
+	.form-style-10{width:50%};
 }
