@@ -1,101 +1,72 @@
-var express = require("express"),
-    router  = express.Router(),
-    User    = require("../models/user");
+var express  = require("express"),
+    router   = express.Router(),
+    passport = require("passport"),
+    LocalStrategy = require("passport-local").Strategy,
+    User     = require("../models/user"),
+    middleware = require("../middleware/index")
 
-//LANDING PAGE ROUTE
+// Landing Page Route
 router.get("/", function(req, res) {
     res.render("home");
 });
 
-//REGISTER PAGE ROUTE
+// Register 
 router.get("/cadastro", function(req, res){
-	var emptyUser = {
-		name: "",
-		address: "",
-		email: "",
-		phone: ""
-	}
-	res.render("register", {err: false, user: emptyUser});
+	res.render("register");
 });
 
-//CHECK IF EMAIL EXISTS
-router.post("/checkEmail", function(req, res){ 
-	var email = req.body.email;
-	var userExists = false;
-	var query = User.find({email: email});
-
-	query.exec(function(err, usersFound){
-		if(err) {
-			console.log(err);
-		} else {
-			if(usersFound.length != 0) {
-				userExists = true;
-			}
-			res.json({userExists: userExists});
-		}
-	});
-	
+// Login
+router.get("/login", function(req, res) {
+	res.render("login");
 });
 
-//CHECK LOGIN
-router.post("/checkLogin", function(req, res){
-	var email = req.body.email;
-	var pass = req.body.pass;
-	var userExists = false;
-	var query = User.find({email: email, password: pass});
-
-	query.exec(function(err, usersFound){
-		if(err) {
-			console.log(err);
-		} else {
-			if(usersFound.length == 1) {
-				userExists = true;
-			} 
-			res.json({userExists: userExists});
-		}
-	})
-});
-
-//UPLOAD USER TO DATABASE
+// Register User
 router.post("/cadastro", function(req, res){
 	var name = req.body.name;
-	var address = req.body.address;
 	var email = req.body.email;
-	var phone = req.body.phone;
 	var password = req.body.password;
-	
-	var newUser = {
-		name: name,
-		address: address,
-		email: email,
-		phone: phone,
-		password: password
-	};
+	var password2 = req.body.password2;
 
-	var query = User.find({email: email});
-	
-	query.exec(function(err, usersFound){
-		if(err) {
-			console.log(err);
-		} else {
-			if(usersFound.length != 0) {
-				res.render("register");
-			} else {
-				User.create(newUser, function(err, newlyCreated) {
-					if(err) {
-						console.log(err);
-					} else {
-						console.log(newlyCreated);
-						res.redirect("/sucess");
-					}
-				});
-			}
-		}
-	});
+	req.checkBody('name', 'Nome é um campo obrigatório!').notEmpty();
+	req.checkBody('email', 'E-mail é um campo obrigatório!').notEmpty();
+	req.checkBody('email', 'Este e-mail não é válido!').isEmail();
+	req.checkBody('password', 'Senha é um campo obrigatório!').notEmpty();
+	req.checkBody('password2', 'As senhas não são iguais!').equals(req.body.password);
+
+	var errors = req.validationErrors();
+
+	if(errors) {
+		res.render("register",{
+			errors: errors
+		});
+	} else {
+		var newUser = new User({
+			name: name,
+			email: email,
+			password: password
+		});
+
+		User.createUser(newUser, function(err, user) {
+			if(err) throw err;
+			console.log(user);
+		});
+
+		res.redirect("/sucess")
+
+		req.flash('success_msg', 'Você está cadastrado!');
+	}
 });
 
-router.get("/sucess",function(req, res){
+// Login User
+router.post("/login",
+	passport.authenticate("local", {successRedirect: '/sucess', failureRedirect: '/login', failureFlash: true}),
+	function(req, res){
+		res.redirect("/sucess");
+	}
+);
+
+router.get("/sucess", middleware.isLoggedIn, function(req, res){
     res.send("<h1>SUCCESS</h1>");
-}
+});
 
 module.exports = router;
