@@ -4,13 +4,16 @@ Definir:
 	Nome Empresa
 	Logo
 	Logo site
+	Banco de Dados
 	Certificado HTTPs
 	Hospedagem Servidor
 	Definir CSS GERAL
 
 1. Formulários
 	a. Login
+		. email / senha
 	b. Register
+		. nome / email / senha
 	c. Investidor
 	d. Empresa
 	e. Empréstimo
