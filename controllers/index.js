@@ -7,7 +7,11 @@ var express  = require("express"),
 
 // Landing Page Route
 router.get("/", function(req, res) {
-    res.render("home");
+	if(req.isAuthenticated()) {
+		res.redirect("/sucess");
+	} else {
+		res.render("home");	
+	}
 });
 
 // Register 
