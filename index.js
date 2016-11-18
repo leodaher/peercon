@@ -16,6 +16,7 @@ mongoose.connect("mongodb://localhost/peercon");
 
 // Requiring Routes
 var indexRoutes = require("./controllers/index");
+var dashboardRoutes = require("./controllers/dashboard");
 
 // View Engine
 app.set("view engine","ejs");
@@ -105,6 +106,7 @@ app.use(function(req, res, next) {
 
 // Routes
 app.use("/", indexRoutes);
+app.use("/dashboard/",dashboardRoutes);
 
 // Start Server
 app.listen(3000, "localhost", function(){

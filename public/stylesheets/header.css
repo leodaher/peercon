@@ -169,3 +169,20 @@ body{
     border-radius: 6px;
     margin-bottom: 15px;
 }
+
+#completeForm {
+    background: #ccc;
+    
+}
+
+#leftpart {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+#rightpart {
+    float: right;
+    width: 50%;
+    text-align: center;
+}

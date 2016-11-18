@@ -8,7 +8,7 @@ var express  = require("express"),
 // Landing Page Route
 router.get("/", function(req, res) {
 	if(req.isAuthenticated()) {
-		res.redirect("/sucess");
+		res.redirect("/dashboard");
 	} else {
 		res.render("home");	
 	}
@@ -55,7 +55,7 @@ router.post("/cadastro", function(req, res){
 			console.log(user);
 		});
 
-		res.redirect("/sucess")
+		res.redirect("/dashboard")
 
 		req.flash('success_msg', 'Você está cadastrado!');
 	}
@@ -63,14 +63,10 @@ router.post("/cadastro", function(req, res){
 
 // Login User
 router.post("/login",
-	passport.authenticate("local", {successRedirect: '/sucess', failureRedirect: '/login', failureFlash: true}),
+	passport.authenticate("local", {successRedirect: '/dashboard', failureRedirect: '/login', failureFlash: true}),
 	function(req, res){
-		res.redirect("/sucess");
+		res.redirect("/dashboard");
 	}
 );
-
-router.get("/sucess", middleware.isLoggedIn, function(req, res){
-    res.send("<h1>SUCCESS</h1>");
-});
 
 module.exports = router;
