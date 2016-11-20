@@ -191,3 +191,7 @@ body{
     width: 50%;
     text-align: center;
 }
+
+#rightpart p {
+    font-size: 14px;
+}
