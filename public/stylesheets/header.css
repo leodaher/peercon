@@ -179,6 +179,11 @@ body{
     float: left;
     width: 50%;
     text-align: center;
+    border-right: 1px solid black;
+}
+
+#leftpart p {
+    font-size: 14px;
 }
 
 #rightpart {
