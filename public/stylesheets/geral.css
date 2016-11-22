@@ -9,18 +9,34 @@ body{
 }
 .fonte-padrao{
 	font-family:'Open Sans', sans-serif;
+	color: black;
 }
 .icon {
 	display: none;
 }
 
+.jumbotron{
+    background-color: #06D415; /* Orange */
+    color: #ffffff;
+}
+.panel-body{
+	color: black;
+}
 .box_geral{
-	padding-top: 160px; padding-bottom: 160px;
-	height: auto;	
+	padding-top: 60px; padding-bottom: 30px;
+	height: auto;
 }
 .box_geral_1{
 	background: linear-gradient(to bottom right, red, yellow);
+	color: #ffffff;
+	height: 400px auto;
 }
 .box_geral_2{
 	background: linear-gradient(to bottom right, green, white);
+	height: 400px auto;
+}
+.box_geral_3{
+	background: url('../public/img/bk_box3.jpg') no-repeat right bottom;
+	background-size: 100%;
+	height: 400px auto;
 }
