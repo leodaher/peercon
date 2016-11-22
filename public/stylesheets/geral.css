@@ -10,6 +10,7 @@ body{
 .fonte-padrao{
 	font-family:'Open Sans', sans-serif;
 	color: black;
+	size: 16px;
 }
 .icon {
 	display: none;
@@ -36,7 +37,6 @@ body{
 	height: 400px auto;
 }
 .box_geral_3{
-	background: url('../public/img/bk_box3.jpg') no-repeat right bottom;
-	background-size: 100%;
-	height: 400px auto;
+	background: url('../img/bk_box4.jpg') top left repeat;
+	background-size: auto;
 }
