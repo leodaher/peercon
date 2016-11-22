@@ -1,0 +1,16 @@
+html{
+	background-color: #eaf0f2 !important;
+}
+
+body{
+    background-color: #eaf0f2 !important;
+	font-family:'Open Sans', sans-serif !important;
+	padding:0;
+	margin:0;
+}
+.fonte-padrao{
+	font-family:'Open Sans', sans-serif;
+}
+.icon {
+	display: none;
+}
