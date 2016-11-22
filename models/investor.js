@@ -6,11 +6,21 @@ var investorSchema = new mongoose.Schema({
 	birthday: Date,
 	phone: String,
 	cellphone: String,
-	address: String,
+	renda: String,
+	cep: String,
+	logradouro: String,
+	numero: String,
+	complemento: String,
+	cidade: String,
+	estado: String,
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User"
 	}
 });
 
-module.exports = mongoose.model("Investor",investorSchema);
+var Investor = module.exports = mongoose.model("Investor",investorSchema);
+
+module.exports.createInvestor = function(newInvestor, callback){
+	newInvestor.save(callback);
+}
