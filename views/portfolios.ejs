@@ -2,30 +2,33 @@
 <html>
 <head>
 	<title>Portfolios</title>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/geral.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/header.css">
-	<script   src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/portifolios.css">
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width" />
 </head>
 <body>
 	<% include partials/dashboardHeader %>
-	<div class="container">
-		<div id="completeForm" class="jumbotron">
-			<div id="leftpart">
-				<h3>Sou um Investidor</h3>
-				<p>Se você é um investidor, você emprestará seu dinheiro para diversas empresas, e receberá seu dinheiro com juros de volta!</p>
-				<a class="btn btn-primary" href="/dashboard/cadastro-investidor">Completar cadastro de investidor</a>
-			</div>
-			<div id="rightpart">
-				<h3>Sou uma Empresa</h3>
-				<p>Se você é uma empresa, você receberá empréstimos a baixos juros.</p>
-				<a class="btn btn-primary" href="/dashboard/cadastro-empresa">Completar cadastro de empresa</a>
-			</div>
-			<br style="clear:both">
+
+	<section class="container-fluid">
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-md-6">
+				  	<h2>Sou um Investidor</h2>
+				  	<p class="painel_geral">Se você é um investidor, você emprestará seu dinheiro para diversas empresas, e receberá seu dinheiro com juros de volta!</p>
+				  	<a class="btn btn-primary btn-lg" role="button" href="/dashboard/cadastro-empresa">Completar cadastro de investidor</a>
+				</div>
+				<div class="col-md-6">
+				  	<h2>Sou uma Empresa</h2>
+				  	<p class="painel_geral">Se você é uma empresa, você receberá empréstimos a baixos juros.</p>
+				  	<a class="btn btn-primary btn-lg" role="button" href="/dashboard/cadastro-empresa">Completar cadastro de empresa</a>
+			  	</div>
+		  	</div>
 		</div>
-	</div>
+	</section>
 </body>
 </html>

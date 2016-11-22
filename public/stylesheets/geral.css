@@ -7,19 +7,20 @@ html{
 body{
 	font-family:'Open Sans', sans-serif !important;
 }
-.section{
-	padding-top: 160px; padding-bottom: 160px;
-	height: auto;	
-}
-.section_1{
-	background: linear-gradient(to bottom right, red, yellow);
-}
-.section_2{
-	background: linear-gradient(to bottom right, green, white);
-}
 .fonte-padrao{
 	font-family:'Open Sans', sans-serif;
 }
 .icon {
 	display: none;
+}
+
+.box_geral{
+	padding-top: 160px; padding-bottom: 160px;
+	height: auto;	
+}
+.box_geral_1{
+	background: linear-gradient(to bottom right, red, yellow);
+}
+.box_geral_2{
+	background: linear-gradient(to bottom right, green, white);
 }
