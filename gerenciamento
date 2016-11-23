@@ -28,3 +28,6 @@ Definir:
 	c. Política Privacidade
 
 Verificar o que é Suitble!
+
+Atalhos:
+npm install express body-parser cookie-parser bcryptjs express-session express-validator passport passport-local mongoose connect-flash ejs passport-local-mongoose
