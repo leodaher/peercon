@@ -5,11 +5,10 @@ html{
 }
 
 body{
-	font-family:'Open Sans', sans-serif !important;
+	font-family:'PT Sans','Open Sans', Verdana, sans-serif !important;
 }
 .fonte-padrao{
-	font-family:'Open Sans', sans-serif;
-	color: black;
+	/*color: black;*/
 	size: 16px;
 }
 .icon {
@@ -17,20 +16,22 @@ body{
 }
 
 .jumbotron{
-    background-color: #06D415; /* Orange */
+    background-color: #4c4c4c;
     color: #ffffff;
 }
 .panel-body{
 	color: black;
 }
 .box_geral{
-	padding-top: 60px; padding-bottom: 30px;
+	padding-top: 40px; 
+	padding-bottom: 30px;
 	height: auto;
 }
 .box_geral_1{
-	background: linear-gradient(to bottom right, red, yellow);
-	color: #ffffff;
+	background: linear-gradient(to bottom right, #f6f6f6, #d8d8d8);
+	color: black;
 	height: 400px auto;
+	padding-left: 20px; padding-right: 18px;
 }
 .box_geral_2{
 	background: linear-gradient(to bottom right, green, white);
