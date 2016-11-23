@@ -3,7 +3,10 @@ var express  = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local").Strategy,
     User     = require("../models/user"),
-    middleware = require("../middleware/index")
+    middleware = require("../middleware/index"),
+    fs = require("fs"),
+    multipart = require("connect-multiparty"),
+    multipartMiddleware = multipart();
 
 // Landing Page Route
 router.get("/", function(req, res) {
@@ -25,7 +28,7 @@ router.get("/login", function(req, res) {
 });
 
 // Register User
-router.post("/cadastro", function(req, res){
+router.post("/cadastro", multipartMiddleware, function(req, res){
 	var name = req.body.name;
 	var email = req.body.email;
 	var password = req.body.password;
@@ -55,14 +58,15 @@ router.post("/cadastro", function(req, res){
 			console.log(user);
 		});
 
-		res.redirect("/dashboard")
-
-		req.flash('success_msg', 'Você está cadastrado!');
+		passport.authenticate('local')(req, res, function(){
+			req.flash('success_msg', 'Você está cadastrado e agora pode se logar!');
+			res.redirect("/dashboard");
+		});
 	}
 });
 
 // Login User
-router.post("/login",
+router.post("/login", multipartMiddleware,
 	passport.authenticate("local", {successRedirect: '/dashboard', failureRedirect: '/login', failureFlash: true}),
 	function(req, res){
 		res.redirect("/dashboard");

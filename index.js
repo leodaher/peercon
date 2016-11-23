@@ -9,7 +9,9 @@ var express  = require("express"),
     session = require("express-session"),
     expressValidator = require("express-validator"),
     flash = require("connect-flash"),
-    cookieParser = require("cookie-parser");
+    cookieParser = require("cookie-parser"),
+    fs = require("fs"),
+    multipart = require("connect-multiparty");
 
 // Database Connect
 mongoose.connect("mongodb://localhost/peercon");

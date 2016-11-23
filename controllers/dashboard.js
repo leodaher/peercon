@@ -2,7 +2,10 @@ var express = require("express"),
 	router  = express.Router(),
 	passport = require("passport"),
 	middleware = require("../middleware/index"),
-	Investor = require("../models/investor")
+	Investor = require("../models/investor"),
+	fs = require("fs"),
+	multipart = require("connect-multiparty"),
+	multipartMiddleware = multipart();
 
 
 
@@ -14,7 +17,7 @@ router.get("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
 	res.render("cadastroInvestidor");
 });
 
-router.post("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
+router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, function(req, res){
 	var name = req.body.name;
 	var CPF = req.body.cpf;
 	var birthdayArray = req.body.date.split("/");
@@ -30,6 +33,10 @@ router.post("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
 	var city = req.body.city;
 	var state = req.body.state;
 
+	console.log(req.files);
+
+	var images = [req.files.rg,req.files.rgverso,req.files.residencia];
+
 	req.checkBody('name','Nome é um campo obrigatório!').notEmpty();
 	req.checkBody('cpf','CPF é um campo obrigatório!').notEmpty();
 	req.checkBody('date','Data de nascimento é um campo obrigatório!').notEmpty();
@@ -42,6 +49,10 @@ router.post("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
 	req.checkBody('number','Número é um campo obrigatório!').notEmpty();
 	req.checkBody('city','Cidade é um campo obrigatório!').notEmpty();
 	req.checkBody('state','Estado é um campo obrigatório!').notEmpty();
+
+	//req.checkBody('rg','Anexo da Identidade é um campo obrigatório!').notEmpty();
+	//req.checkBody('rgverso','Anexo da Identidade(verso) é um campo obrigatório!').notEmpty();
+	//req.checkBody('residencia','Comprovante de Residência é um campo obrigatório!').notEmpty();
 
 	var errors = req.validationErrors();
 
@@ -60,6 +71,7 @@ router.post("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
 			cep: cep,
 			logradouro: logradouro,
 			numero: number,
+			complemento: complement,
 			cidade: city,
 			estado: state,
 			user: req.user._id
@@ -70,6 +82,25 @@ router.post("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
 				console.log(err);
 			} else {
 				console.log(investor);
+				fs.mkdir("tmp/investidores/"+req.user._id, function(err){
+					if(err) {
+						console.log(err);
+					} else {
+						console.log("Directory created successfully!");
+						images.forEach(function(img){
+							fs.readFile(img.path, function(err, data){
+								var imageName = img.name;
+								fs.writeFile("tmp/investidores/"+req.user._id+"/"+imageName, data, function(err){
+									if(err) {
+										console.log(err);
+									} else {
+										console.log("Images Saved!");
+									}
+								})
+							});
+						});						
+					}	
+				});
 			}
 		});
 

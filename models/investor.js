@@ -13,6 +13,9 @@ var investorSchema = new mongoose.Schema({
 	complemento: String,
 	cidade: String,
 	estado: String,
+	rg: String,
+	rgverso: String,
+	residencia: String,
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User"
