@@ -5,9 +5,21 @@
 #section_ini{
 	background-image: url("../img/bk_box3.jpg"); 
 	background-repeat: repeat;
-	border: 0px; margin: 0px;
+	margin: 0px;
 	padding-top: 30px;
 }
+
+
+/*CSS para Colunas com mesma Altura*/
+#css-table {
+  display: table;
+}
+#css-table .col {
+  display: table-row;
+  width: 33%;
+  padding: 10px;
+}
+
 
 .panel{
 	padding: 5px;
@@ -15,13 +27,13 @@
 	background-color: darkblue;
 	color: white;
 }
-.column_third{
-	width: auto;
-	padding: 10px 15px;
-}
+
 @media screen and (min-width: 550px){
 	#sou_1, #sou_2{
 		height: 230px;
+	}
+	#css-table .col {
+	  display: table-cell;
 	}
 }
 
