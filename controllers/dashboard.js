@@ -5,8 +5,8 @@ var express = require("express"),
 	Investor = require("../models/investor"),
 	fs = require("fs"),
 	multipart = require("connect-multiparty"),
-	multipartMiddleware = multipart();
-
+	multipartMiddleware = multipart(),
+	formValidator = require("../helpers/formValidator");
 
 
 router.get("/", middleware.isLoggedIn, function(req, res){
@@ -33,8 +33,6 @@ router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, 
 	var city = req.body.city;
 	var state = req.body.state;
 
-	console.log(req.files);
-
 	var images = [req.files.rg,req.files.rgverso,req.files.residencia];
 
 	req.checkBody('name','Nome é um campo obrigatório!').notEmpty();
@@ -50,11 +48,15 @@ router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, 
 	req.checkBody('city','Cidade é um campo obrigatório!').notEmpty();
 	req.checkBody('state','Estado é um campo obrigatório!').notEmpty();
 
-	//req.checkBody('rg','Anexo da Identidade é um campo obrigatório!').notEmpty();
-	//req.checkBody('rgverso','Anexo da Identidade(verso) é um campo obrigatório!').notEmpty();
-	//req.checkBody('residencia','Comprovante de Residência é um campo obrigatório!').notEmpty();
-
 	var errors = req.validationErrors();
+
+	// Validar CPF
+	var cpfstr = CPF.replace(/^[0-9]/,"");
+	if(!(formValidator.testaCPF(cpfstr))){
+		errors.push({
+			msg: "CPF inválido!"
+		});
+	} 
 
 	if(errors) {
 		res.render("cadastroInvestidor",{
