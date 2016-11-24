@@ -6,11 +6,14 @@ html{
 
 body{
 	font-family:'PT Sans','Open Sans', Verdana, sans-serif !important;
-	padding-top: 120px; 
+	padding-top: 85px; 
 }
 .fonte-padrao{
 	/*color: black;*/
 	size: 16px;
+}
+.txt_justify{
+	text-align: justify;
 }
 .icon {
 	display: none;
@@ -19,8 +22,9 @@ body{
 .jumbotron{
     background-color: #5f5f5f;
     color: #ffffff;
-    height: auto; min-height: 210px; max-height: 210px;
+    height: auto; 
     padding-top: 10px; padding-bottom: 10px;
+    padding-left: 20px; padding-right: 20px;
 }
 .jumbotron_text {
 	height: 50px;
@@ -30,7 +34,7 @@ body{
 	color: black;
 }
 .box_geral{
-	padding-top: 40px; 
+	padding-top: 30px; 
 	padding-bottom: 30px;
 	height: auto;
 }
@@ -42,11 +46,13 @@ body{
 }
 
 @media screen and (min-width: 550px){
-
+/*	.jumbotron{
+	    min-height: 230px; max-height: 230px;
+	}*/
 }
 
-@media screen and (min-width: 767px){
-.jumbotron{
-    min-height: 270px; max-height: 270px;
-}
+@media screen and (min-width: 768px){
+	.jumbotron{
+	    height: auto;
+	}
 }

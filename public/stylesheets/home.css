@@ -1,0 +1,41 @@
+#sou_1, #sou_2{
+	height: 210px;
+}
+
+#section_ini{
+	background-image: url("../img/bk_box3.jpg"); 
+	background-repeat: repeat;
+	border: 0px; margin: 0px;
+	padding-top: 30px;
+}
+
+.panel{
+	padding: 5px;
+	text-align: center;
+	background-color: darkblue;
+	color: white;
+}
+.column_third{
+	width: auto;
+	padding: 10px 15px;
+}
+@media screen and (min-width: 550px){
+	#sou_1, #sou_2{
+		height: 230px;
+	}
+}
+
+@media screen and (min-width: 768px){
+	#sou_1, #sou_2{
+		height: 270px;
+	}
+	.column_third{
+		width: 33%; float: left;
+	}
+}
+
+@media screen and (min-width: 1028px){
+	#sou_1, #sou_2{
+		height: 300px;
+	}
+}
