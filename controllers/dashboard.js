@@ -49,7 +49,7 @@ router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, 
 	req.checkBody('state','Estado é um campo obrigatório!').notEmpty();
 
 	var errors = req.validationErrors();
-
+	
 	// Validar CPF
 	var cpfstr = CPF.replace(/^[0-9]/,"");
 	if(!(formValidator.testaCPF(cpfstr))){
