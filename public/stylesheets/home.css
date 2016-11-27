@@ -1,9 +1,8 @@
-#sou_1, #sou_2{
-	height: 210px;
+#sou_2{
 }
 
 #section_ini{
-	background-image: url("../img/bk_box4.jpg"); 
+	background-image: url("../img/bk_box2.jpg"); 
 	background-repeat: repeat;
 	margin: 0px;
 	padding-top: 30px;
@@ -29,25 +28,17 @@
 }
 
 @media screen and (min-width: 550px){
-	#sou_1, #sou_2{
-		height: 230px;
-	}
 	#css-table .col {
 	  display: table-cell;
 	}
 }
 
 @media screen and (min-width: 768px){
-	#sou_1, #sou_2{
-		height: 270px;
-	}
 	.column_third{
 		width: 33%; float: left;
 	}
 }
 
 @media screen and (min-width: 1028px){
-	#sou_1, #sou_2{
-		height: 300px;
-	}
+
 }

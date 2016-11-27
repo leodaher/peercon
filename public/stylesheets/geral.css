@@ -6,7 +6,7 @@ html{
 
 body{
 	font-family:'PT Sans','Open Sans', Verdana, sans-serif !important;
-	padding-top: 85px; 
+	padding-top: 65px; 
 }
 .fonte-padrao{
 	/*color: black;*/
@@ -19,6 +19,18 @@ body{
 	display: none;
 }
 
+ul{
+	list-style-type: circle;
+	color: red;
+}
+li{
+	
+	border: none;
+	line-height: 14px;
+}
+li H4{
+	color: black;
+}
 .jumbotron{
     background-color: #5f5f5f;
     color: #ffffff;
@@ -27,7 +39,7 @@ body{
     padding-left: 20px; padding-right: 20px;
 }
 .jumbotron_text {
-	height: 50px;
+	height: 80px;
 	font-size: 1.1em;
 }
 .panel-body{
@@ -45,14 +57,11 @@ body{
 	padding-left: 20px; padding-right: 18px;
 }
 
+
 @media screen and (min-width: 550px){
-/*	.jumbotron{
-	    min-height: 230px; max-height: 230px;
-	}*/
+
 }
 
 @media screen and (min-width: 768px){
-	.jumbotron{
-	    height: auto;
-	}
+
 }
