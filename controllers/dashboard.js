@@ -14,7 +14,14 @@ router.get("/", middleware.isLoggedIn, function(req, res){
 });
 
 router.get("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
-	res.render("cadastroInvestidor");
+	Investor.getInvestorByUserId(req.user._id, function(err, investor){
+		if(err) throw err;
+		if(!investor) {
+			res.render("cadastroInvestidor");
+		} else {
+			res.redirect("/dashboard/cadastro-investidor/editar");
+		}
+	});
 });
 
 router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, function(req, res){
@@ -34,6 +41,7 @@ router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, 
 	var state = req.body.state;
 
 	var images = [req.files.rg,req.files.rgverso,req.files.residencia];
+
 
 	req.checkBody('name','Nome é um campo obrigatório!').notEmpty();
 	req.checkBody('cpf','CPF é um campo obrigatório!').notEmpty();
@@ -60,6 +68,17 @@ router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, 
 			msg: "CPF inválido!"
 		});
 	} 
+
+	images.every(function(img){
+		if(img.size == 0) {
+			errors.push({
+				msg: "Todos os documentos são obrigatórios!"
+			});
+			return false;
+		}
+
+		return true;
+	});
 
 	if(errors) {
 		res.render("cadastroInvestidor",{

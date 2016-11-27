@@ -16,6 +16,7 @@ var investorSchema = new mongoose.Schema({
 	rg: String,
 	rgverso: String,
 	residencia: String,
+	completedForm: Boolean,
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User"
@@ -26,4 +27,9 @@ var Investor = module.exports = mongoose.model("Investor",investorSchema);
 
 module.exports.createInvestor = function(newInvestor, callback){
 	newInvestor.save(callback);
+}
+
+module.exports.getInvestorByUserId = function(userId, callback){
+	var query = {user: userId};
+	Investor.findOne(query, callback);
 }
