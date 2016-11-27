@@ -10,7 +10,7 @@ body{
 }
 .fonte-padrao{
 	/*color: black;*/
-	size: 16px;
+	font-size: 1.63em;
 }
 .txt_justify{
 	text-align: justify;
@@ -22,11 +22,12 @@ body{
 ul{
 	list-style-type: circle;
 	color: red;
+	text-align: left;
+	margin: 2em;
 }
 li{
-	
 	border: none;
-	line-height: 14px;
+	line-height: 1.8em;
 }
 li H4{
 	color: black;
@@ -40,7 +41,7 @@ li H4{
 }
 .jumbotron_text {
 	height: 80px;
-	font-size: 1.1em;
+	font-size: 1.2em;
 }
 .panel-body{
 	color: black;

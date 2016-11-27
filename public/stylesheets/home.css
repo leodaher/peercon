@@ -1,11 +1,8 @@
-#sou_2{
-}
-
 #section_ini{
 	background-image: url("../img/bk_box2.jpg"); 
 	background-repeat: repeat;
 	margin: 0px;
-	padding-top: 30px;
+	padding-top: 40px;
 }
 
 
@@ -19,23 +16,51 @@
   padding: 10px;
 }
 
-
-.panel{
+.jumbotron_margens{
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.panel {
 	padding: 5px;
 	text-align: center;
-	background-color: darkblue;
+	background-color: silver;
 	color: white;
 }
+.col .panel{
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
+}
 
+.img_HIW{
+	width: 64px;
+}
+
+.text_col{
+	padding: 0 50px;
+}
+#HIW_infograf{
+	width: auto;
+}
 @media screen and (min-width: 550px){
-	#css-table .col {
-	  display: table-cell;
-	}
+
 }
 
 @media screen and (min-width: 768px){
-	.column_third{
-		width: 33%; float: left;
+	#css-table .col {
+	  display: table-cell;
+	}
+	.panel{
+		width: auto;
+	}
+	.col .panel{
+		width: auto;
+	}
+	.img_HIW{
+		width: 128px;
+	}
+	.text_col{
+		padding: 0 10px;
 	}
 }
 
