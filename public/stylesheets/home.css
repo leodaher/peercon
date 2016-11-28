@@ -32,28 +32,33 @@
 	margin-top: 20px;
 }
 
-.img_HIW{
-	width: 64px;
-}
-
 .text_col{
 	padding: 0 50px;
 }
-.box_geral #HIW_infograf{
+#HIW_loan{
 	margin: auto;
-	height: 600px;
-	width: 335px;
+	max-height: 500px;
 }
-#HIW_infograf{
-	background-image: url("../img/HIW_loan_xp.jpg");
-	background-repeat: no-repeat;
+
+#HIW_img_G{
+	display: none;
+	width: 100%;
 }
+#HIW_img_P{
+	display: block;
+	width: 100%;
+	max-height: 500px;
+}
+
 @media screen and (min-width: 550px){
-	.box_geral #HIW_infograf{
-		width: 335px;
+	#HIW_loan{
+		max-height: 800px;
 	}
-	#HIW_infograf{
-		background-image: url("../img/HIW_loan_p.jpg");
+	#HIW_img_G{
+		display: block;
+	}
+	#HIW_img_P{
+		display: none;
 	}
 }
 
@@ -72,13 +77,6 @@
 	}
 	.text_col{
 		padding: 0 10px;
-	}
-	.box_geral #HIW_infograf{
-		height: 660px;
-		width: 728px;
-	}
-	#HIW_infograf{
-		background-image: url("../img/HIW_loan.jpg");
 	}
 }
 
