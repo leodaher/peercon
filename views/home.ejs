@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>PeerCon</title>
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -76,13 +76,18 @@
 				</div>
 				<div class="col-sm-1 col-md-1"></div>
 			</div>
-			<div id="HIW_loan">
-				<img class="img-responsive" id="HIW_img_G" src="img/HIW_loan.jpg">
-				<img class="img-responsive" id="HIW_img_P" src="img/HIW_loan_xp.jpg">
-			</div>
+			<div class="h-divider"></div>
 		</section>
 
-		
+		<div style="margin: auto; text-align: center;">
+			<picture>
+				<source srcset="img/HIW_loan_xp.jpg" media="(max-width: 450px)">
+				<source srcset="img/HIW_loan_p.jpg" media="(max-width: 750px)">
+				<source srcset="img/HIW_loan.jpg">
+				<img src="img/HIW_loan_xp.jpg">
+			</picture>
+		</div>
+
 		<section class="container-fluid box_geral box_geral_1">
 			<div class="text-center">
 				<h1>O LADO INVESTIDOR</h1>
