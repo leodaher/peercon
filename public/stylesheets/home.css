@@ -39,11 +39,22 @@
 .text_col{
 	padding: 0 50px;
 }
+.box_geral #HIW_infograf{
+	margin: auto;
+	height: 600px;
+	width: 335px;
+}
 #HIW_infograf{
-	width: auto;
+	background-image: url("../img/HIW_loan_xp.jpg");
+	background-repeat: no-repeat;
 }
 @media screen and (min-width: 550px){
-
+	.box_geral #HIW_infograf{
+		width: 335px;
+	}
+	#HIW_infograf{
+		background-image: url("../img/HIW_loan_p.jpg");
+	}
 }
 
 @media screen and (min-width: 768px){
@@ -61,6 +72,13 @@
 	}
 	.text_col{
 		padding: 0 10px;
+	}
+	.box_geral #HIW_infograf{
+		height: 660px;
+		width: 728px;
+	}
+	#HIW_infograf{
+		background-image: url("../img/HIW_loan.jpg");
 	}
 }
 
