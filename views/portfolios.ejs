@@ -16,21 +16,23 @@
 	<% if(success_msg.length > 0) { %>
 					<div class="alert alert-success"><%= success_msg %></div> 
 	<% } %>
-	<section class="container-fluid">
-		<div class="jumbotron">
-			<div class="row">
-				<div class="col-md-6">
-				  	<h2>Sou um Investidor</h2>
-				  	<p class="painel_geral">Se você é um investidor, você emprestará seu dinheiro para diversas empresas, e receberá seu dinheiro com juros de volta!</p>
-				  	<a class="btn btn-primary btn-lg" role="button" href="/dashboard/cadastro-investidor">Completar cadastro de investidor</a>
-				</div>
-				<div class="col-md-6">
-				  	<h2>Sou uma Empresa</h2>
-				  	<p class="painel_geral">Se você é uma empresa, você receberá empréstimos a baixos juros.</p>
-				  	<a class="btn btn-primary btn-lg" role="button" href="/dashboard/cadastro-empresa">Completar cadastro de empresa</a>
+	<% if(!isFormComplete) { %>
+		<section class="container-fluid">
+			<div class="jumbotron">
+				<div class="row">
+					<div class="col-md-6">
+					  	<h2>Sou um Investidor</h2>
+					  	<p class="painel_geral">Se você é um investidor, você emprestará seu dinheiro para diversas empresas, e receberá seu dinheiro com juros de volta!</p>
+					  	<a class="btn btn-primary btn-lg" role="button" href="/dashboard/cadastro-investidor">Completar cadastro de investidor</a>
+					</div>
+					<div class="col-md-6">
+					  	<h2>Sou uma Empresa</h2>
+					  	<p class="painel_geral">Se você é uma empresa, você receberá empréstimos a baixos juros.</p>
+					  	<a class="btn btn-primary btn-lg" role="button" href="/dashboard/cadastro-empresa">Completar cadastro de empresa</a>
+				  	</div>
 			  	</div>
-		  	</div>
-		</div>
-	</section>
+			</div>
+		</section>
+	<% } %>
 </body>
 </html>
