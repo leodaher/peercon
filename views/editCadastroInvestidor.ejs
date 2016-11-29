@@ -22,7 +22,7 @@
 						<div class="alert alert-danger"><%= error.msg %></div>
 			<%		}); %>
 			<% } %>
-			<form id="registerForm" action="/dashboard/cadastro-investidor" method="post" enctype="multipart/form-data">
+			<form id="registerForm" action="/dashboard/cadastro-investidor/editar" method="post" enctype="multipart/form-data">
     			<div class="section"><span>1</span>Dados Pessoais</div>
     			<div class="inner-wrap">
         			<label>Nome Completo<input type="text" name="name" value="<%= investor.name %>"></label>
