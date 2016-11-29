@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var investorSchema = new mongoose.Schema({
 	name: String,
 	CPF: String,
-	birthday: Date,
+	birthday: String,
 	phone: String,
 	cellphone: String,
 	renda: String,

@@ -27,8 +27,7 @@ router.get("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
 router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, function(req, res){
 	var name = req.body.name;
 	var CPF = req.body.cpf;
-	var birthdayArray = req.body.date.split("/");
-	var birthday = new Date(birthdayArray[2],birthdayArray[1],birthdayArray[0]);
+	var birthday = req.body.date;
 	var phone = req.body.telephone;
 	var cellphone = req.body.cellphone;
 	var renda = req.body.renda;
@@ -62,7 +61,8 @@ router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, 
 	}
 	
 	// Validar CPF
-	var cpfstr = CPF.replace(/^[0-9]/,"");
+	var cpfstr = CPF.replace(/[^0-9]/g,"");
+	console.log(cpfstr);
 	if(!(formValidator.testaCPF(cpfstr))){
 		errors.push({
 			msg: "CPF inválido!"
@@ -76,15 +76,14 @@ router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, 
 			});
 			return false;
 		}
-
-		return true;
 	});
 
-	if(errors) {
+	if(errors.length > 0) {
 		res.render("cadastroInvestidor",{
 			errors: errors
 		});
 	} else {
+		console.log("working");
 		var newInvestor = new Investor({
 			name: name,
 			CPF: CPF,
@@ -98,6 +97,9 @@ router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, 
 			complemento: complement,
 			cidade: city,
 			estado: state,
+			rg: rg,
+			rgverso: rgverso,
+			residencia: residencia,
 			user: req.user._id
 		});
 
@@ -132,6 +134,16 @@ router.post("/cadastro-investidor", multipartMiddleware, middleware.isLoggedIn, 
 		res.redirect("/dashboard");
 	}
 });
+
+router.get("/cadastro-investidor/editar", middleware.isLoggedIn, function(req, res){
+	Investor.getInvestorByUserId(req.user._id, function(err, investor){
+		if(!investor) {
+			res.render("cadastroInvestidor");
+		} else {
+			res.render("editCadastroInvestidor",{investor: investor});
+		}
+	});
+})
 
 router.get("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
 	res.render("cadastroEmpresa");
