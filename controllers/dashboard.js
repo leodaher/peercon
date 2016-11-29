@@ -10,7 +10,15 @@ var express = require("express"),
 
 
 router.get("/", middleware.isLoggedIn, function(req, res){
-    res.render("portfolios")
+	Investor.getInvestorByUserId(req.user._id, function(err, investor){
+		if(err) throw err;
+		if(!investor) {
+			res.render("portfolios",{isFormComplete: false});
+		} else {
+			res.render("portfolios",{isFormComplete: true});
+		}
+	});
+    
 });
 
 router.get("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
