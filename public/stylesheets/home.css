@@ -35,31 +35,9 @@
 .text_col{
 	padding: 0 50px;
 }
-#HIW_loan{
-	margin: auto;
-	max-height: 500px;
-}
-
-#HIW_img_G{
-	display: none;
-	width: 100%;
-}
-#HIW_img_P{
-	display: block;
-	width: 100%;
-	max-height: 500px;
-}
 
 @media screen and (min-width: 550px){
-	#HIW_loan{
-		max-height: 800px;
-	}
-	#HIW_img_G{
-		display: block;
-	}
-	#HIW_img_P{
-		display: none;
-	}
+
 }
 
 @media screen and (min-width: 768px){
@@ -71,9 +49,6 @@
 	}
 	.col .panel{
 		width: auto;
-	}
-	.img_HIW{
-		width: 128px;
 	}
 	.text_col{
 		padding: 0 10px;
