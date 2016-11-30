@@ -13,8 +13,11 @@
 		<link rel="stylesheet" type="text/css" href="stylesheets/footer.css">
 		
 	</head>
+
 	<body id="myPage">
 		<% include partials/header %>
+		
+		<!-- HEAD -->
 		<section id="section_ini">
 			<section class="container">
 				<div class="row">
@@ -35,7 +38,7 @@
 						  	<h2>Sou Empresário</h2>
 						  	<div class="jumbotron_text">Quero receber empréstimo sem demora e burocracia, com baixas taxas!
 						  	</div>
-						  	<p><a class="btn btn-primary btn-lg" href="#" role="button">
+						  	<p><a class="btn btn-primary btn-lg btn-danger" href="#" role="button">
 						  		<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 						  		Cadastrar Empresa</a>
 						  	</p>
@@ -45,28 +48,32 @@
 			</section>
 		</section>
 		
+		<!-- COMO FUNCIONAO -->
 		<section class="container-fluid box_geral">
 			<div class="text-center">
 				<h1>COMO FUNCIONA</h1>
 			</div>
 			<div class="row txt_justify">
-  				<div class="col-sm-1 col-md-1"></div>
-  				<div class="col-sm-10 col-md-10">
+  				<div class="col-sm-12 col-md-12">
   					<div id="css-table">
 						<div class="col text-center fonte-padrao">
 							<div class="panel">1. Cadastro</div>
   							<p><img class="img_HIW" src="img/fill_form.png"></p>
   							<p class="text_col">Preencha o formulário para registrar seu cadastro.</p>
-  							<p><a class="btn btn-primary btn-lg" href="#" role="button">
+  							<p><a class="btn btn-primary btn-lg btn-danger" href="#" role="button">
 						  		<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-						  		Cadastrar Empresa</a>
+						  		Cadastro Empresa</a>
 						  	</p>
 						</div>
 						<div class="col text-center fonte-padrao">
 							<div class="panel">2. Aprovação</div>
 							<p><img class="img_HIW" src="img/approved_form.png"></p>
 							<p class="text_col">Após aprovada a solicitação, abrimos para os Investidores.</p>
-						</div>
+  							<p><a class="btn btn-primary btn-lg" href="#" role="button">
+						  		<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+						  		Cadastro Investidor</a>
+						  	</p>						
+					  	</div>
 						<div class="col text-center fonte-padrao">
 							<div class="panel">3. Empréstimo</div>
 							<p><img class="img_HIW" src="img/accepted_loan.png"></p>
@@ -74,68 +81,81 @@
 						</div>
   					</div>
 				</div>
-				<div class="col-sm-1 col-md-1"></div>
 			</div>
-			<div class="h-divider"></div>
+			<hr class="style14"></hr>
+			<div style="margin: auto; text-align: center;">
+				<picture>
+					<source srcset="img/HIW_loan_xp.jpg" media="(max-width: 450px)">
+					<source srcset="img/HIW_loan_p.jpg" media="(max-width: 850px)">
+					<source srcset="img/HIW_loan.jpg" media="(max-width: 1060px)">
+					<source srcset="img/HIW_loan_hd.jpg" media="(min-width: 1060px)">
+					<img src="img/HIW_loan_xp.jpg">
+				</picture>
+			</div>
 		</section>
 
-		<div style="margin: auto; text-align: center;">
-			<picture>
-				<source srcset="img/HIW_loan_xp.jpg" media="(max-width: 450px)">
-				<source srcset="img/HIW_loan_p.jpg" media="(max-width: 750px)">
-				<source srcset="img/HIW_loan.jpg">
-				<img src="img/HIW_loan_xp.jpg">
-			</picture>
-		</div>
+		<!-- COMO INVESTIR -->
+		<section class="container-fluid box_geral box_geral_1">
+			<div class="text-center">
+				<h1>INVISTA em EMPRÉSTIMOS</h1>
+				<h4>Oportunidade de diversificar seus investimentos com retornos mensais acima do comum.</h4>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6" id="invest_grafico">
+					<p class="text-center">
+						<picture>
+							<source srcset="img/investor_grf.jpg" media="(max-width: 768px)">
+							<source srcset="img/investor_grf_hd.jpg" media="(min-width: 768px)">
+							<img src="img/investor_grf_hd.jpg">
+						</picture>					
+					</p>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6" id="invest_text">
+				  	<h3 class="text-center">Simples, rápido e descomplicado</h3>
+					<ul id="invest_list">
+					  <li><H4>Baixas taxas de juros.</H4></li>
+					  <li><H4>Muito mais rápido que Bancos.</H4></li>
+					  <li><H4>Pagamentos mensais descomplicados.</H4></li>
+					  <li><H4>Sem taxas escondidas.</H4></li>
+					</ul>
+					<p class="text-center"><a class="btn btn-primary btn-lg" href="#" role="button">
+				  		<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+				  		Cadastro Investidor</a>
+				  	</p>					
+				</div>
+			</div>		
+		</section>
 
-		<section class="container-fluid box_geral box_geral_1">
-			<div class="text-center">
-				<h1>O LADO INVESTIDOR</h1>
-			</div>
-			<div class="row">
-  				<div class="col-md-12">
-  					<p style="height: 500px"></p>
-				</div>
-			</div>			
-		</section>
-		
-		<section class="container-fluid box_geral box_geral_1">
-			<div class="text-center">
-				<h1>O LADO da EMPRESA</h1>
-			</div>
-			<div class="row">
-  				<div class="col-md-12">
-  					<p style="height: 500px"></p>
-				</div>
-			</div>			
-		</section>
-		<section class="container-fluid bg-grey">
-		  <h2 class="text-center">CONTATO</h2>
+		<!-- ENTRE EM CONTATO -->
+		<section class="container-fluid box_geral">
+		  <h2 class="text-center">INFORMATIVOS</h2>
 		  <div class="row">
 		    <div class="col-sm-5">
-		      <p>Contact us and we'll get back to you within 24 hours.</p>
-		      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
-		      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-		      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p> 
+		      <p>Deixe seu contato para receber informativos, novos investimentos e novidades.</p>
+		      <p><span class="glyphicon glyphicon-map-marker"></span> Ribeirão Preto - SP (Brasil)</p>
+		      <p><span class="glyphicon glyphicon-phone"></span> +55 16 34215213</p>
+		      <p><span class="glyphicon glyphicon-envelope"></span> contato@peercon.com.br</p> 
 		    </div>
 		    <div class="col-sm-7">
 		      <div class="row">
 		        <div class="col-sm-6 form-group">
-		          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+		          <input class="form-control" id="name" name="name" placeholder="Nome" type="text" required>
 		        </div>
 		        <div class="col-sm-6 form-group">
 		          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
 		        </div>
 		      </div>
-		      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+		      <textarea class="form-control" id="comments" name="comments" placeholder="Comentários" rows="5"></textarea><br>
 		      <div class="row">
 		        <div class="col-sm-12 form-group">
-		          <button class="btn btn-default pull-right" type="submit">Send</button>
+		          <button class="btn btn-default pull-right" type="submit">Enviar</button>
 		        </div>
 		      </div> 
 		    </div>
 		  </div>
-		</section>		
+		</section>
+
+		<!-- RODAPÉ -->
 		<% include partials/footer %>
 	</body>
 </html>

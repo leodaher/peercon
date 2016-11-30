@@ -1,5 +1,22 @@
 footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
-    color: #f4511e;
+}
+.bg-black{
+	background-color: #7f7f7f;
+}
+.foot_text{
+	color: white;
+	text-align: center;
+}
+ul{
+	list-style-type: none;
+	text-align: left;
+	margin: 0;
+	color: white;
+	font-weight: normal;
+}
+li{
+	border: none;
+	line-height: 1.8em;
 }

@@ -35,9 +35,20 @@
 .text_col{
 	padding: 0 50px;
 }
+#invest_grafico{
+	display: none;
+}
+#invest_text{
+	padding-top: 30px;
+}
+#invest_list{
+	padding-left: 10px;
+}
 
-@media screen and (min-width: 550px){
-
+@media screen and (min-width: 650px){
+	#invest_list{
+		padding-left: 50px;
+	}
 }
 
 @media screen and (min-width: 768px){
@@ -52,6 +63,9 @@
 	}
 	.text_col{
 		padding: 0 10px;
+	}
+	#invest_grafico{
+		display: block;
 	}
 }
 
