@@ -21,6 +21,11 @@
 			<%		}); %>
 			<% } %>
 			<form id="registerForm" action="/cadastro" method="post">
+				<% if(option == 0) { %>
+					<input type="hidden" name="escolha" value="investidor">
+				<% } else { %>
+					<input type="hidden" name="escolha" value="empresa">
+				<% } %> 
     			<div class="section"><span>1</span>Nome</div>
     			<div class="inner-wrap">
         			<label>Nome Completo<input type="text" name="name"></label>

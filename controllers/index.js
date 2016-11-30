@@ -18,8 +18,12 @@ router.get("/", function(req, res) {
 });
 
 // Register 
-router.get("/cadastro", function(req, res){
-	res.render("register");
+router.get("/cadastroInvestidor", function(req, res){
+	res.render("register",{option: 0});
+});
+
+router.get("/cadastroEmpresa", function(req, res){
+	res.render("register",{option: 1});
 });
 
 // Login
@@ -33,6 +37,7 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 	var email = req.body.email;
 	var password = req.body.password;
 	var password2 = req.body.password2;
+	var escolha = req.body.escolha;
 
 	req.checkBody('name', 'Nome é um campo obrigatório!').notEmpty();
 	req.checkBody('email', 'E-mail é um campo obrigatório!').notEmpty();
@@ -50,7 +55,8 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 		var newUser = new User({
 			name: name,
 			email: email,
-			password: password
+			password: password,
+			escolha: escolha
 		});
 
 		User.createUser(newUser, function(err, user) {

@@ -5,10 +5,10 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/geral.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/header.css">
-	<link rel="stylesheet" type="text/css" href="stylesheets/portifolios.css">
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/geral.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/header.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/portifolios.css">
 	<meta name="viewport" content="width=device-width" />
 </head>
 <body>
@@ -16,23 +16,34 @@
 	<% if(success_msg.length > 0) { %>
 					<div class="alert alert-success"><%= success_msg %></div> 
 	<% } %>
-	<% if(!isFormComplete) { %>
-		<section class="container-fluid">
-			<div class="jumbotron">
-				<div class="row">
-					<div class="col-md-6">
-					  	<h2>Sou um Investidor</h2>
-					  	<p class="painel_geral">Se você é um investidor, você emprestará seu dinheiro para diversas empresas, e receberá seu dinheiro com juros de volta!</p>
-					  	<a class="btn btn-primary btn-lg" role="button" href="/dashboard/cadastro-investidor">Completar cadastro de investidor</a>
-					</div>
-					<div class="col-md-6">
-					  	<h2>Sou uma Empresa</h2>
-					  	<p class="painel_geral">Se você é uma empresa, você receberá empréstimos a baixos juros.</p>
-					  	<a class="btn btn-primary btn-lg" role="button" href="/dashboard/cadastro-empresa">Completar cadastro de empresa</a>
-				  	</div>
+	
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12">
+				  	<h2>Seja bem-vindo, <%= user.name %>!</h2>
+				  	<% if(isFormComplete){ %>
+				  		<p class="painel_geral">Você está pronto para investir!</p>
+				  	<% } else { %>
+				  		<p class="painel_geral">Basta você completar o formulário de investidor, e já estará apto a investir!</p>
+				  	<% } %>
 			  	</div>
-			</div>
-		</section>
-	<% } %>
+			  	<div class="col-lg-8 col-md-8 col-sm-12 part">
+			  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
+			  			<span class="glyphicon glyphicon-ok"></span>
+			  			<p>Cadastro PeerCon</p>
+			  		</div>
+			  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
+			  			<span class="glyphicon glyphicon-ok"></span>
+			  			<p>Formulário de Investidor</p>
+			  		</div>
+			  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
+			  			<a class="btn btn-primary">Ver portfólios</a>
+			  		</div>
+			  	</div>
+		  	</div>
+		</div>
+		<div id="portfolios">
+
+		</div>
 </body>
 </html>

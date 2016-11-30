@@ -10,16 +10,23 @@ var express = require("express"),
 
 
 router.get("/", middleware.isLoggedIn, function(req, res){
-	Investor.getInvestorByUserId(req.user._id, function(err, investor){
-		if(err) throw err;
-		if(!investor) {
-			res.render("portfolios",{isFormComplete: false});
-		} else {
-			res.render("portfolios",{isFormComplete: true});
-		}
-	});
-    
+	if(req.user.escolha == "investidor") {
+		res.redirect("/dashboard/portfolios");
+	} else {
+		res.redirect("/dashboard/propostas");
+	}
 });
+
+router.get("/portfolios", middleware.isLoggedIn, function(req, res){
+	Investor.getInvestorByUserId(req.user._id, function(err, investor){
+			if(err) throw err;
+			if(!investor) {
+				res.render("portfolios",{isFormComplete: false, user: req.user});
+			} else {
+				res.render("portfolios",{isFormComplete: true, user: req.user});
+			}
+		});
+})
 
 router.get("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
 	Investor.getInvestorByUserId(req.user._id, function(err, investor){
