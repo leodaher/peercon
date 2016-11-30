@@ -27,19 +27,35 @@
 				  		<p class="painel_geral">Basta você completar o formulário de investidor, e já estará apto a investir!</p>
 				  	<% } %>
 			  	</div>
-			  	<div class="col-lg-8 col-md-8 col-sm-12 part">
-			  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
-			  			<span class="glyphicon glyphicon-ok"></span>
-			  			<p>Cadastro PeerCon</p>
-			  		</div>
-			  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
-			  			<span class="glyphicon glyphicon-ok"></span>
-			  			<p>Formulário de Investidor</p>
-			  		</div>
-			  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
-			  			<a class="btn btn-primary">Ver portfólios</a>
-			  		</div>
-			  	</div>
+			  	<% if(isFormComplete) { %>
+				  	<div class="col-lg-8 col-md-8 col-sm-12 part">
+				  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
+				  			<span class="glyphicon glyphicon-ok"></span>
+				  			<p>Cadastro PeerCon</p>
+				  		</div>
+				  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
+				  			<span class="glyphicon glyphicon-ok"></span>
+				  			<p>Formulário de Investidor</p>
+				  		</div>
+				  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
+				  			<a class="btn btn-primary">Ver portfólios</a>
+				  		</div>
+				  	</div>
+				<% } else { %>
+					<div class="col-lg-8 col-md-8 col-sm-12 part">
+				  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
+				  			<span class="glyphicon glyphicon-ok"></span>
+				  			<p>Cadastro PeerCon</p>
+				  		</div>
+				  		<div class="col-lg-4 col-md-4 col-sm-4 step uncheck">
+				  			<span class="glyphicon glyphicon-remove"></span>
+				  			<p>Formulário de Investidor</p>
+				  		</div>
+				  		<div class="col-lg-4 col-md-4 col-sm-4 step check">
+				  			<a class="btn btn-primary">Completar cadastro de investidor</a>
+				  		</div>
+				  	</div>
+				<% } %>
 		  	</div>
 		</div>
 		<div id="portfolios">
