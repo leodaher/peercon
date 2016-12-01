@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Portfolios</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/geral.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/header.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/propostas.css">
+	<meta name="viewport" content="width=device-width" />
+</head>
+<body>
+	<% include partials/dashboardHeader %>
+	<div class="container">
+		<ul class="payment-wizard">
+	    	<li class="completed">
+	        	<div class="wizard-heading">
+	            	1. Cadastro PeerCon
+	                <span class="icon-user"></span>
+	            </div>
+	        </li>
+	        <li class="active show">
+	        	<div class="wizard-heading">
+	            	2. Cadastro de empreendedor
+	                <span class="icon-location"></span>
+	            </div>
+	            <div class="wizard-content">
+		            <p>Formulário com informações sobre o empreendedor.</p>
+	            	<button class="btn-green done">Preencher
+	            </div>
+	        </li>
+	        <li>
+	        	<div class="wizard-heading">
+	            	3. Cadastro da empresa
+	                <span class="icon-summary"></span>
+	            </div>
+	            <div class="wizard-content">
+	            	<p>Nesta parte importantíssima, coletaremos toda a informação necessária para fazermos análise de crédito da sua empresa.</p>
+	            	<button class="btn-green done" type="submit">Preencher</button>
+	            </div>
+	        </li>
+	        <li>
+	        	<div class="wizard-heading">
+	            	4. Payment Method
+	                <span class="icon-mode"></span>
+	            </div>
+	            <div class="wizard-content">
+	            	<p>Your payment methods detail section.</p>
+	            	<button class="btn-green" type="submit">Done</button>
+	            </div>
+	        </li>
+	    </ul>    
+	</div>
+</body>
+</html>

@@ -29,7 +29,7 @@ router.get("/portfolios", middleware.isLoggedIn, function(req, res){
 })
 
 router.get("/propostas", middleware.isLoggedIn, function(req, res){
-	res.send("<h1>Propostas</h1>");
+	res.render("propostas");
 })
 
 router.get("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
