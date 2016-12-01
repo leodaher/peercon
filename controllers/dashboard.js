@@ -28,6 +28,10 @@ router.get("/portfolios", middleware.isLoggedIn, function(req, res){
 		});
 })
 
+router.get("/propostas", middleware.isLoggedIn, function(req, res){
+	res.send("<h1>Propostas</h1>");
+})
+
 router.get("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
 	Investor.getInvestorByUserId(req.user._id, function(err, investor){
 		if(err) throw err;
@@ -207,7 +211,6 @@ router.post("/cadastro-investidor/editar", multipartMiddleware, middleware.isLog
 	
 	// Validar CPF
 	var cpfstr = CPF.replace(/[^0-9]/g,"");
-	console.log(cpfstr);
 	if(!(formValidator.testaCPF(cpfstr))){
 		errors.push({
 			msg: "CPF inválido!"
@@ -246,6 +249,8 @@ router.post("/cadastro-investidor/editar", multipartMiddleware, middleware.isLog
 			newInvestor.residencia = residencia;
 		}
 
+		
+
 		var query = {user: req.user._id};
 
 		Investor.findOneAndUpdate(query, { $set: newInvestor}, function(err){
@@ -266,6 +271,8 @@ router.post("/cadastro-investidor/editar", multipartMiddleware, middleware.isLog
 						});
 					}
 				});
+				req.flash("success_msg","Cadastro atualizado!");
+				res.redirect("/dashboard/portfolios");
 			}
 		})
 	}
