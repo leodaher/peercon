@@ -2,16 +2,19 @@
 <html>
 	<head>
 		<title>Entrar</title>
+		<meta name="viewport" content="width=device-width" />
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah" rel="stylesheet">
-		<script   src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="stylesheets/geral.css">
 		<link rel="stylesheet" type="text/css" href="stylesheets/header.css">
 		<link rel="stylesheet" type="text/css" href="stylesheets/form.css">
-		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" type="text/css" href="stylesheets/footer.css">
 	</head>
-	<body>
+	
+	<body id="myPage">
 		<% include partials/header %>
 		<div class="form-style-10">
 			<h1>Entrar<span>Basta preencher os campos para entrar!</span></h1>
@@ -27,12 +30,12 @@
 			<form id="registerForm" action="/login" method="post">
     			<div class="section"><span>1</span>E-mail</div>
     			<div class="inner-wrap">
-        			<label>E-mail <input type="email" name="email"></label>
+        			<input type="email" name="email" placeholder="Seu endereço de E-mail">
     			</div>
 
     			<div class="section"><span>2</span>Senha</div>
         		<div class="inner-wrap">
-        			<label>Senha <input type="password" name="password"></label>
+        			<input type="password" name="password" placeholder="Preencher com sua senha">
     			</div>
     			<div class="button-section">
      				<input type="submit" name="Sign Up" value="Entrar" />
@@ -40,5 +43,6 @@
     			</div>
 			</form>
 		</div>
+		<% include partials/footer %>
 	</body>
 </html>

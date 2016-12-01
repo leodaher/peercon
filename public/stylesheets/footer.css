@@ -2,21 +2,45 @@ footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
 }
+.fundo_footer{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	height: auto;
+}
+
 .bg-black{
 	background-color: #7f7f7f;
 }
 .foot_text{
 	color: white;
 	text-align: center;
+	font-size: 0.9em;
+}
+#foot_container{
+    max-width: 860px;
+    width: auto;
+    margin: auto;
 }
 ul{
 	list-style-type: none;
+	list-style-position: outside; 
 	text-align: left;
-	margin: 0;
+	margin: -15px;
 	color: white;
 	font-weight: normal;
 }
 li{
 	border: none;
 	line-height: 1.8em;
+}
+
+@media screen and (min-width: 550px){
+	.fundo_footer{
+		padding-top: 40px;
+		padding-bottom: 40px;
+		height: auto;
+	}
+	.foot_text{
+		font-size: 1.0em;		
+	}
 }

@@ -1,7 +1,8 @@
 .form-style-10{
     width:90%;
     padding:30px;
-    margin:40px auto;
+    padding-bottom: 50px;
+    margin:35px auto;
     background: #FFF;
     border-radius: 10px;
     -webkit-border-radius:10px;
@@ -11,10 +12,10 @@
     -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
 }
 .form-style-10 .inner-wrap{
-    padding: 30px;
+    padding: 5px;
     background: #F8F8F8;
     border-radius: 6px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 .form-style-10 h1{
     background: #2A88AD;
@@ -142,9 +143,19 @@
 }
 
 @media screen and (min-width: 550px){
-	.form-style-10{width:70%};
+	.form-style-10{
+        width:70%;
+    }
+    .form-style-10 .inner-wrap{
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
 }
 
 @media screen and (min-width: 767px){
-	.form-style-10{width:50%};
+	.form-style-10{
+        width:50%;
+        max-width: 650px;
+    }
 }
