@@ -64,16 +64,16 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 			console.log(user);
 		});
 
-		passport.authenticate('local')(req, res, function(){
-			req.flash('success_msg', 'Você está cadastrado e agora pode se logar!');
+		passport.authenticate("local")(req, res, function(){
+			console.log("Authentication working");
 			res.redirect("/dashboard");
-		});
+		})
 	}
 });
 
 // Login User
 router.post("/login", multipartMiddleware,
-	passport.authenticate("local", {successRedirect: '/dashboard', failureRedirect: '/login', failureFlash: true}),
+	passport.authenticate("local", {successRedirect: '/dashboard', failureRedirect: '/login', failureFlash: false}),
 	function(req, res){
 		res.redirect("/dashboard");
 	}

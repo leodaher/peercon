@@ -347,7 +347,7 @@ router.post("/cadastro-empreendedor", middleware.isLoggedIn, function(req, res){
 router.get("/logout", middleware.isLoggedIn, function(req, res){
 	req.logout();
 	req.flash("success_msg","Até a proxima!");
-	res.redirect("/login");
+	res.redirect("/");
 });
 
 module.exports = router;
