@@ -2,20 +2,21 @@
 <html>
 <head>
 	<title>Portfolios</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah">
+	<meta name="viewport" content="width=device-width" />
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah">
 	<link rel="stylesheet" type="text/css" href="../stylesheets/geral.css">
 	<link rel="stylesheet" type="text/css" href="../stylesheets/header.css">
 	<link rel="stylesheet" type="text/css" href="../stylesheets/portifolios.css">
-	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" type="text/css" href="../stylesheets/footer.css">
 </head>
 <body>
 	<% include partials/dashboardHeader %>
 	<% if(success_msg.length > 0) { %>
-					<div class="alert alert-success"><%= success_msg %></div> 
+		<div class="alert alert-success"><%= success_msg %></div> 
 	<% } %>
 	
 		<div class="jumbotron">
@@ -63,8 +64,9 @@
 				</div>
 		  	</div>
 		</div>
-		<div id="portfolios">
+		<div id="portfolios" style="height: 550px;">
 
 		</div>
+		<% include partials/footer %>
 </body>
 </html>
