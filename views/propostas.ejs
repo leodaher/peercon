@@ -15,6 +15,9 @@
 <body>
 	<% include partials/dashboardHeader %>
 	<div class="container">
+		<% if(success_msg.length > 0) { %>
+					<div class="alert alert-success"><%= success_msg %></div> 
+		<% } %>
 		<ul class="payment-wizard">
 	    	<li class="completed">
 	        	<div class="wizard-heading">
@@ -22,29 +25,37 @@
 	                <span class="icon-user"></span>
 	            </div>
 	        </li>
+	        <% if(!empreendedorForm) { %>		
 	        <li class="active show">
+	        <% } else { %>
+	        <li class="completed">
+	        <% } %>
 	        	<div class="wizard-heading">
 	            	2. Cadastro de empreendedor
 	                <span class="icon-location"></span>
 	            </div>
 	            <div class="wizard-content">
 		            <p>Formulário com informações sobre o empreendedor.</p>
-	            	<button class="btn-green done">Preencher
+	            	<a href="/dashboard/cadastro-empreendedor" class="btn-green done">Preencher</a>
 	            </div>
 	        </li>
-	        <li>
+	        <% if(!empresaForm) { %>
+	        <li class="active show">
+	        <% } else { %>
+	        <li class="completed">
+	        <% } %>
 	        	<div class="wizard-heading">
 	            	3. Cadastro da empresa
 	                <span class="icon-summary"></span>
 	            </div>
 	            <div class="wizard-content">
 	            	<p>Nesta parte importantíssima, coletaremos toda a informação necessária para fazermos análise de crédito da sua empresa.</p>
-	            	<button class="btn-green done" type="submit">Preencher</button>
+	            	<a href="/dashboard/cadastro-empresa" class="btn-green done" type="submit">Preencher</a>
 	            </div>
 	        </li>
 	        <li>
 	        	<div class="wizard-heading">
-	            	4. Payment Method
+	            	4. Solicitar Empréstimo
 	                <span class="icon-mode"></span>
 	            </div>
 	            <div class="wizard-content">

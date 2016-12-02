@@ -3,6 +3,7 @@ var express = require("express"),
 	passport = require("passport"),
 	middleware = require("../middleware/index"),
 	Investor = require("../models/investor"),
+	Empreendedor = require("../models/empreendedor"),
 	fs = require("fs"),
 	multipart = require("connect-multiparty"),
 	multipartMiddleware = multipart(),
@@ -29,7 +30,14 @@ router.get("/portfolios", middleware.isLoggedIn, function(req, res){
 })
 
 router.get("/propostas", middleware.isLoggedIn, function(req, res){
-	res.render("propostas");
+	Empreendedor.getEmpreendedorByUserId(req.user._id, function(err, empreendedor){
+		if(err) throw err;
+		if(!empreendedor) {
+			res.render("propostas",{empreendedorForm: false, empresaForm:false, user: req.user});
+		} else {
+			res.render("propostas",{empreendedorForm: true, empresaForm:false, user: req.user});
+		}
+	})
 })
 
 router.get("/cadastro-investidor", middleware.isLoggedIn, function(req, res){
@@ -278,8 +286,62 @@ router.post("/cadastro-investidor/editar", multipartMiddleware, middleware.isLog
 	}
 });
 
-router.get("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
-	res.render("cadastroEmpresa");
+router.get("/cadastro-empreendedor", middleware.isLoggedIn, function(req, res){
+	res.render("cadastroEmpreendedor");
+});
+
+router.post("/cadastro-empreendedor", middleware.isLoggedIn, function(req, res){
+	var CPF = req.body.cpf;
+	var birthday = req.body.date;
+	var CNPJ = req.body.cnpj;
+
+	req.checkBody('cpf','CPF é um campo obrigatório!').notEmpty();
+	req.checkBody('date','Data de Nascimento é um campo obrigatório!').notEmpty();
+	req.checkBody('cnpj','CNPJ é um campo obrigatório!').notEmpty();
+
+	var errors = new Array();
+	if(req.validationErrors()) {
+		errors = req.validationErrors();
+	}
+	
+	// Validar CPF
+	var cpfstr = CPF.replace(/[^0-9]/g,"");
+	console.log(cpfstr);
+	if(!(formValidator.testaCPF(cpfstr))){
+		errors.push({
+			msg: "CPF inválido!"
+		});
+	} 
+
+	if(errors.length > 0) {
+		res.render("cadastroEmpreendedor",{
+			errors: errors
+		});
+	} else {
+		var newEmpreendedor = new Empreendedor({
+			CPF: CPF,
+			birthday: birthday,
+			CNPJ: CNPJ,
+			user: req.user._id
+		});
+
+		Empreendedor.createEmpreendedor(newEmpreendedor, function(err, empreendedor){
+			if(err) {
+				console.log(err);
+			} else {
+				console.log(empreendedor);
+				fs.mkdir("tmp/empreendedores/"+req.user._id, function(err){
+					if(err) {
+						console.log(err);
+					} else {
+						console.log("Directory created successfully!");
+						req.flash("success_msg","Cadastro de empreendedor completo!");
+						res.redirect("/dashboard/propostas");						
+					}	
+				});
+			}
+		})
+	}
 })
 
 router.get("/logout", middleware.isLoggedIn, function(req, res){

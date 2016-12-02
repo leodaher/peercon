@@ -1,11 +1,6 @@
-:focus{outline: none;}
-a{text-decoration: none;}
-li{list-style: none;}
-h1{font-size: 24px; font-weight: 600; margin: 20px 0 10px; text-align: center;}
-.container{margin: 20px 60px; max-width: 600px;}
 
 /*= wizard css =*/
-.payment-wizard{float: left; width: 100%;}
+.payment-wizard{float: left; width: 50%;}
 .payment-wizard li.active{position: relative; z-index: 1;}
 .wizard-heading{float: left; width: 100%; padding: 10px 15px; background-color: #fafafa; margin-bottom: 1px; box-sizing: border-box; font-size: 18px; color: #4c4c4c; text-transform: uppercase; transition: 0.3s;}
 .wizard-content{display: none; float: left; width: 100%; background-color: #fff; box-shadow: 0 8px 8px #d2d2d2; padding: 15px; box-sizing: border-box;}

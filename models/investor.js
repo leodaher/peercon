@@ -16,7 +16,6 @@ var investorSchema = new mongoose.Schema({
 	rg: String,
 	rgverso: String,
 	residencia: String,
-	completedForm: Boolean,
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User"
