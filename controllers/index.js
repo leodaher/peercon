@@ -44,31 +44,52 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 	req.checkBody('email', 'Este e-mail não é válido!').isEmail();
 	req.checkBody('password', 'Senha é um campo obrigatório!').notEmpty();
 	req.checkBody('password2', 'As senhas não são iguais!').equals(req.body.password);
-
-	var errors = req.validationErrors();
-
-	if(errors) {
-		res.render("register",{
-			errors: errors
-		});
-	} else {
-		var newUser = new User({
-			name: name,
-			email: email,
-			password: password,
-			escolha: escolha
-		});
-
-		User.createUser(newUser, function(err, user) {
-			if(err) throw err;
-			console.log(user);
-		});
-
-		passport.authenticate("local")(req, res, function(){
-			console.log("Authentication working");
-			res.redirect("/dashboard");
-		})
-	}
+	
+	var errors = new Array();
+	
+	if(req.validationErrors()) {
+		errors = req.validationErrors();
+	} 
+	User.getUserByEmail(email, function(err, user){
+		if(err) {
+			console.log(err);
+		} else {
+			if(user) {
+				errors.push({msg: "E-mail já cadastrado!"});
+			}
+			
+			if(errors.length > 0) {
+				var option;
+				if(escolha == "investidor") {
+					option = 0;
+				} else {
+					option = 1;
+				}
+				
+				res.render("register",{
+					option: option,
+					errors: errors
+				});
+			} else {
+				var newUser = new User({
+					name: name,
+					email: email,
+					password: password,
+					escolha: escolha
+				});
+		
+				User.createUser(newUser, function(err, user) {
+					if(err) throw err;
+					console.log(user);
+				});
+		
+				passport.authenticate("local")(req, res, function(){
+					console.log("Authentication working");
+					res.redirect("/dashboard");
+				});
+			}
+		}
+	});
 });
 
 // Login User
