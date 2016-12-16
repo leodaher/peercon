@@ -81,12 +81,12 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 				User.createUser(newUser, function(err, user) {
 					if(err) throw err;
 					console.log(user);
+                    passport.authenticate("local")(req, res, function(){
+                        console.log("Authentication working");
+                        res.redirect("/dashboard");
+                    });
 				});
-		
-				passport.authenticate("local")(req, res, function(){
-					console.log("Authentication working");
-					res.redirect("/dashboard");
-				});
+
 			}
 		}
 	});
