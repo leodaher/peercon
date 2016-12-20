@@ -16,6 +16,14 @@ var investorSchema = new mongoose.Schema({
 	rg: String,
 	rgverso: String,
 	residencia: String,
+    perfil: {
+        conhecimento: String,
+        investimentos: [String],
+        objetivo: String,
+        acoes: String,
+        valorInvestido: String,
+        risco: String
+    },
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User"

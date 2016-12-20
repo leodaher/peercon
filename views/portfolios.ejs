@@ -31,7 +31,7 @@
 			  	</div>
 			  	<div class="container col-lg-8">
 				    <div class="row smpl-step" style="border-bottom: 0; min-width: 500px;">
-				        <div class="col-xs-4 smpl-step-step complete">
+				        <div class="col-xs-3 smpl-step-step complete">
 				            <div class="text-center smpl-step-num">Passo 1</div>
 				            <div class="progress">
 				                <div class="progress-bar"></div>
@@ -41,18 +41,26 @@
 				        </div>
 
 				        <% if(isFormComplete) { %>
-				        <div class="col-xs-4 smpl-step-step complete">
+				        <div class="col-xs-3 smpl-step-step complete">
 				        <% } else { %>
-				        <div class="col-xs-4 smpl-step-step disabled">
+				        <div class="col-xs-3 smpl-step-step disabled">
 				        <% } %>
 				            <div class="text-center smpl-step-num">Passo 2</div>
 				            <div class="progress">
 				                <div class="progress-bar"></div>
 				            </div>
 				            <a class="smpl-step-icon"><i class="fa fa-dollar" style="font-size: 60px; padding-left: 18px; padding-top: 5px; color: black;"></i></a>
-				            <div class="smpl-step-info text-center">Cadastro de investidor</div>
+                            <a href="/dashboard/cadastro-investidor"><div class="smpl-step-info text-center">Cadastro de investidor</div></a>
 				        </div>
-				        <div class="col-xs-4 smpl-step-step disabled">          
+                        <div class="col-xs-3 smpl-step-step disabled">          
+				            <div class="text-center smpl-step-num">Passo 3</div>
+				            <div class="progress">
+				                <div class="progress-bar"></div>
+				            </div>
+				            <a class="smpl-step-icon"><i class="fa fa-repeat" style="font-size: 60px; padding-left: 7px; padding-top: 7px; color: black;"></i></a>
+                            <a href="/dashboard/suitability"><div class="smpl-step-info text-center">Formulário de Suitability	</div></a>
+				        </div>
+				        <div class="col-xs-3 smpl-step-step disabled">          
 				            <div class="text-center smpl-step-num">Passo 3</div>
 				            <div class="progress">
 				                <div class="progress-bar"></div>

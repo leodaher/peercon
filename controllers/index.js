@@ -83,6 +83,7 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 					console.log(user);
                     passport.authenticate("local")(req, res, function(){
                         console.log("Authentication working");
+                        req.flash("success_msg","Cadastro realizado com sucesso!");
                         res.redirect("/dashboard");
                     });
 				});
