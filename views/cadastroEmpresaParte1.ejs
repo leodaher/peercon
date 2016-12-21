@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PeerCon - Investidor</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../scripts/investorMask.js"></script>
+    <script src="../../scripts/libs/moneyMask.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/geral.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/header.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/form.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/footer.css">
+</head>
+<body>
+	<% include partials/headerEmpreendedor %>
+	<div class="form-style-10">
+			<h1>Dados de pessoa física<span>Nesta etapa, recolheremos os dados da pessoa física, necessários para a análise de sua empresa.</span></h1>
+			<% if(typeof errors !== 'undefined') { %>
+			<% 		errors.forEach(function(error){ %>
+						<div class="alert alert-danger"><%= error.msg %></div>
+			<%		}); %>
+			<% } %>
+			<form action="/dashboard/cadastro-empresa" method="post">
+                <input type="hidden" name="parte" value="1">
+                <div class="section"><span>1</span>Dados Pessoais</div>
+                <div class="inner-wrap">
+                    <label>Nome Completo<input type="text" name="name"></label>
+                    <label>Data de Nascimento<input type="text" name="date" maxlength="10"></label>
+                    <label>CPF<input type="text" name="cpf" maxlength="14"></label>
+                    <label>RG<input type="text" name="rg" maxlength="12"></label>
+                    <label>Órgão emissor<input type="text" name="orgaoEmissor"></label>
+                    <label>Cidade natal<input type="text" name="cidadeNatal"></label>
+                    <label>Telefone Fixo<input type="text" name="telephone" maxlength="14"></label>
+                    <label>Celular<input type="text" name="cellphone" maxlength="15"></label>
+                    <label>Você é uma pessoa politicamente exposta?
+                        <select name="politicamenteExposta">
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </label>
+                    <label>Você, como pessoa física, paga aluguel ou financiamento da casa onde mora?
+                        <select name="aluguel">
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </label>
+                    <label>Renda Mensal Declarada<input type="text" name="renda"></label>
+                    <label>Valor aproximado do seu patimônio<input type="text" name="patrimonio"></label>
+                </div>
+                <div class="section"><span>2</span>Endereço Residencial</div>
+                <div class="inner-wrap">
+                    <label>CEP <input type="text" name="cep" maxlength="8"></label>
+                    <label>Logradouro <input type="text" name="logradouro"></label>
+                    <label>Número <input type="text" name="number"></label>
+                    <label>Complemento <input type="text" name="complement"></label>
+                    <label>Cidade <input type="text" name="city"></label>
+                    <label>Estado <input type="text" name="state"></label>
+                </div>
+                <div class="button-section">
+                    <input type="submit" name="Sign Up" value="Próximo" />
+                    <span class="error"></span>
+                </div>
+            </form>
+		</div>
+</body>
+</html>
