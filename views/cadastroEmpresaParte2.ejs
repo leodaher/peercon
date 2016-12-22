@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PeerCon - Investidor</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../scripts/investorMask.js"></script>
+    <script src="../../scripts/libs/moneyMask.js"></script>
+    <script src="../../scripts/empresaForm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/geral.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/header.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/form.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/footer.css">
+</head>
+<body>
+	<% include partials/headerEmpreendedor %>
+	<div class="form-style-10">
+			<h1>Dados da empresa<span></span></h1>
+			<% if(typeof errors !== 'undefined') { %>
+			<% 		errors.forEach(function(error){ %>
+						<div class="alert alert-danger"><%= error.msg %></div>
+			<%		}); %>
+			<% } %>
+			<form action="/dashboard/cadastro-empresa" method="post">
+                <input type="hidden" name="parte" value="2">
+                <div class="section"><span>1</span>Dados</div>
+                <div class="inner-wrap">
+                    <label>Seu papel na empresa
+                        <select name="papel">
+                            <option value="Sócio">Sócio</option>
+                            <option value="Administrador ou diretor">Administrador ou diretor indicado em contrato social</option>
+                            <option value="Funcionário">Funcionário</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </label>
+                    <label>CNPJ<input type="text" name="cnpj" maxlength="20"></label>
+                    <label>Nome fantasia da sua empresa<input type="text" name="nomeFantasia" maxlength="14"></label>
+                    <label>Sua empresa é optante do Simples Nacional?
+                        <select name="simplesNacional">
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </label>
+                    <label>Inscrição estadual (quando aplicável)<input type="text" name="inscricaoEstadual"></label>
+                    <label>Número de funcionários<input type="text" name="funcionarios"></label>
+                    <label>Telefone comercial<input type="text" name="telefone" maxlength="14"></label>
+                    <label>Telefone comercial 2 (opcional)<input type="text" name="telefone2" maxlength="14"></label>
+                    <label>Endereço do site da empresa (opcional)<input type="text" name="site"></label>
+                    <label>Facebook da empresa (opcional)<input type="text" name="facebook"></label>
+                    <label>LinkedIn (opcional)<input type="text" name="linkedin"></label>
+                    <label>Outra rede social (opcional)<input type="text" name="outraRede"></label>
+                </div>
+                <div class="section"><span>2</span>Endereço Comercial</div>
+                <div class="inner-wrap">
+                    <label>CEP <input type="text" name="cep" maxlength="8"></label>
+                    <label>Logradouro <input type="text" name="logradouro"></label>
+                    <label>Número <input type="text" name="number"></label>
+                    <label>Complemento <input type="text" name="complement"></label>
+                    <label>Cidade <input type="text" name="city"></label>
+                    <label>Estado <input type="text" name="state"></label>
+                </div>
+                <div class="section"><span>3</span>Dados societários</div>
+                <div class="inner-wrap" id="dadosSoc">
+                    <label>Número de sócios
+                        <select name="numeroSocios">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="button-section">
+                    <input type="submit" name="Sign Up" value="Próximo" />
+                    <span class="error"></span>
+                </div>
+            </form>
+		</div>
+</body>
+</html>

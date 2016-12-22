@@ -13,7 +13,39 @@ var empresaSchema = new mongoose.Schema({
         politicamenteExp: String,
         aluguel: String,
         renda: String,
-        patrimonio: String
+        patrimonio: String,
+        cep: String,
+        logradouro: String,
+        numero: String,
+        complemento: String,
+        cidade: String,
+        estado: String
+    },
+    pessoaJuridica: {
+        papel: String,
+        CNPJ: String,
+        nomeFantasia: String,
+        simplesNacional: String,
+        inscricaoEstadual: String,
+        funcionarios: String,
+        telefone: String,
+        telefone2: String,
+        site: String,
+        facebook: String,
+        linkedin: String,
+        outraRede: String,
+        cep: String,
+        logradouro: String,
+        numero: String,
+        complemento: String,
+        cidade: String,
+        estado: String,
+        dadosSocios: {
+            numeroSocios: String,
+            nomes: [String],
+            emails: [String],
+            celulares: [String]
+        }
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

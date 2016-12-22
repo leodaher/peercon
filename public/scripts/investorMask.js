@@ -4,12 +4,27 @@ $(document).ready(function(){
 	var telefone = $("input[name='telephone']");
 	var celular = $("input[name='cellphone']");
 	var renda = $("input[name='renda']");
+    var patrimonio = $("input[name='patrimonio']");
 	var cep = $("input[name='cep']");
 	var logradouro = $("input[name='logradouro']");
 	var cidade = $("input[name='city']");
 	var estado = $("input[name='state']");
+    var rg = $("input[name='rg']");
+    
+    // Máscara RG
+    rg.keyup(function(key){  
+        var code = key.keyCode;
+        var len = rg.val().length;
+        if((len == 2 || len == 6) && code != 8) {
+            rg.val(rg.val()+'.');
+        }
+        
+        else if(len == 10 && code != 8) {
+            rg.val(rg.val()+'-');
+        }
+    })
 
-	// Ḿáscara CPF
+	// Máscara CPF
 	cpf.keyup(function(key){
 		var code = key.keyCode;
 		var len = cpf.val().length;
@@ -74,8 +89,9 @@ $(document).ready(function(){
 	});
 	
 	// Máscara Renda
-	renda.maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: false});
-
+	renda.maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
+    patrimonio.maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
+    
 	// Autocomplete CEP
 	cep.blur(function(){
 		var cepval = this.value.replace(/[^0-9]/,"");

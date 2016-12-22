@@ -86,7 +86,10 @@ router.post("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
                     politicamenteExp: politicamenteExp,
                     aluguel: aluguel,
                     renda: renda,
-                    patrimonio: patrimonio
+                    patrimonio: patrimonio,
+                    cep: cep,
+                    logradouro: logradouro,
+                    
                 },
                 user: req.user._id
             });
@@ -107,6 +110,80 @@ router.post("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
                 }
             });
         }
+    }
+    
+    else if(req.body.parte == 2) {
+        var papel = req.body.papel;
+        var CNPJ = req.body.cnpj;
+        var nomeFantasia = req.body.nomeFantasia;
+        var simplesNacional = req.body.simplesNacional;
+        var inscricaoEstadual = req.body.inscricaoEstadual;
+        var funcionarios = req.body.funcionarios;
+        var telefone = req.body.telefone;
+        var telefone2 = req.body.telefone2;
+        var site = req.body.site;
+        var facebook = req.body.facebook;
+        var linkedin = req.body.linkedin;
+        var outraRede = req.body.outraRede;
+        var cep = req.body.cep;
+        var logradouro = req.body.logradouro;
+        var numero = req.body.number;
+        var complemento = req.body.complement;
+        var cidade = req.body.city;
+        var estado = req.body.state;
+        var dadosSocios = {
+            numeroSocios: req.body.numeroSocios;
+        }
+        
+        req.checkBody("cnpj","CNPJ é um campo obrigatório!").notEmpty();
+        req.checkBody("nomeFantasia","Nome fantasia da sua empresa é um campo obrigatório!").notEmpty();
+        req.checkBody("funcionarios","Número de funcionários é um campo obrigatório!").notEmpty();
+        req.checkBody("telefone","Telefone é um campo obrigatório!").notEmpty();
+        req.checkBody("cep","CEP é um campo obrigatório!").notEmpty();
+        req.checkBody("logradouro","Logradouro é um campo obrigatório!").notEmpty();
+        req.checkBody("number","Número é um campo obrigatório!").notEmpty();
+        req.checkBody("city","Cidade é um campo obrigatório!").notEmpty();
+        req.checkBody("state","Estado é um campo obrigatório!").notEmpty();
+        
+        var errors = req.validationErrors();
+        
+        if(errors.length > 0) {
+            res.render("cadastroEmpresaParte2", {errors: errors});
+        } else {
+            var pessoaJuridica = {
+                papel: papel,
+                CNPJ: CNPJ,
+                nomeFantasia: nomeFantasia,
+                simplesNacional: simplesNacional,
+                inscricaoEstadual: inscricaoEstadual,
+                functionarios: funcionarios,
+                telefone: telefone,
+                telefone2: telefone2,
+                site: site,
+                facebook: facebook,
+                linkedin: linkedin,
+                outraRede: outraRede,
+                cep: cep,
+                logradouro: logradouro,
+                numero: numero,
+                complemento: complemento,
+                cidade: cidade,
+                estado: estado,
+                dadosSocios: dadosSocios
+            }
+            
+            var query = {user: req.user._id};
+            
+            Empresa.findOneAndUpdate(query, { $set: {pessoaJuridica: pessoaJuridica}}, function(err){
+                if(err){
+                    console.log(err);
+                } else {
+                    console.log("Parte 2 completa!");
+                    res.redirect("/dashboard/cadastro-empresa?parte=3");
+                }
+            });
+        }
+        
     }
 });
 
