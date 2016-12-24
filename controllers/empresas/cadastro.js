@@ -1,8 +1,10 @@
 var express = require("express"),
     router = express.Router(),
+    mongoose = require("mongoose"),
     middleware = require("../../middleware/index"),
     Empresa = require("../../models/empresa"),
-    fs = require("fs");
+    fs = require("fs"),
+    formValidator = require("../../helpers/formValidator");
 
 
 //NEW EMPRESA
@@ -11,12 +13,53 @@ router.get("/", middleware.isLoggedIn, function(req, res){
     if(typeof(req.query.parte) != "undefined") {
        parte = req.query.parte;
     } 
-    res.render("cadastroEmpresaParte"+parte);
+    
+    if(parte == 1) {
+        res.render("cadastroEmpresaParte"+parte);
+    }
+    
+    else if(parte == 2) {
+        var query = {user: mongoose.Types.ObjectId(String(req.user._id))};
+        Empresa.findOne(query, function(err, empresa){
+            if(err) {
+                console.log(err);
+            } else {
+                if(!empresa){
+                    res.redirect("/dashboard/cadastro-empresa");
+                } else {
+                    if(!empresa.pessoaFisica.isComplete) {
+                        res.redirect("/dashboard/cadastro-empresa");
+                    } else {
+                        res.render("cadastroEmpresaParte2");
+                    }
+                }
+            }
+        });
+    }
+    
+    else if(parte == 3) {
+        var query = {user: mongoose.Types.ObjectId(String(req.user._id))};
+        Empresa.findOne(query, function(err, empresa){
+            if(err) {
+                console.log(err);
+            } else {
+                if(empresa == null) {
+                    res.redirect("/dashboard/cadastro-empresa");
+                } else {
+                    if(!empresa.pessoaJuridica.isComplete) {
+                        res.redirect("/dashboard/cadastro-empresa?parte=2");
+                    } else {
+                        res.render("cadastroEmpresaParte3");
+                    }
+                }
+            }
+        });
+    }
 });
 
 
 //CREATE EMPRESA
-router.post("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
     if(req.body.parte == "1"){
         var name = req.body.name;
         var birthday = req.body.date;
@@ -37,6 +80,7 @@ router.post("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
         var complement = req.body.complement;
         var city = req.body.city;
         var state = req.body.state;
+        
         
         req.checkBody('name','Nome é um campo obrigatório!').notEmpty();
         req.checkBody('date','Data de nascimento é um campo obrigatório!').notEmpty();
@@ -89,7 +133,11 @@ router.post("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
                     patrimonio: patrimonio,
                     cep: cep,
                     logradouro: logradouro,
-                    
+                    numero: number,
+                    complemento: complement,
+                    cidade: city,
+                    estado: state,
+                    isComplete: true
                 },
                 user: req.user._id
             });
@@ -132,7 +180,10 @@ router.post("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
         var cidade = req.body.city;
         var estado = req.body.state;
         var dadosSocios = {
-            numeroSocios: req.body.numeroSocios;
+            numeroSocios: req.body.numeroSocios,
+            nomes: req.body.nomeSoc,
+            emails: req.body.emailSoc,
+            celulares: req.body.celularSoc
         }
         
         req.checkBody("cnpj","CNPJ é um campo obrigatório!").notEmpty();
@@ -169,7 +220,8 @@ router.post("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
                 complemento: complemento,
                 cidade: cidade,
                 estado: estado,
-                dadosSocios: dadosSocios
+                dadosSocios: dadosSocios,
+                isComplete: true
             }
             
             var query = {user: req.user._id};
@@ -184,6 +236,66 @@ router.post("/cadastro-empresa", middleware.isLoggedIn, function(req, res){
             });
         }
         
+    }
+    
+    else if(parte == 3) {
+        var contatos = {
+            contador: {
+                nome: req.body.nomeContador,
+                email: req.body.emailContador,
+                telefone: req.body.telefoneContador
+            },
+            aluguel: {
+                valor: req.body.valAluguel,
+                nome: req.body.nomeLocador,
+                email: req.body.emailLocador,
+                telefone: req.body.telefoneLocador
+            }
+        };
+        
+        var fluxo = {
+            faturamento: req.body.faturamento,
+            lucro: req.body.lucro
+        };
+        
+        var outrosEmprestimos = {
+            valorParcela: req.body.valorParcela,
+            dataParcela: req.body.dataParcela,
+            taxaJuros: req.body.taxaJuros
+        };
+        
+        var outrosGastos = {
+            valor: req.body.valorGasto,
+            finalidade: req.body.finalidadeGasto
+        };
+        
+        req.checkBody("faturamento","Faturamento é um campo obrigatório").notEmpty();
+        req.checkBody("lucro","Lucro é um campo obrigatório").notEmpty();
+        
+        var errors = req.validationErrors();
+        
+        if(errors) {
+            res.render("cadastroEmpresaParte3", {errors: errors});
+        } else {
+            var dadosFinanceiros = {
+                contatos: contatos,
+                fluxo: fluxo,
+                outrosEmprestimos: outrosEmprestimos,
+                outrosGastos: outrosGastos
+            }
+            
+            var query = {user: req.user._id};
+            
+            Empresa.findOneAndUpdate(query, { $set: {dadosFinanceiros: dadosFinanceiros}}, function(err){
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log("Parte 3 completa!");
+                    req.flash("success_msg","O cadastro da sua empresa está completo! Agora é só aguardar o retorno da nossa equipe de análise de crédito");
+                    res.redirect("/dashboard/propostas");
+                }
+            })
+        }
     }
 });
 

@@ -4,7 +4,8 @@ var express = require("express"),
     Investor = require("../../models/investor"),
     fs = require("fs"),
 	multipart = require("connect-multiparty"),
-	multipartMiddleware = multipart();
+	multipartMiddleware = multipart(),
+    formValidator = require("../../helpers/formValidator");
 
 
 //NEW INVESTOR

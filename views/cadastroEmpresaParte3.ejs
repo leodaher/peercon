@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PeerCon - Investidor</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../scripts/investorMask.js"></script>
+    <script src="../../scripts/libs/moneyMask.js"></script>
+    <script src="../../scripts/empresaForm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/geral.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/header.css">
+	<link rel="stylesheet" type="text/css" href="../stylesheets/form.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/footer.css">
+</head>
+<body>
+	<% include partials/headerEmpreendedor %>
+	<div class="form-style-10">
+			<h1>Dados financeiros<span></span></h1>
+			<% if(typeof errors !== 'undefined') { %>
+			<% 		errors.forEach(function(error){ %>
+						<div class="alert alert-danger"><%= error.msg %></div>
+			<%		}); %>
+			<% } %>
+			<form action="/dashboard/cadastro-empresa" method="post">
+                <input type="hidden" name="parte" value="2">
+                <div class="section"><span>1</span>Contatos</div>
+                <div class="inner-wrap">
+                    <label>Nome do contador<input type="text" name="nomeContador"></label>
+                    <label>E-mail<input type="text" name="emailContador"></label>
+                    <label>Telefone<input type="text" name="telefoneContador"></label>
+                    <label>Valor do aluguel<input type="text" name="valAluguel"></label>
+                    <label>Nome do locador<input type="text" name="nomeLocador"></label>
+                    <label>E-mail<input type="text" name="emailLocador"></label>
+                    <label>Telefone<input type="text" name="telefoneLocador"></label>
+                </div>
+                <div class="section"><span>2</span>Faturamento da empresa</div>
+                <div class="inner-wrap">
+                    <label>Quanto a empresa fatura<input type="text" name="faturamento"></label>
+                    <label>Quanto a empresa lucra<input type="text" name="lucro"></label>
+                </div>
+                <div class="section"><span>3</span>Outros empréstimos</div>
+                <div class="inner-wrap">
+                    <label>Valor de cada parcela<input type="text" name="valorParcela"></label>
+                    <label>Data da última parcela<input type="text" name="dataParcela"></label>
+                    <label>Taxa de juros<input type="text" name="taxaJuros"></label>
+                </div>
+                <div class="section"><span>4</span>Outros gastos fixos mensais</div>
+                <div class="inner-wrap">
+                    <label>Valor<input type="text" name="valorGasto"></label>
+                    <label>Finalidade<input type="text" name="finalidadeGasto"></label>
+                </div> 
+                <div class="button-section">
+                    <input type="submit" name="Sign Up" value="Próximo" />
+                    <span class="error"></span>
+                </div>
+            </form>
+		</div>
+</body>
+</html>
