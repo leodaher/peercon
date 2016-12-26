@@ -78,6 +78,23 @@ var empresaSchema = new mongoose.Schema({
         },
         isComplete: Boolean
     },
+    anexos: {
+        pessoaFisica: {
+            rg: String,
+            rgverso: String,
+            residencia: String
+        },
+        empresa: {
+            contratoSocial: String
+        },
+        banco: {
+            extratoCompleto: String,
+            extrato1: String,
+            extrato2: String,
+            extrato3: String,
+            extrato4: String
+        }
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"

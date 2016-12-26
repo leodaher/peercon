@@ -7,12 +7,12 @@
 		<link rel="stylesheet" type="text/css" href="../stylesheets/header.css">
 		<link rel="stylesheet" type="text/css" href="../stylesheets/form.css">
 		<script   src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../stylesheets/libs/bootstrap.min.css">
+		<script type="text/javascript" src="../../scripts/libs/bootstrap.min.js"></script>
 		<meta name="viewport" content="width=device-width" />
 	</head>
     <body>
-        <% include partials/headerInvestidor %>
+        <% include ../../../partials/headerInvestidor %>
         <div class="form-style-10">
 			<h1>Formulário de Suitability<span>Com este formulário, faremos uma análise do seu perfil de risco!</span></h1>
 			<% if(typeof errors !== 'undefined') { %>
@@ -30,7 +30,7 @@
                         <option value="Bom">Bom</option>
                         <option value="Excelente">Excelente</option>
                     </select><br>
-                    
+
                     <label>Selecione abaixo os investimentos que você tem ou já teve:</label>
                     <input name="investimento" type="checkbox" value="Poupança">Poupança<br>
                     <input name="investimento" type="checkbox" value="Renda Fixa">Títulos de renda fixa (CDB, LCI, LCA, Debêntures, DPGE, FIDC, entre outros)<br>
@@ -44,7 +44,7 @@
                     <input name="investimento" type="checkbox" value="Mercado Futuro">Mercado futuro - BM&F <br>
                     <input name="investimento" type="checkbox" value="Derivativos">Derivativos<br>
                     <input name="investimento" type="checkbox" value="Nunca Investiu">Nunca investi<br><br>
-                    
+
                     <label>Qual é o valor aproximado dos seus investimentos financeiros atualmente?</label>
                     <select name="valorInvestido">
                         <option value="0-20000">R$0-20.000</option>
@@ -63,7 +63,7 @@
                         <option value="acumular">Acumular recursos: obter rentabilidade acima da inflação</option>
                         <option value="especular">Especular: ter alta valorização, correndo riscos maiores, se necessário</option>
                     </select><br>
-                    
+
                     <label>Qual é a melhor opção para descrever sua tolerância ao risco?</label>
                     <select name="risco">
                         <option value="baixa">Baixa: quero rentabilidade acima da poupança com preservação do poder de compra</option>
@@ -71,7 +71,7 @@
                         <option value="média">Média: estou disposto a assumir riscos maiores para superar a taxa de juros DI (CDI)</option>
                         <option value="alta">Alta: estou disposto a assumir riscos elevados para alcançar retornos expressivos</option>
                     </select><br>
-                    
+
                     <label>O que você faria se suas ações caíssem 20%?</label>
                     <select name="acoes">
                         <option value="venderia todas">Venderia todas as minhas ações</option>
@@ -79,7 +79,7 @@
                         <option value="manteria">Venderia uma parte de minhas ações</option>
                         <option value="compraria">Compraria mais ações</option>
                     </select>
-                    
+
                 </div>
     			<div class="button-section">
      				<input type="submit" name="Sign Up" value="Enviar" />

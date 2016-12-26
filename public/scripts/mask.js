@@ -1,24 +1,23 @@
 $(document).ready(function(){
-	var cpf = $("input[name='cpf']");
-	var data = $("input[name='date']");
-	var telefone = $("input[name='telephone']");
-	var celular = $("input[name='cellphone']");
-	var renda = $("input[name='renda']");
-    var patrimonio = $("input[name='patrimonio']");
-	var cep = $("input[name='cep']");
-	var logradouro = $("input[name='logradouro']");
-	var cidade = $("input[name='city']");
-	var estado = $("input[name='state']");
-    var rg = $("input[name='rg']");
-    
+	var cpf = $(".cpfMask");
+	var data = $(".dataMask");
+	var telefone = $(".telefoneMask");
+	var celular = $(".celularMask");
+	var money = $(".moneyMask");
+	var cep = $(".cep");
+	var logradouro = $(".logradouro");
+	var cidade = $(".city");
+	var estado = $(".state");
+  var rg = $(".rg");
+
     // Máscara RG
-    rg.keyup(function(key){  
+    rg.keyup(function(key){
         var code = key.keyCode;
         var len = rg.val().length;
         if((len == 2 || len == 6) && code != 8) {
             rg.val(rg.val()+'.');
         }
-        
+
         else if(len == 10 && code != 8) {
             rg.val(rg.val()+'-');
         }
@@ -87,11 +86,10 @@ $(document).ready(function(){
 			}
 		}
 	});
-	
+
 	// Máscara Renda
-	renda.maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
-    patrimonio.maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
-    
+	money.maskMoney({prefix:'R$ ', allowNegative: true, thousands:'.', decimal:',', affixesStay: true});
+
 	// Autocomplete CEP
 	cep.blur(function(){
 		var cepval = this.value.replace(/[^0-9]/,"");

@@ -13,7 +13,7 @@ router.get("/", middleware.isLoggedIn, function(req, res){
 	Investor.getInvestorByUserId(req.user._id, function(err, investor){
 		if(err) throw err;
 		if(!investor) {
-			res.render("cadastroInvestidor");
+			res.render("investidores/cadastro/geral/new");
 		} else {
 			res.redirect("/dashboard/cadastro-investidor/editar");
 		}
@@ -60,7 +60,7 @@ router.post("/", multipartMiddleware, middleware.isLoggedIn, function(req, res){
 	if(req.validationErrors()) {
 		errors = req.validationErrors();
 	}
-	
+
 	// Validar CPF
 	var cpfstr = CPF.replace(/[^0-9]/g,"");
 	console.log(cpfstr);
@@ -68,7 +68,7 @@ router.post("/", multipartMiddleware, middleware.isLoggedIn, function(req, res){
 		errors.push({
 			msg: "CPF inválido!"
 		});
-	} 
+	}
 
 	images.every(function(img){
 		if(img.size == 0) {
@@ -80,7 +80,7 @@ router.post("/", multipartMiddleware, middleware.isLoggedIn, function(req, res){
 	});
 
 	if(errors.length > 0) {
-		res.render("cadastroInvestidor",{
+		res.render("investidores/cadastro/geral/new",{
 			errors: errors
 		});
 	} else {
@@ -125,8 +125,8 @@ router.post("/", multipartMiddleware, middleware.isLoggedIn, function(req, res){
 									}
 								})
 							});
-						});						
-					}	
+						});
+					}
 				});
 			}
 		});
@@ -140,9 +140,9 @@ router.post("/", multipartMiddleware, middleware.isLoggedIn, function(req, res){
 router.get("/editar", middleware.isLoggedIn, function(req, res){
 	Investor.getInvestorByUserId(req.user._id, function(err, investor){
 		if(!investor) {
-			res.render("cadastroInvestidor");
+			res.render("investidores/cadastro/geral/new");
 		} else {
-			res.render("editCadastroInvestidor",{investor: investor});
+			res.render("investidores/cadastro/geral/edit",{investor: investor});
 		}
 	});
 });
@@ -188,17 +188,17 @@ router.post("/editar", multipartMiddleware, middleware.isLoggedIn, function(req,
 	if(req.validationErrors()) {
 		errors = req.validationErrors();
 	}
-	
+
 	// Validar CPF
 	var cpfstr = CPF.replace(/[^0-9]/g,"");
 	if(!(formValidator.testaCPF(cpfstr))){
 		errors.push({
 			msg: "CPF inválido!"
 		});
-	} 
+	}
 
 	if(errors.length > 0) {
-		res.render("cadastroInvestidor",{
+		res.render("investidores/cadastro/edit",{
 			errors: errors
 		});
 	} else {
@@ -229,7 +229,7 @@ router.post("/editar", multipartMiddleware, middleware.isLoggedIn, function(req,
 			newInvestor.residencia = residencia;
 		}
 
-		
+
 
 		var query = {user: req.user._id};
 

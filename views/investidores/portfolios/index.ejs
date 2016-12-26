@@ -4,8 +4,8 @@
 	<title>Portfolios</title>
 	<meta name="viewport" content="width=device-width" />
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script type="text/javascript" src="../scripts/libs/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/libs/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah">
 	<link rel="stylesheet" type="text/css" href="../stylesheets/geral.css">
@@ -14,11 +14,11 @@
 	<link rel="stylesheet" type="text/css" href="../stylesheets/footer.css">
 </head>
 <body>
-	<% include partials/headerInvestidor %>
+	<% include ../../partials/headerInvestidor %>
 	<% if(success_msg.length > 0) { %>
-		<div class="alert alert-success"><%= success_msg %></div> 
+		<div class="alert alert-success"><%= success_msg %></div>
 	<% } %>
-	
+
 		<div class="jumbotron">
 			<div class="row">
 				<div class="col-lg-4 col-md- col-sm-12">
@@ -52,7 +52,7 @@
 				            <a class="smpl-step-icon"><i class="fa fa-dollar" style="font-size: 60px; padding-left: 18px; padding-top: 5px; color: black;"></i></a>
                             <a href="/dashboard/cadastro-investidor"><div class="smpl-step-info text-center">Cadastro de investidor</div></a>
 				        </div>
-                        <div class="col-xs-3 smpl-step-step disabled">          
+                        <div class="col-xs-3 smpl-step-step disabled">
 				            <div class="text-center smpl-step-num">Passo 3</div>
 				            <div class="progress">
 				                <div class="progress-bar"></div>
@@ -60,7 +60,7 @@
 				            <a class="smpl-step-icon"><i class="fa fa-repeat" style="font-size: 60px; padding-left: 7px; padding-top: 7px; color: black;"></i></a>
                             <a href="/dashboard/suitability"><div class="smpl-step-info text-center">Formulário de Suitability	</div></a>
 				        </div>
-				        <div class="col-xs-3 smpl-step-step disabled">          
+				        <div class="col-xs-3 smpl-step-step disabled">
 				            <div class="text-center smpl-step-num">Passo 3</div>
 				            <div class="progress">
 				                <div class="progress-bar"></div>
@@ -75,6 +75,6 @@
 		<div id="portfolios" style="height: 550px;">
 
 		</div>
-		<% include partials/footer %>
+		<% include ../../partials/footer %>
 </body>
 </html>

@@ -12,12 +12,12 @@ router.get("/", middleware.isLoggedIn, function(req, res){
     var parte = 1;
     if(typeof(req.query.parte) != "undefined") {
        parte = req.query.parte;
-    } 
-    
-    if(parte == 1) {
-        res.render("cadastroEmpresaParte"+parte);
     }
-    
+
+    if(parte == 1) {
+        res.render("empresas/cadastro/parte"+parte+"/new");
+    }
+
     else if(parte == 2) {
         var query = {user: mongoose.Types.ObjectId(String(req.user._id))};
         Empresa.findOne(query, function(err, empresa){
@@ -30,13 +30,13 @@ router.get("/", middleware.isLoggedIn, function(req, res){
                     if(!empresa.pessoaFisica.isComplete) {
                         res.redirect("/dashboard/cadastro-empresa");
                     } else {
-                        res.render("cadastroEmpresaParte2");
+                        res.render("empresas/cadastro/parte2/new");
                     }
                 }
             }
         });
     }
-    
+
     else if(parte == 3) {
         var query = {user: mongoose.Types.ObjectId(String(req.user._id))};
         Empresa.findOne(query, function(err, empresa){
@@ -49,7 +49,7 @@ router.get("/", middleware.isLoggedIn, function(req, res){
                     if(!empresa.pessoaJuridica.isComplete) {
                         res.redirect("/dashboard/cadastro-empresa?parte=2");
                     } else {
-                        res.render("cadastroEmpresaParte3");
+                        res.render("empresas/cadastro/parte3/new");
                     }
                 }
             }
@@ -73,15 +73,15 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         var aluguel = req.body.aluguel;
         var renda = req.body.renda;
         var patrimonio = req.body.patrimonio;
-        
+
         var cep = req.body.cep;
         var logradouro = req.body.logradouro;
         var number = req.body.number;
         var complement = req.body.complement;
         var city = req.body.city;
         var state = req.body.state;
-        
-        
+
+
         req.checkBody('name','Nome é um campo obrigatório!').notEmpty();
         req.checkBody('date','Data de nascimento é um campo obrigatório!').notEmpty();
         req.checkBody('cpf','CPF é um campo obrigatório!').notEmpty();
@@ -98,13 +98,13 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         req.checkBody('number','Número é um campo obrigatório!').notEmpty();
         req.checkBody('city','Cidade é um campo obrigatório!').notEmpty();
         req.checkBody('state','Estado é um campo obrigatório!').notEmpty();
-        
+
         var errors = new Array();
-        
+
         if(req.validationErrors()){
             errors = req.validationErrors();
         }
-        
+
         //Validar CPF
         var cpfstr = CPF.replace(/[^0-9]/g,"");
         console.log(cpfstr);
@@ -113,9 +113,9 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                 msg: "CPF inválido!"
             });
         }
-        
+
         if(errors.length > 0){
-            res.render("cadastroEmpresaParte1",{errors: errors});
+            res.render("empresas/cadastro/parte1/new",{errors: errors});
         } else {
             var newEmpresa = new Empresa({
                 pessoaFisica: {
@@ -141,7 +141,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                 },
                 user: req.user._id
             });
-            
+
             Empresa.createEmpresa(newEmpresa, function(err, empresa){
                 if(err) {
                     console.log(err);
@@ -159,7 +159,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             });
         }
     }
-    
+
     else if(req.body.parte == 2) {
         var papel = req.body.papel;
         var CNPJ = req.body.cnpj;
@@ -185,7 +185,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             emails: req.body.emailSoc,
             celulares: req.body.celularSoc
         }
-        
+
         req.checkBody("cnpj","CNPJ é um campo obrigatório!").notEmpty();
         req.checkBody("nomeFantasia","Nome fantasia da sua empresa é um campo obrigatório!").notEmpty();
         req.checkBody("funcionarios","Número de funcionários é um campo obrigatório!").notEmpty();
@@ -195,11 +195,11 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         req.checkBody("number","Número é um campo obrigatório!").notEmpty();
         req.checkBody("city","Cidade é um campo obrigatório!").notEmpty();
         req.checkBody("state","Estado é um campo obrigatório!").notEmpty();
-        
+
         var errors = req.validationErrors();
-        
+
         if(errors.length > 0) {
-            res.render("cadastroEmpresaParte2", {errors: errors});
+            res.render("empresas/cadastro/parte2/new", {errors: errors});
         } else {
             var pessoaJuridica = {
                 papel: papel,
@@ -223,9 +223,9 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                 dadosSocios: dadosSocios,
                 isComplete: true
             }
-            
+
             var query = {user: req.user._id};
-            
+
             Empresa.findOneAndUpdate(query, { $set: {pessoaJuridica: pessoaJuridica}}, function(err){
                 if(err){
                     console.log(err);
@@ -235,9 +235,9 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                 }
             });
         }
-        
+
     }
-    
+
     else if(parte == 3) {
         var contatos = {
             contador: {
@@ -252,30 +252,30 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                 telefone: req.body.telefoneLocador
             }
         };
-        
+
         var fluxo = {
             faturamento: req.body.faturamento,
             lucro: req.body.lucro
         };
-        
+
         var outrosEmprestimos = {
             valorParcela: req.body.valorParcela,
             dataParcela: req.body.dataParcela,
             taxaJuros: req.body.taxaJuros
         };
-        
+
         var outrosGastos = {
             valor: req.body.valorGasto,
             finalidade: req.body.finalidadeGasto
         };
-        
+
         req.checkBody("faturamento","Faturamento é um campo obrigatório").notEmpty();
         req.checkBody("lucro","Lucro é um campo obrigatório").notEmpty();
-        
+
         var errors = req.validationErrors();
-        
+
         if(errors) {
-            res.render("cadastroEmpresaParte3", {errors: errors});
+            res.render("empresas/cadastro/parte3/new", {errors: errors});
         } else {
             var dadosFinanceiros = {
                 contatos: contatos,
@@ -283,16 +283,16 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                 outrosEmprestimos: outrosEmprestimos,
                 outrosGastos: outrosGastos
             }
-            
+
             var query = {user: req.user._id};
-            
+
             Empresa.findOneAndUpdate(query, { $set: {dadosFinanceiros: dadosFinanceiros}}, function(err){
                 if(err) {
                     console.log(err);
                 } else {
                     console.log("Parte 3 completa!");
-                    req.flash("success_msg","O cadastro da sua empresa está completo! Agora é só aguardar o retorno da nossa equipe de análise de crédito");
-                    res.redirect("/dashboard/propostas");
+
+                    res.redirect("/dashboard/cadastro-empresa?parte=anexos");
                 }
             })
         }

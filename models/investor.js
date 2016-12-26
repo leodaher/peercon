@@ -22,7 +22,8 @@ var investorSchema = new mongoose.Schema({
         objetivo: String,
         acoes: String,
         valorInvestido: String,
-        risco: String
+        risco: String,
+				isComplete: Boolean
     },
 	user: {
 		type: mongoose.Schema.Types.ObjectId,

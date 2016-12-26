@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../scripts/investorMask.js"></script>
+    <script type="text/javascript" src="../../scripts/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../scripts/mask.js"></script>
     <script type="text/javascript" src="../../scripts/libs/moneyMask.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/libs/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../stylesheets/geral.css">
     <link rel="stylesheet" type="text/css" href="../../stylesheets/header.css">
     <link rel="stylesheet" type="text/css" href="../../stylesheets/form.css">
     <link rel="stylesheet" type="text/css" href="../../stylesheets/footer.css">
 </head>
 <body>
-	<% include partials/headerInvestidor %>
+	<% include ../../../partials/headerInvestidor %>
 	<div class="form-style-10">
 			<h1>Cadastro de Investidor<span>Mais alguns passos e você já estará investindo em nossos portfólios!</span></h1>
 			<% if(typeof errors !== 'undefined') { %>
@@ -27,20 +27,20 @@
     			<div class="section"><span>1</span>Dados Pessoais</div>
     			<div class="inner-wrap">
         			<label>Nome Completo<input type="text" name="name" value="<%= investor.name %>"></label>
-        			<label>CPF<input type="text" name="cpf" maxlength="14" value="<%= investor.CPF %>"></label>
-        			<label>Data de Nascimento<input type="text" name="date" maxlength="10" value="<%= investor.birthday %>"></label>
-        			<label>Telefone Fixo<input type="text" name="telephone" maxlength="14" value="<%= investor.phone %>"></label>
-        			<label>Celular<input type="text" name="cellphone" maxlength="15" value="<%= investor.cellphone %>"></label>
-        			<label>Renda Mensal Declarada<input type="text" name="renda" value="<%= investor.renda %>"></label>
+        			<label>CPF<input type="text" name="cpf" maxlength="14" class="cpfMask" value="<%= investor.CPF %>"></label>
+        			<label>Data de Nascimento<input type="text" name="date" maxlength="10" class="dataMask" value="<%= investor.birthday %>"></label>
+        			<label>Telefone Fixo<input type="text" name="telephone" maxlength="14" class="telefoneMask" value="<%= investor.phone %>"></label>
+        			<label>Celular<input type="text" name="cellphone" maxlength="15" class="celularMask" value="<%= investor.cellphone %>"></label>
+        			<label>Renda Mensal Declarada<input type="text" name="renda" class="moneyMask" value="<%= investor.renda %>"></label>
     			</div>
     			<div class="section"><span>2</span>Endereço Residencial</div>
     			<div class="inner-wrap">
-        			<label>CEP <input type="text" name="cep" maxlength="8" value="<%= investor.cep %>"></label>
-        			<label>Logradouro <input type="text" name="logradouro" value="<%= investor.logradouro %>"></label>
+        			<label>CEP <input type="text" name="cep" maxlength="8" class="cep" value="<%= investor.cep %>"></label>
+        			<label>Logradouro <input type="text" name="logradouro" class="logradouro" value="<%= investor.logradouro %>"></label>
         			<label>Número <input type="text" name="number" value="<%= investor.numero %>"></label>
         			<label>Complemento <input type="text" name="complement" value="<%= investor.complemento %>"></label>
-        			<label>Cidade <input type="text" name="city" value="<%= investor.cidade %>"></label>
-        			<label>Estado <input type="text" name="state" value="<%= investor.estado %>"></label>
+        			<label>Cidade <input type="text" name="city" class="city" value="<%= investor.cidade %>"></label>
+        			<label>Estado <input type="text" name="state" class="state" value="<%= investor.estado %>"></label>
     			</div>
     			<div class="section"><span>2</span>Documentos</div>
     			<div class="inner-wrap">
