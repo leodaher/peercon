@@ -11,4 +11,8 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
     res.render("empresas/propostas/new");
 });
 
+router.post("/new", middleware.isLoggedIn, function(req, res){
+  
+});
+
 module.exports = router;

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Portfolios</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/libs/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="../../scripts/libs/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../stylesheets/form.css">
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/geral.css">
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/header.css">
+	<link rel="stylesheet" type="text/css" href="../../stylesheets/propostas.css">
+	<meta name="viewport" content="width=device-width" />
+</head>
+<body>
+  <% include ../../partials/headerEmpreendedor %>
+  <div class="form-style-10">
+      <h1>Anexos<span>Nesta etapa, recolheremos os dados da pessoa física, necessários para a análise de sua empresa.</span></h1>
+      <% if(typeof errors !== 'undefined') { %>
+      <% 		errors.forEach(function(error){ %>
+            <div class="alert alert-danger"><%= error.msg %></div>
+      <%		}); %>
+      <% } %>
+      <form action="/dashboard/propostas/new" method="post">
+          <div class="section"><span>1</span>O seu empréstimo</div>
+          <div class="inner-wrap">
+              <label>Qual o valor que a sua empresa necessita?<input type="text" class="moneyMask" name="valor"></label>
+              <label>Em quantos meses gostaria de pagar por este valor?
+                  <select name="prazo">
+                      <option value="3 meses">3 meses</option>
+                      <option value="6 meses">6 meses</option>
+                      <option value="12 meses">12 meses</option>
+                      <option value="18 meses">18 meses</option>
+                      <option value="24 meses">24 meses</option>
+                  </select>
+              </label>
+              <label>Qual é o propósito deste crédito?<input type="text" name="proposito"></label>
+          </div>
+          <div class="section"><span>2</span>Dados bancários onde gostaria de receber o valor</div>
+          <div class="inner-wrap">
+              <label>Banco<input type="text" name="banco"></label>
+              <label>Agência<input type="text" name="agencia"></label>
+              <label>Conta corrente<input type="text" name="conta"></label>
+          </div>
+          <div class="button-section">
+              <input type="submit" value="Enviar">
+          </div>
+      </form>
+</body>
+</html>

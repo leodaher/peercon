@@ -4,6 +4,8 @@ var express = require("express"),
     middleware = require("../../middleware/index"),
     Empresa = require("../../models/empresa"),
     fs = require("fs"),
+    multipart = require("connect-multiparty"),
+    multipartMiddleware = multipart(),
     formValidator = require("../../helpers/formValidator");
 
 
@@ -55,11 +57,30 @@ router.get("/", middleware.isLoggedIn, function(req, res){
             }
         });
     }
+
+    else if(parte == "anexos") {
+      var query = {user: mongoose.Types.ObjectId(String(req.user._id))};
+      Empresa.findOne(query, function(err, empresa){
+          if(err) {
+              console.log(err);
+          } else {
+              if(empresa == null) {
+                  res.redirect("/dashboard/cadastro-empresa");
+              } else {
+                  if(!empresa.dadosFinanceiros.isComplete) {
+                      res.redirect("/dashboard/cadastro-empresa?parte=3");
+                  } else {
+                      res.render("empresas/cadastro/anexos/new");
+                  }
+              }
+          }
+      });
+    }
 });
 
 
 //CREATE EMPRESA
-router.post("/", middleware.isLoggedIn, function(req, res){
+router.post("/", multipartMiddleware, middleware.isLoggedIn, function(req, res){
     if(req.body.parte == "1"){
         var name = req.body.name;
         var birthday = req.body.date;
@@ -238,7 +259,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 
     }
 
-    else if(parte == 3) {
+    else if(req.body.parte == 3) {
         var contatos = {
             contador: {
                 nome: req.body.nomeContador,
@@ -281,7 +302,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                 contatos: contatos,
                 fluxo: fluxo,
                 outrosEmprestimos: outrosEmprestimos,
-                outrosGastos: outrosGastos
+                outrosGastos: outrosGastos,
+                isComplete: true
             }
 
             var query = {user: req.user._id};
@@ -295,6 +317,70 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                     res.redirect("/dashboard/cadastro-empresa?parte=anexos");
                 }
             })
+        }
+    }
+
+    else if(req.body.parte == "anexos") {
+        var imagensObrig = [req.files.rg,req.files.residencia,req.files.contratoSocial];
+        var images = [req.files.rg, req.files.rgverso, req.files.residencia, req.files.contratoSocial, req.files.extratoCompleto, req.files.extrato1, req.files.extrato2, req.files.extrato3, req.files.extrato4];
+        var errors = new Array();
+
+        imagensObrig.every(function(img){
+          if(img.size == 0) {
+            errors.push({
+              msg: "Os documentos RG, comprovante de residência e contrato social são obrigatórios!"
+            });
+            return false;
+          }
+        });
+
+        if(errors.length > 0) {
+            res.render("empresas/cadastro/anexos/new", {errors: errors});
+        } else {
+            var query = {user: mongoose.Types.ObjectId(String(req.user._id))};
+            Empresa.findOneAndUpdate(query, { $set: {anexos: {
+                pessoaFisica: {
+                    rg: req.files.rg.name,
+                    rgverso: req.files.rgverso.name,
+                    residencia: req.files.residencia.name,
+                },
+                empresa: {
+                    contratoSocial: req.files.contratoSocial.name
+                },
+                banco: {
+                    extratoCompleto: req.files.extratoCompleto.name,
+                    extrato1: req.files.extrato1.name,
+                    extrato2: req.files.extrato2.name,
+                    extrato3: req.files.extrato3.name,
+                    extrato4: req.files.extrato4.name
+                }
+            }, status: "Análise"}}, function(err){
+                if(err) {
+                    console.log(err);
+                } else {
+                    images.forEach(function(img){
+                        if(img.size > 0){
+                            fs.readFile(img.path, function(err, data){
+                                if(err) {
+                                    console.log(err);
+                                } else {
+                                    var imageName = img.name;
+                                    fs.writeFile("tmp/empresas/"+req.user._id+"/"+imageName, data, function(err){
+                                        if(err) {
+                                            console.log(err);
+                                        } else {
+                                            console.log("Image saved!");
+                                        }
+                                    })
+                                }
+                            });
+                        }
+                    });
+                    req.flash("success_msg","O cadastro da sua empresa está completo, agora resta nossa equipe realizar a análise!");
+                    res.redirect("/dashboard/propostas");
+                }
+            });
+
         }
     }
 });
