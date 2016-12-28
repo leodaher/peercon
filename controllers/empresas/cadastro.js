@@ -160,6 +160,7 @@ router.post("/", multipartMiddleware, middleware.isLoggedIn, function(req, res){
                     estado: state,
                     isComplete: true
                 },
+                status: "Incompleto",
                 user: req.user._id
             });
 

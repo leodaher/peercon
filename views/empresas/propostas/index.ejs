@@ -18,6 +18,19 @@
 		<% if(success_msg.length > 0) { %>
 					<div class="alert alert-success"><%= success_msg %></div>
 		<% } %>
+		<div class="row">
+		<% propostas.forEach(function(proposta){ %>
+				<div class="col-md-3 col-sm-6">
+						<div class="thummbnail">
+								<div class="caption">
+										<h3><%= proposta.emprestimo.valor %></h3>
+										<p><%= proposta.emprestimo.prazo %></p>
+										<p>Status: <%= proposta.status %></p>
+								</div>
+						</div>
+				</div>
+		<% }) %>
+		</div>
 	</div>
 </body>
 </html>

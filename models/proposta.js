@@ -11,6 +11,7 @@ var propostaSchema = new mongoose.Schema({
       conta: String,
       agencia: String
     },
+    status: String,
     empresa: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Empresa"
