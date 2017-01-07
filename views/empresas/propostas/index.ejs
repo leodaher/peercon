@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Portfolios</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Shrikhand|Gloria+Hallelujah">
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../stylesheets/libs/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script type="text/javascript" src="../../scripts/libs/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../stylesheets/geral.css">
-	<link rel="stylesheet" type="text/css" href="../stylesheets/header.css">
-	<link rel="stylesheet" type="text/css" href="../stylesheets/propostas.css">
-	<meta name="viewport" content="width=device-width" />
+	<% include ../../partials/includes %>
+	<link rel="stylesheet" href="/stylesheets/propostas.css">
 </head>
 <body>
 	<% include ../../partials/headerEmpreendedor %>
@@ -18,16 +10,37 @@
 		<% if(success_msg.length > 0) { %>
 					<div class="alert alert-success"><%= success_msg %></div>
 		<% } %>
-		<div class="row">
+		<div class="jumbotron">
+
+		</div>
+		<div class="row propostas">
 		<% propostas.forEach(function(proposta){ %>
-				<div class="col-md-3 col-sm-6">
-						<div class="thummbnail">
-								<div class="caption">
-										<h3><%= proposta.emprestimo.valor %></h3>
-										<p><%= proposta.emprestimo.prazo %></p>
-										<p>Status: <%= proposta.status %></p>
+				<div class="proposta-wrapper col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<article class="proposta-item">
+								<div class="upperPart">
+									<div class="proposta-logo">
+											<% if(proposta.status == "Análise") { %>
+												<span class="glyphicon glyphicon-time"></span>
+											<% } else if(proposta.status == "Aprovada") { %>
+												<span style="color:green; border-color:green" class="glyphicon glyphicon-ok">
+											<% } else if(proposta.status == "Rejeitada") { %>
+												<span style="color:red; border-color:red" class="glyphicon glyphicon-remove">
+											<% } %>
+									</div>
+									<div class="proposta-title">
+											<h4 class="title"><%= proposta.emprestimo.valor %></h4>
+											<h5 class="subtitle"><%= proposta.emprestimo.proposito %></h5>
+									</div>
 								</div>
-						</div>
+								<div class="proposta-content">
+									<dl>
+										<dt>Prazo:</dt>
+										<dd><%= proposta.emprestimo.prazo %></dd>
+										<dt>Status:</dt>
+										<dd><%= proposta.status %></dd>
+									</dl>
+								</div>
+						</article>
 				</div>
 		<% }) %>
 		</div>

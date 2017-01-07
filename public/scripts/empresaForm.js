@@ -15,7 +15,7 @@ $(document).ready(function(){
             var closeDiv = "</div>";
             $("#dadosSoc").append(openDiv+nameInput+emailInput+celInput+closeDiv);
         }
-    })
+    });
 
     var numGastos = $("select[name='numeroGastos']");
 

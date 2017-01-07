@@ -40,7 +40,7 @@
 .form-style-10 label{
     display: block;
     font: 13px Arial, Helvetica, sans-serif;
-    color: #888;
+    color: #555;
     margin-bottom: 15px;
 }
 .form-style-10 input[type="text"],
@@ -103,7 +103,7 @@
     border: 1px solid #257C9E;
     font-size: 15px;
 }
-.form-style-10 input[type="button"]:hover, 
+.form-style-10 input[type="button"]:hover,
 .form-style-10 input[type="submit"]:hover{
     background: #2A6881;
     -moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
@@ -140,6 +140,30 @@
 .error {
 	color: red;
 	float: right;
+}
+
+.form-style-10 label.fileButton {
+  font-size: 1.1em;
+  border: 2px solid #555;
+  border-radius: 4px;
+  width: 40%;
+  padding: 10px;
+  text-align: center;
+}
+
+.form-style-10 label.fileButton span {
+  vertical-align: middle;
+  font-size: 1.2em;
+}
+
+.form-style-10 label.fileUploaded {
+  border: 2px solid #2A88AD;
+}
+
+.form-style-10 label.fileUploaded span {
+  vertical-align: middle;
+  color: #2A88AD;
+  font-size: 1.2em;
 }
 
 @media screen and (min-width: 550px){

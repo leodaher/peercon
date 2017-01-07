@@ -51,18 +51,18 @@ $(document).ready(function(){
 	telefone.keyup(function(event){
 		var code = event.keyCode;
 		if(code != 8) {
-			var len = telefone.val().length;
+			var len = $(this).val().length;
 			if(len == 1) {
-				var tmp = telefone.val()[0];
-				telefone.val('('+tmp);
+				var tmp = $(this).val()[0];
+				$(this).val('('+tmp);
 			}
 
 			else if(len == 3) {
-				telefone.val(telefone.val()+') ');
+				$(this).val($(this).val()+') ');
 			}
 
 			else if(len == 9) {
-				telefone.val(telefone.val()+'-');
+				$(this).val($(this).val()+'-');
 			}
 		}
 	});
@@ -71,18 +71,18 @@ $(document).ready(function(){
 	celular.keyup(function(event){
 		var code = event.keyCode;
 		if(code != 8) {
-			var len = celular.val().length;
+			var len = $(this).val().length;
 			if(len == 1) {
-				var tmp = celular.val()[0];
-				celular.val('('+tmp);
+				var tmp = $(this).val()[0];
+				$(this).val('('+tmp);
 			}
 
 			else if(len == 3) {
-				celular.val(celular.val()+') ');
+				$(this).val($(this).val()+') ');
 			}
 
 			else if(len == 10) {
-				celular.val(celular.val()+'-');
+				$(this).val($(this).val()+'-');
 			}
 		}
 	});

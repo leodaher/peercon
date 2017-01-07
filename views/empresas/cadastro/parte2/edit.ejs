@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../../../partials/includes %>
+	<script type="text/javascript" src="/scripts/empresaForm.js"></script>
+</head>
+<body>
+	<% include ../../../partials/headerEmpreendedor %>
+	<div class="form-style-10">
+			<h1>Dados da empresa<span></span></h1>
+			<% if(typeof errors !== 'undefined') { %>
+			<% 		errors.forEach(function(error){ %>
+						<div class="alert alert-danger"><%= error.msg %></div>
+			<%		}); %>
+			<% } %>
+			<form action="/dashboard/cadastro-empresa/edit" method="post">
+                <input type="hidden" name="parte" value="2">
+                <div class="section"><span>1</span>Dados</div>
+                <div class="inner-wrap">
+                    <label>Seu papel na empresa
+                        <select name="papel">
+                            <option value="Sócio" <% if(pessoaJuridica.papel == "Sócio"){ %> selected <% } %>>Sócio</option>
+                            <option value="Administrador ou diretor" <% if(pessoaJuridica.papel == "Administrador ou diretor"){ %> selected <% } %>>Administrador ou diretor indicado em contrato social</option>
+                            <option value="Funcionário" <% if(pessoaJuridica.papel == "Funcionário"){ %> selected <% } %>>Funcionário</option>
+                            <option value="Outro" <% if(pessoaJuridica.papel == "Outro"){ %> selected <% } %>>Outro</option>
+                        </select>
+                    </label>
+                    <label>CNPJ<input type="text" name="cnpj" maxlength="20" value="<%= pessoaJuridica.CNPJ %>"></label>
+                    <label>Nome fantasia da sua empresa<input type="text" name="nomeFantasia" value="<%= pessoaJuridica.nomeFantasia %>"></label>
+                    <label>Sua empresa é optante do Simples Nacional?
+                        <select name="simplesNacional">
+                            <option value="Sim" <% if(pessoaJuridica.simplesNacional == "Sim"){ %> selected <% } %>>Sim</option>
+                            <option value="Não" <% if(pessoaJuridica.simplesNacional == "Não"){ %> selected <% } %>>Não</option>
+                        </select>
+                    </label>
+                    <label>Inscrição estadual (quando aplicável)<input type="text" name="inscricaoEstadual" value="<%= pessoaJuridica.inscricaoEstadual %>"></label>
+                    <label>Número de funcionários<input type="text" name="funcionarios" value="<%= pessoaJuridica.funcionarios %>"></label>
+                    <label>Telefone comercial<input type="text" name="telefone" class="telefoneMask" maxlength="14" value="<%= pessoaJuridica.telefone %>"></label>
+                    <label>Telefone comercial 2 (opcional)<input type="text" name="telefone2" class="telefoneMask" maxlength="14" value="<%= pessoaJuridica.telefone2 %>"></label>
+                    <label>Endereço do site da empresa (opcional)<input type="text" name="site" value="<%= pessoaJuridica.site %>"></label>
+                    <label>Facebook da empresa (opcional)<input type="text" name="facebook" value="<%= pessoaJuridica.facebook %>"></label>
+                    <label>LinkedIn (opcional)<input type="text" name="linkedin" value="<%= pessoaJuridica.linkedin %>"></label>
+                    <label>Outra rede social (opcional)<input type="text" name="outraRede" value="<%= pessoaJuridica.outraRede %>"></label>
+                </div>
+                <div class="section"><span>2</span>Endereço Comercial</div>
+                <div class="inner-wrap">
+                    <label>CEP <input type="text" name="cep" class="cep" maxlength="8" value="<%= pessoaJuridica.cep %>"></label>
+                    <label>Logradouro <input type="text" class="logradouro" name="logradouro" value="<%= pessoaJuridica.logradouro %>"></label>
+                    <label>Número <input type="text" name="number" value="<%= pessoaJuridica.numero %>"></label>
+                    <label>Complemento <input type="text" name="complement" value="<%= pessoaJuridica.complemento %>"></label>
+                    <label>Cidade <input type="text" class="city" name="city" value="<%= pessoaJuridica.cidade %>"></label>
+                    <label>Estado <input type="text" class="state" name="state" value="<%= pessoaJuridica.estado %>"></label>
+                </div>
+                <div class="section"><span>3</span>Dados societários</div>
+                <div class="inner-wrap" id="dadosSoc">
+                    <label>Número de sócios
+                        <select name="numeroSocios">
+                            <option value="1" <% if(pessoaJuridica.dadosSocios.numeroSocios == 1){ %> selected <% } %>>1</option>
+                            <option value="2" <% if(pessoaJuridica.dadosSocios.numeroSocios == 2){ %> selected <% } %>>2</option>
+                            <option value="3" <% if(pessoaJuridica.dadosSocios.numeroSocios == 3){ %> selected <% } %>>3</option>
+                            <option value="4" <% if(pessoaJuridica.dadosSocios.numeroSocios == 4){ %> selected <% } %>>4</option>
+                            <option value="5" <% if(pessoaJuridica.dadosSocios.numeroSocios == 5){ %> selected <% } %>>5</option>
+                        </select>
+                    </label>
+										<% var i = 0;
+										 	 for(i = 0; i < pessoaJuridica.dadosSocios.numeroSocios; i++) { %>
+												 <div class='socio'>
+												 		<label>Nome do sócio<input type='text' name='nomeSoc' value="<%= pessoaJuridica.dadosSocios.nomes[i] %>"></label>
+												 		<label>E-mail do sócio<input type='text' name='emailSoc' value="<%= pessoaJuridica.dadosSocios.emails[i] %>"></label>
+												 		<label>Celular do sócio<input type='text' class='celularMask' name='celularSoc' value="<%= pessoaJuridica.dadosSocios.celulares[i] %>"></label>
+												 </div>
+										<% } %>
+                </div>
+                <div class="button-section">
+                    <input type="submit" name="Sign Up" value="Próximo" />
+                    <span class="error"></span>
+                </div>
+            </form>
+		</div>
+</body>
+</html>

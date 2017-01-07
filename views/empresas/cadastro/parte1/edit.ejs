@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../../../partials/includes %>
+	<script type="text/javascript" src="/scripts/empresaForm.js"></script>
+</head>
+<body>
+	<% include ../../../partials/headerEmpreendedor %>
+	<div class="form-style-10">
+			<h1>Dados de pessoa física<span>Nesta etapa, recolheremos os dados da pessoa física, necessários para a análise de sua empresa.</span></h1>
+			<% if(typeof errors !== 'undefined') { %>
+			<% 		errors.forEach(function(error){ %>
+						<div class="alert alert-danger"><%= error.msg %></div>
+			<%		}); %>
+			<% } %>
+			<form action="/dashboard/cadastro-empresa/edit" method="post">
+                <input type="hidden" name="parte" value="1">
+                <div class="section"><span>1</span>Dados Pessoais</div>
+                <div class="inner-wrap">
+                    <label>Nome Completo<input type="text" name="name" value="<%= pessoaFisica.nome %>"></label>
+                    <label>Data de Nascimento<input type="text" name="date" class="dataMask" maxlength="10" value="<%= pessoaFisica.dataNasc %>"></label>
+                    <label>CPF<input type="text" name="cpf" class="cpfMask" maxlength="14" value="<%= pessoaFisica.CPF %>"></label>
+                    <label>RG<input type="text" name="rg" class="rgMask" maxlength="12" value="<%= pessoaFisica.RG %>"></label>
+                    <label>Órgão emissor<input type="text" name="orgaoEmissor" value="<%= pessoaFisica.orgaoEmissor %>"></label>
+                    <label>Cidade natal<input type="text" name="cidadeNatal" value="<%= pessoaFisica.cidadeNatal %>"></label>
+                    <label>Telefone Fixo<input type="text" class="telefoneMask" name="telephone" maxlength="14" value="<%= pessoaFisica.telefone %>"></label>
+                    <label>Celular<input type="text" name="cellphone" class="celularMask" maxlength="15" value="<%= pessoaFisica.celular %>"></label>
+                    <label>Você é uma pessoa politicamente exposta?
+                        <select name="politicamenteExposta">
+                            <option value="Sim" <% if(pessoaFisica.politicamenteExp == "Sim"){ %> selected <% } %>>Sim</option>
+                            <option value="Não"<% if(pessoaFisica.politicamenteExp == "Não"){ %> selected <% } %>>Não</option>
+                        </select>
+                    </label>
+                    <label>Você, como pessoa física, paga aluguel ou financiamento da casa onde mora?
+                        <select name="aluguel">
+                            <option value="Sim" <% if(pessoaFisica.aluguel == "Sim"){ %> selected <% } %>>Sim</option>
+                            <option value="Não"<% if(pessoaFisica.aluguel == "Não"){ %> selected <% } %>>Não</option>
+                        </select>
+                    </label>
+                    <label>Renda Mensal Declarada<input type="text" class="moneyMask" name="renda" value="<%= pessoaFisica.renda %>"></label>
+                    <label>Valor aproximado do seu patimônio<input type="text" class="moneyMask" name="patrimonio" value="<%= pessoaFisica.patrimonio %>"></label>
+                </div>
+                <div class="section"><span>2</span>Endereço Residencial</div>
+                <div class="inner-wrap">
+                    <label>CEP <input type="text" name="cep" class="cep" maxlength="8" value="<%= pessoaFisica.cep %>"></label>
+                    <label>Logradouro <input type="text" class="logradouro" name="logradouro" value="<%= pessoaFisica.logradouro %>"></label>
+                    <label>Número <input type="text" name="number" value="<%= pessoaFisica.numero %>"></label>
+                    <label>Complemento <input type="text" name="complement" value="<%= pessoaFisica.complemento %>"></label>
+                    <label>Cidade <input type="text" class="city" name="city" value="<%= pessoaFisica.cidade %>"></label>
+                    <label>Estado <input type="text" class="state" name="state" value="<%= pessoaFisica.estado %>"></label>
+                </div>
+                <div class="button-section">
+                    <input type="submit" name="Sign Up" value="Próximo" />
+                    <span class="error"></span>
+                </div>
+            </form>
+		</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../../../partials/includes %>
+	<script type="text/javascript" src="/scripts/empresaForm.js"></script>
+</head>
+<body>
+	<% include ../../../partials/headerEmpreendedor %>
+	<div class="form-style-10">
+			<h1>Dados financeiros<span></span></h1>
+			<% if(typeof errors !== 'undefined') { %>
+			<% 		errors.forEach(function(error){ %>
+						<div class="alert alert-danger"><%= error.msg %></div>
+			<%		}); %>
+			<% } %>
+			<form action="/dashboard/cadastro-empresa/edit" method="post">
+                <input type="hidden" name="parte" value="3">
+                <div class="section"><span>1</span>Contatos</div>
+                <div class="inner-wrap">
+                    <label>Nome do contador<input type="text" name="nomeContador" value="<%= dadosFinanceiros.contatos.contador.nome %>"></label>
+                    <label>E-mail<input type="text" name="emailContador" value="<%= dadosFinanceiros.contatos.contador.email %>"></label>
+                    <label>Telefone<input type="text" class="telefoneMask" name="telefoneContador" value="<%= dadosFinanceiros.contatos.contador.telefone %>"></label>
+                    <label>Valor do aluguel<input type="text" class="moneyMask" name="valAluguel" value="<%= dadosFinanceiros.contatos.aluguel.valor %>"></label>
+                    <label>Nome do locador<input type="text" name="nomeLocador" value="<%= dadosFinanceiros.contatos.aluguel.nome %>"></label>
+                    <label>E-mail<input type="text" name="emailLocador" value="<%= dadosFinanceiros.contatos.aluguel.email %>"></label>
+                    <label>Telefone<input type="text" class="telefoneMask" name="telefoneLocador" value="<%= dadosFinanceiros.contatos.aluguel.telefone %>"></label>
+                </div>
+                <div class="section"><span>2</span>Faturamento da empresa</div>
+                <div class="inner-wrap">
+                    <label>Quanto a empresa fatura<input type="text" class="moneyMask" name="faturamento" value="<%= dadosFinanceiros.fluxo.faturamento %>"></label>
+                    <label>Quanto a empresa lucra<input type="text" class="moneyMask" name="lucro" value="<%= dadosFinanceiros.fluxo.lucro %>"></label>
+                </div>
+                <div class="section"><span>3</span>Outros empréstimos</div>
+                <div class="inner-wrap">
+                    <label>Valor de cada parcela<input type="text" class="moneyMask" name="valorParcela" value="<%= dadosFinanceiros.outrosEmprestimos.valorParcela %>"></label>
+                    <label>Data da última parcela<input type="text" class="dataMask" name="dataParcela" value="<%= dadosFinanceiros.outrosEmprestimos.dataParcela %>"></label>
+                    <label>Taxa de juros<input type="text" name="taxaJuros" value="<%= dadosFinanceiros.outrosEmprestimos.taxaJuros %>"></label>
+                </div>
+                <div class="section"><span>4</span>Outros gastos fixos mensais</div>
+                <div class="inner-wrap" id="dadosGastos">
+										<label>Número de gastos
+												<select name="numeroGastos">
+														<option value="1" <% if(dadosFinanceiros.outrosEmprestimos.numeroGastos == 1){ %> selected <% } %>>1</option>
+														<option value="2" <% if(dadosFinanceiros.outrosEmprestimos.numeroGastos == 2){ %> selected <% } %>>2</option>
+														<option value="3" <% if(dadosFinanceiros.outrosEmprestimos.numeroGastos == 3){ %> selected <% } %>>3</option>
+														<option value="4" <% if(dadosFinanceiros.outrosEmprestimos.numeroGastos == 4){ %> selected <% } %>>4</option>
+														<option value="5" <% if(dadosFinanceiros.outrosEmprestimos.numeroGastos == 5){ %> selected <% } %>>5</option>
+												</select>
+										</label>
+                    <% var i = 0;
+                       for(i = 0; i < dadosFinanceiros.outrosEmprestimos.numeroGastos; i++) { %>
+                         <label>Valor<input type="text" class="moneyMask" name="valorGasto" value="<%= dadosFinanceiros.outrosEmprestimos.valor[i] %>"></label>
+                         <label>Finalidade<input type="text" name="finalidadeGasto" value="<%= dadosFinanceiros.outrosEmprestimos.finalidade[i] %>"></label>
+                    <% } %>
+                </div>
+                <div class="button-section">
+                    <input type="submit" name="Sign Up" value="Próximo" />
+                    <span class="error"></span>
+                </div>
+            </form>
+		</div>
+</body>
+</html>

@@ -73,6 +73,7 @@ var empresaSchema = new mongoose.Schema({
             taxaJuros: String
         },
         outrosGastos: {
+            numeroGastos: String,
             valor: [String],
             finalidade: [String]
         },
@@ -93,7 +94,8 @@ var empresaSchema = new mongoose.Schema({
             extrato2: String,
             extrato3: String,
             extrato4: String
-        }
+        },
+        isComplete: Boolean
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

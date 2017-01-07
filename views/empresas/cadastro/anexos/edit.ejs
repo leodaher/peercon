@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../../../partials/includes %>
+	<script type="text/javascript" src="/scripts/empresaForm.js"></script>
+</head>
+<body>
+	<% include ../../../partials/headerEmpreendedor %>
+	<div class="form-style-10">
+			<h1>Anexos<span>Nesta etapa, recolheremos os dados da pessoa física, necessários para a análise de sua empresa.</span></h1>
+			<% if(typeof errors !== 'undefined') { %>
+			<% 		errors.forEach(function(error){ %>
+						<div class="alert alert-danger"><%= error.msg %></div>
+			<%		}); %>
+			<% } %>
+			<form action="/dashboard/cadastro-empresa/edit" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="parte" value="anexos">
+                <div class="section"><span>1</span>Pessoa Física</div>
+                <div class="inner-wrap">
+                    <label for="rg" class="fileButton <% if(anexos.pessoaFisica.rg){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.pessoaFisica.rg){ %> <%= anexos.pessoaFisica.rg %><% } else { %> Escolha o arquivo <% } %></label>
+                    <input type="file" name="rg" id="rg" style="visibility:hidden">
+                    <label for="rgverso" class="fileButton <% if(anexos.pessoaFisica.rgverso){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.pessoaFisica.rgverso){ %> <%= anexos.pessoaFisica.rgverso %><% } else { %> Escolha o arquivo <% } %></label>
+                    <input type="file" name="rgverso" id="rgverso" style="visibility:hidden">
+                    <label for="residencia" class="fileButton  <% if(anexos.pessoaFisica.residencia){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.pessoaFisica.residencia){ %> <%= anexos.pessoaFisica.residencia %><% } else { %> Escolha o arquivo <% } %></label>
+                    <input type="file" name="residencia" id="residencia" style="visibility:hidden">
+                </div>
+                <div class="section"><span>2</span>Empresa</div>
+                <div class="inner-wrap">
+                  <label for="contratoSocial" class="fileButton <% if(anexos.empresa.contratoSocial){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.empresa.contratoSocial){ %> <%= anexos.empresa.contratoSocial %><% } else { %> Escolha o arquivo <% } %></label>
+                  <input type="file" name="contratoSocial" id="contratoSocial" style="visibility:hidden">
+                </div>
+                <div class="section"><span>3</span>Relacionamento com o banco</div>
+                <div class="inner-wrap">
+                  <label for="extratoCompleto" class="fileButton <% if(anexos.banco.extratoCompleto){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extratoCompleto){ %> <%= anexos.banco.extratoCompleto %><% } else { %> Escolha o arquivo <% } %></label>
+                  <input type="file" name="extratoCompleto" id="extratoCompleto" style="visibility:hidden">
+                    <br><br>OU<br><br>
+										<label for="extrato1" class="fileButton <% if(anexos.banco.extrato1){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extrato1){ %> <%= anexos.banco.extrato1 %><% } else { %> Escolha o arquivo <% } %></label>
+	                  <input type="file" name="extrato1" id="extrato1" style="visibility:hidden">
+										<label for="extrato2" class="fileButton <% if(anexos.banco.extrato2){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extrato2){ %> <%= anexos.banco.extrato2 %><% } else { %> Escolha o arquivo <% } %></label>
+	                  <input type="file" name="extrato2" id="extrato2" style="visibility:hidden">
+										<label for="extrato3" class="fileButton <% if(anexos.banco.extrato3){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extrato3){ %> <%= anexos.banco.extrato3 %><% } else { %> Escolha o arquivo <% } %></label>
+	                  <input type="file" name="extrato3" id="extrato3" style="visibility:hidden">
+										<label for="extrato4" class="fileButton <% if(anexos.banco.extrato4){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extrato4){ %> <%= anexos.banco.extrato4 %><% } else { %> Escolha o arquivo <% } %></label>
+	                  <input type="file" name="extrato4" id="extrato4" style="visibility:hidden">
+                </div>
+                <div class="button-section">
+                    <input type="submit" name="Sign Up" value="Próximo" />
+                    <span class="error"></span>
+                </div>
+            </form>
+		</div>
+</body>
+</html>
