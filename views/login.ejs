@@ -1,38 +1,59 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<% include partials/includes %>
-	</head>
+<html lang="en-US" dir="ltr">
 
-	<body id="myPage">
-		<% include partials/header %>
-		<div class="form-style-10">
-			<h1>Entrar<span>Basta preencher os campos para entrar!</span></h1>
-			<% if(success_msg.length > 0) { %>
-					<div class="alert alert-success"><%= success_msg %></div>
-			<% } %>
-			<% if(error_msg.length > 0) { %>
-					<div class="alert alert-danger"><%= error_msg %></div>
-			<% } %>
-			<% if(error.length > 0) { %>
-					<div class="alert alert-danger"><%= error %></div>
-			<% } %>
-			<form id="registerForm" action="/login" method="post">
-    			<div class="section"><span>1</span>E-mail</div>
-    			<div class="inner-wrap">
-        			<input type="email" name="email" placeholder="Seu endereço de E-mail">
-    			</div>
+<head>
+    <% include partials/includes %>
+</head>
 
-    			<div class="section"><span>2</span>Senha</div>
-        		<div class="inner-wrap">
-        			<input type="password" name="password" placeholder="Preencher com sua senha">
-    			</div>
-    			<div class="button-section">
-     				<input type="submit" name="Sign Up" value="Entrar" />
-     				<span class="error"></span>
-    			</div>
-			</form>
-		</div>
-		<% include partials/footer %>
-	</body>
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+        <div class="login-page">
+            <section class="features-section-1 relative image-bg-12 full-screen-js">
+                <div class="container">
+                    <div class="row inner-wrapper">
+                        <div class="col-xs-12">
+                            <div class="template-logo text-center">
+                                <a class="logo center img-responsive" href="#"><img src="/img/logo-light.png" alt="Main Logo" /></a>
+                            </div>
+                            <div class="section-header margin-t-30 margin-b-30 text-center light-text">
+                                <h4 class="section-heading text-uppercase letter-spacing-4">Login PeerCon</h4></div>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 col-sm-12">
+                            <div class="row">
+                                <div class="registration-form col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+                                    <div class="registration-form-outer background-1">
+                                        <form class="single-form" method="post" action="#">
+                                            <div class="input-outer col-xs-12">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                        <input class="form-control" name="email" type="text" placeholder="E-mail"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-outer col-xs-12">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                        <input class="form-control" name="password" type="password" placeholder="Senha"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-form input-outer col-xs-12">
+                                                <div class="button-outer relative">
+                                                    <button class="btn btn-fill full-width">Login</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
 </html>

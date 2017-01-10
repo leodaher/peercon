@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<% include partials/includes %>
+	</head>
+
+	<body id="myPage">
+		<% include partials/header %>
+		<div class="form-style-10">
+			<h1>Entrar<span>Basta preencher os campos para entrar!</span></h1>
+			<% if(success_msg.length > 0) { %>
+					<div class="alert alert-success"><%= success_msg %></div>
+			<% } %>
+			<% if(error_msg.length > 0) { %>
+					<div class="alert alert-danger"><%= error_msg %></div>
+			<% } %>
+			<% if(error.length > 0) { %>
+					<div class="alert alert-danger"><%= error %></div>
+			<% } %>
+			<form id="registerForm" action="/login" method="post">
+    			<div class="section"><span>1</span>E-mail</div>
+    			<div class="inner-wrap">
+        			<input type="email" name="email" placeholder="Seu endereço de E-mail">
+    			</div>
+
+    			<div class="section"><span>2</span>Senha</div>
+        		<div class="inner-wrap">
+        			<input type="password" name="password" placeholder="Preencher com sua senha">
+    			</div>
+    			<div class="button-section">
+     				<input type="submit" name="Sign Up" value="Entrar" />
+     				<span class="error"></span>
+    			</div>
+			</form>
+		</div>
+		<% include partials/footer %>
+	</body>
+</html>

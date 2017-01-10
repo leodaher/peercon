@@ -13,11 +13,15 @@ router.get("/", function(req, res) {
 	if(req.isAuthenticated()) {
 		res.redirect("/dashboard");
 	} else {
-		res.render("home");	
+		res.render("home");
 	}
 });
 
-// Register 
+// Register
+router.get("/cadastro", function(req, res){
+  res.render("register",{option: 1});
+})
+
 router.get("/cadastroInvestidor", function(req, res){
 	res.render("register",{option: 0});
 });
@@ -44,12 +48,12 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 	req.checkBody('email', 'Este e-mail não é válido!').isEmail();
 	req.checkBody('password', 'Senha é um campo obrigatório!').notEmpty();
 	req.checkBody('password2', 'As senhas não são iguais!').equals(req.body.password);
-	
+
 	var errors = new Array();
-	
+
 	if(req.validationErrors()) {
 		errors = req.validationErrors();
-	} 
+	}
 	User.getUserByEmail(email, function(err, user){
 		if(err) {
 			console.log(err);
@@ -57,7 +61,7 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 			if(user) {
 				errors.push({msg: "E-mail já cadastrado!"});
 			}
-			
+
 			if(errors.length > 0) {
 				var option;
 				if(escolha == "investidor") {
@@ -65,7 +69,7 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 				} else {
 					option = 1;
 				}
-				
+
 				res.render("register",{
 					option: option,
 					errors: errors
@@ -77,7 +81,7 @@ router.post("/cadastro", multipartMiddleware, function(req, res){
 					password: password,
 					escolha: escolha
 				});
-		
+
 				User.createUser(newUser, function(err, user) {
 					if(err) throw err;
 					console.log(user);

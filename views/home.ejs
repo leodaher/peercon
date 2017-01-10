@@ -1,151 +1,613 @@
-<html>
-	<head>
-		<% include partials/includes %>
-		<link rel="stylesheet" type="text/css" href="stylesheets/home.css">
-	</head>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
 
-	<body id="myPage">
-		<% include partials/header %>
+<head>
+    <% include partials/includes %>
+</head>
 
-		<!-- HEAD -->
-		<section id="section_ini">
-			<section class="container">
-				<div class="row">
-	  				<div class="col-md-6">
-	  					<div>
-						  	<h1 class="text-center">Empréstimo para Empresas</h1>
-						  	<h3 class="text-center">Simples, rápido e descomplicado</h3>
-							<ul>
-							  <li><H4>Baixas taxas de juros</H4></li>
-							  <li><H4>Muito mais rápido que Bancos</H4></li>
-							  <li><H4>Pagamentos mensais descomplicados</H4></li>
-							  <li><H4>Sem taxas escondidas</H4></li>
-							</ul>
-						</div>
-	  				</div>
-	  				<div class="col-md-6 jumbotron_margens">
-	  					<div class="jumbotron text-center" id="sou_2">
-						  	<h2>Sou Empresário</h2>
-						  	<div class="jumbotron_text">Quero receber empréstimo sem demora e burocracia, com baixas taxas!
-						  	</div>
-						  	<p><a class="btn btn-primary btn-lg btn-danger" href="/cadastroEmpresa" role="button">
-						  		<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-						  		Cadastrar Empresa</a>
-						  	</p>
-						</div>
-	  				</div>
-	  			</div>
-			</section>
-		</section>
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+        <div class="home-page">
+            <nav class="navbar nav-theme-4 navbar-fixed-top main-navbar-top">
+                <div class="navbar-header-outer">
+                    <div class="container relative">
+                        <div class="row">
+                            <div class="navbar-header">
+                                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#js-navbar-menu" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar icon-bar-top"></span><span class="icon-bar icon-bar-middle"></span><span class="icon-bar icon-bar-bottom"></span></button>
+                                <a class="navbar-brand light-logo hidden-lg hidden-md hidden-sm" href="index.html"><img src="assets/images/logo-light.png" alt="Light Logo" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="js-navbar-menu">
+                    <div class="navbar-bottom-outer">
+                        <div class="container relative">
+                            <a class="navbar-brand light-logo hidden-xs" href="/"><img src="../../peercon-logo.png" alt="Dark Logo" /></a>
+                            <div class="navbar-left text-center">
+                                <ul class="nav navbar-nav" id="nav">
+                                    <li class="active"><a href="/">Home</a></li>
+                                    <li><a href="/empresa">Empresa</a></li>
+                                    <li><a href="/investidor">Investidor</a></li>
+                                    <li><a href="/faq">FAQ</a></li>
+                                    <li><a href="/contato">Contato</a></li>
+                                </ul>
+                            </div>
+                            <div class="navbar-right">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="/cadastro">Cadastro</a></li>
+                                    <li><a href="/login">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <section class="header-section-1 relative">
+                <div class="carousel-home-slider">
+                    <div class="carousel-home-wrapper owl-carousel">
+                        <div class="item">
+                            <div class="slider-background bg-cover" style="background-image:url('img/slide2.jpg')"></div>
+                            <div class="container">
+                                <div class="row section-separator-big">
+                                    <div class="cd-content-animation">
+                                        <div class="section-header light-text relative col-md-8 col-sm-12">
+                                            <h1 class="section-heading">Think like a founder</h1>
+                                            <h2 class="tag-line margin-t-25">You don't have to be a startup to grow like one.<br class="hidden-xs hidden-sm"/>Find your Founders mentality</h2></div>
+                                        <div class="clearfix"></div>
+                                        <div class="btn-form margin-t-60 col-xs-12"><a class="btn btn-fill-big right-icon" href="#">Read More</a><a class="btn btn-fill-big btn-dark" href="#">Contact us</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="slider-background bg-cover" style="background-image:url('img/slide3.jpg')"></div>
+                            <div class="container">
+                                <div class="row section-separator-big">
+                                    <div class="cd-content-animation">
+                                        <div class="section-header light-text relative col-md-8 col-sm-12">
+                                            <h1 class="section-heading">Talented consultants</h1>
+                                            <h2 class="tag-line margin-t-25">Connect with top consultants hand-picked by<br class="hidden-xs hidden-sm"/>elixir consulting and finance</h2></div>
+                                        <div class="clearfix"></div>
+                                        <div class="btn-form margin-t-60 col-xs-12"><a class="btn btn-fill-big right-icon" href="#">Read More</a><a class="btn btn-fill-big btn-dark" href="#">Contact us</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="slider-background bg-cover" style="background-image:url('img/slide1.jpg')"></div>
+                            <div class="container">
+                                <div class="row section-separator-big">
+                                    <div class="cd-content-animation">
+                                        <div class="section-header light-text relative col-md-8 col-sm-12">
+                                            <h1 class="section-heading">Grow your business</h1>
+                                            <h2 class="tag-line margin-t-25">Finding your next financial advisor from<br class="hidden-xs hidden-sm"/>elixir consulting and finance</h2></div>
+                                        <div class="clearfix"></div>
+                                        <div class="btn-form margin-t-60 col-xs-12"><a class="btn btn-fill-big right-icon" href="#">Read More</a><a class="btn btn-fill-big btn-dark" href="#">Contact us</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="features-section relative background-2">
+                <div class="container">
+                    <div class="row section-separator-small sp-top">
+                        <div class="section-header col-xs-12">
+                            <h2 class="section-heading">Welcome to elixir</h2>
+                            <hr class="lines" />
+                        </div>
+                        <div class="features-item margin-t-50 col-xs-12">
+                            <div class="row">
+                                <div class="each-item business-item two-column-vertical col-xs-12">
+                                    <div class="row">
+                                        <div class="two-column-content features-content col-md-6 col-sm-12">
+                                            <div class="inner-small shadow text-left">
+                                                <div class="detail">
+                                                    <p><span class="big-word">E</span>lixir (BearingPoint) consultants understand that the world of business changes constantly and that the resulting complexities demand intelligent and adaptive solutions. Our clients, whether in commercial or financial industries or in government, experience real results when they work with us. We combine industry, operational and technology skills with relevant proprietary and other assets in order to tailor solutions for each client’s</p>
+                                                </div>
+                                                <div class="btn-form btn-interest"><a class="btn right-icon" href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a></div>
+                                            </div>
+                                        </div>
+                                        <div class="two-column-image video-section col-md-6 col-sm-12"><a class="popup-video inner shadow" href="https://player.vimeo.com/video/178317512?autoplay=1" style="background-image: url(assets/images/video-screenshot.jpg)"><span class="play-button"><img class="img-play img-responsive" src="assets/images/unblured/play-button.png" alt="Play Button"/></span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="feature-with-small-icon background-2 section-separator-small">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-header col-xs-12">
+                            <h2 class="section-heading">Our Features</h2>
+                            <hr class="lines" />
+                        </div>
+                        <div class="margin-t-50 col-xs-12">
+                            <div class="row">
+                                <div class="features-item">
+                                    <div class="col-sm-4">
+                                        <div class="each-item">
+                                            <h4><i class="hang fa fa-comments"></i>Excellent Support</h4>
+                                            <p>If you face any trouble, you can always let our dedicated support team help you. They are ready for you 24/7.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="each-item">
+                                            <h4><i class="hang fa fa-users"></i>Awesome Team</h4>
+                                            <p>Before we talk destination, we shine a spotlight across your organization to fully understand its people, processes, and technology.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="each-item">
+                                            <h4><i class="hang fa fa-space-shuttle"></i>Faster Performance</h4>
+                                            <p>It is tested on most of the major browsers and all kinds of devices to ensure a glitch-free smooth running experience.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="why-choose-us section-separator-small">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-header col-xs-12">
+                            <h2 class="section-heading">Why Choose Elixir</h2>
+                            <hr class="lines" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="features-item margin-t-50">
+                            <div class="col-md-6 col-sm-12"><img class="img-responsive center-block" src="assets/images/why_choose_us.png" /></div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="choose-us-box">
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-6 cause-point">
+                                            <h4><i class="hang fa fa-universal-access"></i>we are professional</h4>
+                                            <p>Quisque vel magna quis massa finibus facilisis. Aenean a lacinia erat venenatis turpis. Pellentesque habitant morbi tristique senectus massa finibus facilisis.</p>
+                                        </div>
+                                        <div class="col-md-12 col-sm-6 cause-point">
+                                            <h4><i class="hang fa fa-lightbulb-o"></i>we are creative</h4>
+                                            <p>Quisque vel magna quis massa finibus facilisis. Aenean a lacinia erat venenatis turpis. Pellentesque habitant morbi tristique senectus massa finibus facilisis.</p>
+                                        </div>
+                                        <div class="col-md-12 col-sm-6 cause-point">
+                                            <h4><i class="hang fa fa-handshake-o"></i>24/7 great support</h4>
+                                            <p>Quisque vel magna quis massa finibus facilisis. Aenean a lacinia erat venenatis turpis. Pellentesque habitant morbi tristique senectus massa finibus facilisis.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="features-section background-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="contact-button text-center light-text"><span>If you have any query related  investment... we are available 24/7</span>
+                                <button class="btn btn-fill-big" data-toggle="modal" data-target=".contact-us-model">Contact Us</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="features-section relative background-2">
+                <div class="container">
+                    <div class="row section-separator-small sp-top">
+                        <div class="section-header col-xs-12">
+                            <h2 class="section-heading">Industries</h2>
+                            <hr class="lines" />
+                        </div>
+                        <div class="features-item margin-t-50 col-xs-12">
+                            <div class="row">
+                                <div class="each-item business-item col-xs-12">
+                                    <div class="each-item-inner">
+                                        <div class="vertical-middle features-image bg-cover col-sm-6 col-xs-12" style="background-image: url('assets/images/business/5.jpg')"></div>
+                                        <div class="vertical-middle features-content triangle-left col-sm-6 col-xs-12">
+                                            <div class="row">
+                                                <div class="inner text-right">
+                                                    <div class="section-header">
+                                                        <h3 class="section-heading">Business consulting</h3></div>
+                                                    <div class="detail small-spacing">
+                                                        <p>As one of the world’s largest accountancy networks, elixir helps a diverse range of clients with a diverse range of needs.This is especially true of our Advisory Practice, which provides corporate finance and transaction services, business restructuring.</p>
+                                                    </div>
+                                                    <div class="btn-form btn-interest"><a class="btn left-icon" href="#" data-toggle="" data-target=""><i class="fa fa-long-arrow-left"></i>LEARN MORE</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="each-item business-item col-xs-12">
+                                    <div class="each-item-inner">
+                                        <div class="vertical-middle features-image bg-cover col-sm-6 col-sm-push-6" style="background-image: url('assets/images/business/6.jpg')"></div>
+                                        <div class="vertical-middle features-content triangle-right col-sm-6 col-sm-pull-6">
+                                            <div class="row">
+                                                <div class="inner text-left">
+                                                    <div class="section-header">
+                                                        <h3 class="section-heading">Text consulting</h3></div>
+                                                    <div class="detail small-spacing">
+                                                        <p>Elixir serves clients across the country and around the world as they navigate an increasingly complex tax landscape. Our tax professionals draw on deep experience and industry-specific knowledge to deliver clients the insights and innovation they need.</p>
+                                                    </div>
+                                                    <div class="btn-form btn-interest"><a class="btn right-icon" href="#" data-toggle="" data-target="">LEARN MORE<i class="fa fa-long-arrow-right"></i></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="each-item business-item col-xs-12">
+                                    <div class="each-item-inner">
+                                        <div class="vertical-middle features-image bg-cover col-sm-6 col-xs-12" style="background-image: url('assets/images/business/7.jpg')"></div>
+                                        <div class="vertical-middle features-content triangle-left col-sm-6 col-xs-12">
+                                            <div class="row">
+                                                <div class="inner text-right">
+                                                    <div class="section-header">
+                                                        <h3 class="section-heading">Advisory</h3></div>
+                                                    <div class="detail small-spacing">
+                                                        <p>As one of the world’s largest accountancy networks, elixir helps a diverse range of clients with a diverse range of needs.This is especially true of our Advisory Practice, which provides corporate finance and transaction services, business restructuring.</p>
+                                                    </div>
+                                                    <div class="btn-form btn-interest"><a class="btn left-icon" href="#" data-toggle="" data-target=""><i class="fa fa-long-arrow-left"></i>LEARN MORE</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="each-item business-item col-xs-12">
+                                    <div class="each-item-inner">
+                                        <div class="vertical-middle features-image bg-cover col-sm-6 col-sm-push-6" style="background-image: url('assets/images/business/8.jpg')"></div>
+                                        <div class="vertical-middle features-content triangle-right col-sm-6 col-sm-pull-6">
+                                            <div class="row">
+                                                <div class="inner text-left">
+                                                    <div class="section-header">
+                                                        <h3 class="section-heading">Audit &amp;amp; assurance</h3></div>
+                                                    <div class="detail small-spacing">
+                                                        <p>The world is a more complex and challenging place for business than ever before. That complexity is evident in the design of business structures,in the interconnectedness of supply chains and in the construction of transactions themselves. transactions themselves.</p>
+                                                    </div>
+                                                    <div class="btn-form btn-interest"><a class="btn right-icon" href="#" data-toggle="" data-target="">LEARN MORE<i class="fa fa-long-arrow-right"></i></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="more-button-section section-separator-small text-center col-xs-12">
+                            <div class="btn-form"><a class="btn btn-fill-big" href="#">MORE INDUSTRIES</a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="funfacts" id="funfacts" style="background-image:url('assets/images/funfact-bg.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12"></div>
+                        <div class="col-sm-3 single-counter">
+                            <div class="counter-box">
+                                <h3 class="light-text count number text-center">234</h3>
+                                <p class="light-text count-description text-center">Cases Solved</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 single-counter">
+                            <div class="counter-box">
+                                <h3 class="light-text count number text-center">58</h3>
+                                <p class="light-text count-description text-center">Consultants</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 single-counter">
+                            <div class="counter-box">
+                                <h3 class="light-text count number text-center">84</h3>
+                                <p class="light-text count-description text-center">Awards Winning</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 single-counter">
+                            <div class="counter-box">
+                                <h3 class="light-text count number text-center">100</h3>
+                                <p class="light-text count-description text-center">Percent Satisfaction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="blog features-section relative background-2">
+                <div class="container">
+                    <div class="row section-separator-small sp-top">
+                        <div class="section-header col-xs-12">
+                            <h2 class="section-heading">Latest News</h2>
+                            <hr class="lines">
+                        </div>
+                        <div class="features-item col-xs-12">
+                            <div class="row">
+                                <div class="blog-items margin-t-50">
+                                    <div class="each-item-inner">
+                                        <div class="col-sm-6 col-md-4">
+                                            <div class="blog-post">
+                                                <header>
+                                                    <h4 class="date">29<br/>Oct</h4>
+                                                    <div class="blog-element"><img class="img-responsive" src="assets/images/business/9.jpg" alt="Tax impacts of lease accounting change" /></div>
+                                                </header>
+                                                <div class="inner">
+                                                    <div class="section-header">
+                                                        <h4 class="section-heading"><a href="blog-details.html">Tax impacts of lease accounting change</a></h4>
+                                                        <p class="post-meta">By&nbsp;<a href="#">Ashraful Prium</a></p>
+                                                        <div class="detail small-spacing">
+                                                            <p>HMRC released a consultation document to flag some potential tax impacts that a forthcoming change...</p>
+                                                        </div>
+                                                        <div class="btn-form btn-interest"><a class="btn right-icon" href="blog-details.html">READ MORE<i class="fa fa-long-arrow-right"></i></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="each-item-inner">
+                                        <div class="col-sm-6 col-md-4">
+                                            <div class="blog-post">
+                                                <header>
+                                                    <h4 class="date">16<br/>Nov</h4>
+                                                    <div class="blog-element"><img class="img-responsive" src="assets/images/business/10.jpg" alt="What brexit means for data protection law" /></div>
+                                                </header>
+                                                <div class="inner">
+                                                    <div class="section-header">
+                                                        <h4 class="section-heading"><a href="blog-details.html">What brexit means for data protection law</a></h4>
+                                                        <p class="post-meta">By&nbsp;<a href="#">Anindya Pandit</a></p>
+                                                        <div class="detail small-spacing">
+                                                            <p>Assuming that the referendum is not ignored completely, there are two possible futures for the UK...</p>
+                                                        </div>
+                                                        <div class="btn-form btn-interest"><a class="btn right-icon" href="blog-details.html">READ MORE<i class="fa fa-long-arrow-right"></i></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="each-item-inner">
+                                        <div class="col-sm-6 col-md-4">
+                                            <div class="blog-post">
+                                                <header>
+                                                    <h4 class="date">2<br/>Dec</h4>
+                                                    <div class="blog-element"><img class="img-responsive" src="assets/images/business/14.jpg" alt="The growing menace of social engineering fraud" /></div>
+                                                </header>
+                                                <div class="inner">
+                                                    <div class="section-header">
+                                                        <h4 class="section-heading"><a href="blog-details.html">The growing menace of social engineering fraud</a></h4>
+                                                        <p class="post-meta">By&nbsp;<a href="#">Aqib Ashef</a></p>
+                                                        <div class="detail small-spacing">
+                                                            <p>Social engineering involves the collection of information from various sources about a target ...</p>
+                                                        </div>
+                                                        <div class="btn-form btn-interest"><a class="btn right-icon" href="blog-details.html">READ MORE<i class="fa fa-long-arrow-right"></i></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="more-button-section section-separator-small text-center col-xs-12">
+                            <div class="btn-form"><a class="btn btn-fill-big" href="#">More News</a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="cta-request-call features-section background-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <h2 class="light-text">Request a call back.</h2>
+                            <p class="light-text">Would you like to speak to one of our financial advisers over the phone? Just submit your details and we’ll be in touch shortly. You can also email us if you would prefer.</p>
+                        </div>
+                        <div class="col-md-8 col-sm-6">
+                            <p class="light-text">I would like to discuss:</p>
+                            <div class="row">
+                                <form class="single-form" id="requestACall" method="post" action="php/request_call.php">
+                                    <div class="input-outer col-md-6 col-sm-6 col-xs-12">
+                                        <div class="select-outer">
+                                            <select class="form-control contact-plan" name="subject">
+                                                <option value="subject1" disabled="" selected="">Subject</option>
+                                                <option value="BusinessConsulting">Business consulting</option>
+                                                <option value="TextConsulting">Text consulting</option>
+                                                <option value="Advisory">Advisory</option>
+                                                <option value="Audit-$-assurance">Audit &amp;amp; assurance</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-outer col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control contact-name" name="name" type="text" placeholder="First name" required="" />
+                                    </div>
+                                    <div class="input-outer col-md-6 col-sm-6 col-xs-12">
+                                        <input class="form-control contact-name" name="phone" type="text" placeholder="Phone number" required="" />
+                                    </div>
+                                    <div class="btn-form input-outer col-md-6 col-sm-6 col-xs-12">
+                                        <div class="button-outer relative">
+                                            <button class="btn full-width btn-fill">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="testimonial section-separator-small">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-header col-xs-12">
+                            <h2 class="section-heading">What Our Clients Say</h2>
+                            <hr class="lines" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="carousel-container">
+                                <div class="carousel-wrapper owl-carousel" id="clientSpeech">
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="col-md-3"><img class="img-circle img-responsive center-block" alt="Client Photo" src="assets/images/client1.png" /></div>
+                                            <div class="col-md-9">
+                                                <div class="client-text">
+                                                    <p>Elixir is the best option for brand consultancy because of their superior strategic way of building a brand. Moreover, the company provides brilliant creative services and digital marketing solutions with a great minds. Working collaboratively.</p>
+                                                    <p class="client-name">-- Noona Nuengthida Sophon</p>
+                                                    <p>CEO, A.E.T institute</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="col-md-3"><img class="img-circle img-responsive center-block" alt="Client Photo" src="assets/images/client2.png" /></div>
+                                            <div class="col-md-9">
+                                                <div class="client-text">
+                                                    <p>After connected with them, now I can say I know how to tackle my staff &amp; how to deal with clients. They are basically worked as management consultant, leadership talent &amp; talent management areas</p>
+                                                    <p class="client-name">-- Syed Rezwanul Haque</p>
+                                                    <p>Managing Director, Technext Limited</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="col-md-3"><img class="img-circle img-responsive center-block" alt="Client Photo" src="assets/images/client3.png" /></div>
+                                            <div class="col-md-9">
+                                                <div class="client-text">
+                                                    <p>One of the best creative brand consultancy companies. The creative agency has a great team of both offline and digital marketing consultants which offers efficient solutions to many of the marketing problems.</p>
+                                                    <p class="client-name">-- Jenifar Pink</p>
+                                                    <p>Chairman, Harmony Corporation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="partner section-separator-small background-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-4 col-xs-6"><img class="img-responsive center-block" src="assets/images/partner/logo1.png" alt="Partner Logo" /></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><img class="img-responsive center-block" src="assets/images/partner/logo2.png" alt="Partner Logo" /></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><img class="img-responsive center-block" src="assets/images/partner/logo5.png" alt="Partner Logo" /></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><img class="img-responsive center-block" src="assets/images/partner/logo3.png" alt="Partner Logo" /></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><img class="img-responsive center-block" src="assets/images/partner/logo6.png" alt="Partner Logo" /></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><img class="img-responsive center-block" src="assets/images/partner/logo4.png" alt="Partner Logo" /></div>
+                    </div>
+                </div>
+            </section>
+            <div class="modal fade contact-us-model" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content background-2 display-table">
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div class="vertical-middle model-image bg-cover col-sm-6 col-xs-12" style="background-image: url(assets/images/business/4.jpg)"></div>
+                        <div class="vertical-middle model-content col-sm-6 col-xs-12">
+                            <div class="row">
+                                <div class="inner">
+                                    <div class="section-header">
+                                        <h4 class="section-heading">Contact Us</h4>
+                                        <hr class="full-line" />
+                                    </div>
+                                    <form class="single-form" id="contact-form-2" method="post" action="assets/php/sendmail-2.php">
+                                        <div class="input-outer">
+                                            <input class="form-control contact-name" name="name" type="text" placeholder="Your Name" required="required" />
+                                        </div>
+                                        <div class="input-outer">
+                                            <input class="form-control contact-email" name="email" type="email" palceholder="Your Email Address" required="required" />
+                                        </div>
+                                        <div class="input-outer">
+                                            <textarea class="contact-message form-control" rows="3" paceholder="Your Message here" required="required"></textarea>
+                                        </div>
+                                        <div>
+                                            <p class="email-loading"><img src="assets/images/loading.gif" alt="Email Send Loading" />Sending...</p>
+                                            <p class="email-success"><i class="ef icon_check_alt2"></i>Your quote has successfully been sent</p>
+                                            <p class="email-failed"><i class="ef icon_close_alt2"></i>Something went wrong!</p>
+                                        </div>
+                                        <div class="btn-form input-outer">
+                                            <div class="button-outer relative">
+                                                <button class="btn btn-fill btn-dark">Proceed</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <p class="margin-t-15">We will share the qutation &amp; detail with you soon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="features-section image-bg-3 bg-overlay-3 relative">
+                <div class="container">
+                    <div class="row section-separator">
+                        <div class="features-item">
+                            <div class="each-item subscribe-form-area light col-md-6 col-sm-12">
+                                <div class="subscribe-form-area-inner light-text">
+                                    <div class="section-header">
+                                        <h4 class="section-heading">Sign up for email alerts</h4>
+                                        <p class="sub-heading">Stay current with our latest insights</p>
+                                    </div>
+                                    <div class="subscribe-form">
+                                        <form class="single-form text-center" id="mailchimp-subscribe" method="post">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <p class="subscription-success"></p>
+                                                    <p class="subscription-failed"></p>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="input-group">
+                                                        <div class="outer">
+                                                            <input class="form-control subscriber-email" type="email" name="EMAIL" placeholder="Enter your email address" />
+                                                        </div>
+                                                        <div class="input-group-btn outer">
+                                                            <button class="btn btn-fill">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="each-item social-icon-area col-md-3 col-sm-6 col-xs-12">
+                                <div class="social-icon-area-inner padding-l-40">
+                                    <ul class="nav social-icon light">
+                                        <li><a href="#"><i class="fa fa-linkedin"></i><span class="name">LINKEDIN</span></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i><span class="name">TWITTER</span></a></li>
+                                        <li><a href="#"><i class="fa fa-vimeo"></i><span class="name">VIMEO</span></a></li>
+                                        <li><a href="#"><i class="fa fa-facebook"></i><span class="name">FACEBOOK</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="each-item side-navbar-area col-md-3 col-sm-6 col-xs-12">
+                                <div class="side-navbar-area-inner padding-l-40">
+                                    <ul class="nav side-navbar light">
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">Faq</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                        <li><a href="#">Terms of use</a></li>
+                                        <li><a href="#">Global Office</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer-section-1 background-3">
+                <div class="container">
+                    <div class="row section-separator-smallest light-text">
+                        <div class="col-md-4 col-sm-12">
+                            <div class="template-logo text-left">
+                                <a href="#"><img class="logo center img-responsive" src="assets/images/logo-light.png" alt="Main Logo" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <p class="text text-center">Copyright 2017 by PeerCon</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+</body>
 
-		<!-- COMO FUNCIONAO -->
-		<section class="container-fluid box_geral">
-			<div class="text-center">
-				<h1>COMO FUNCIONA</h1>
-			</div>
-			<div class="row txt_justify">
-  				<div class="col-sm-12 col-md-12">
-  					<div id="css-table">
-						<div class="col text-center fonte-padrao">
-							<div class="panel">1. Cadastro</div>
-  							<p><img class="img_HIW" src="img/fill_form.png"></p>
-  							<p class="text_col">Preencha o formulário para registrar seu cadastro.</p>
-  							<p><a class="btn btn-primary btn-lg btn-danger" href="/cadastroEmpresa" role="button">
-						  		<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-						  		Cadastro Empresa</a>
-						  	</p>
-						</div>
-						<div class="col text-center fonte-padrao">
-							<div class="panel">2. Aprovação</div>
-							<p><img class="img_HIW" src="img/approved_form.png"></p>
-							<p class="text_col">Após aprovada a solicitação, abrimos para os Investidores.</p>
-  							<p><a class="btn btn-primary btn-lg" href="/cadastroInvestidor" role="button">
-						  		<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-						  		Cadastro Investidor</a>
-						  	</p>
-					  	</div>
-						<div class="col text-center fonte-padrao">
-							<div class="panel">3. Empréstimo</div>
-							<p><img class="img_HIW" src="img/accepted_loan.png"></p>
-							<p class="text_col">Completado 100% do aporte dos investidores, seu empréstimo sai em poucos dias.</p>
-						</div>
-  					</div>
-				</div>
-			</div>
-			<hr class="style14"></hr>
-			<div style="margin: auto; text-align: center;">
-				<picture>
-					<source srcset="img/HIW_loan_xp.jpg" media="(max-width: 450px)">
-					<source srcset="img/HIW_loan_p.jpg" media="(max-width: 850px)">
-					<source srcset="img/HIW_loan.jpg" media="(max-width: 1060px)">
-					<source srcset="img/HIW_loan_HD.jpg" media="(min-width: 1060px)">
-					<img src="img/HIW_loan_xp.jpg">
-				</picture>
-			</div>
-		</section>
-
-		<!-- COMO INVESTIR -->
-		<section class="container-fluid box_geral box_geral_1">
-			<div class="text-center">
-				<h1>INVISTA em EMPRÉSTIMOS</h1>
-				<h4>Oportunidade de diversificar seus investimentos com retornos mensais acima do comum.</h4>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6" id="invest_grafico">
-					<p class="text-center">
-						<picture>
-							<source srcset="img/investor_grf.jpg" media="(max-width: 768px)">
-							<source srcset="img/investor_grf_hd.jpg" media="(min-width: 768px)">
-							<img src="img/investor_grf_hd.jpg">
-						</picture>
-					</p>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6" id="invest_text">
-				  	<h3 class="text-center">Simples, rápido e descomplicado</h3>
-					<ul id="invest_list">
-					  <li><H4>Baixas taxas de juros.</H4></li>
-					  <li><H4>Muito mais rápido que Bancos.</H4></li>
-					  <li><H4>Pagamentos mensais descomplicados.</H4></li>
-					  <li><H4>Sem taxas escondidas.</H4></li>
-					</ul>
-					<p class="text-center"><a class="btn btn-primary btn-lg" href="/cadastroInvestidor" role="button">
-				  		<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-				  		Cadastro Investidor</a>
-				  	</p>
-				</div>
-			</div>
-		</section>
-
-		<!-- ENTRE EM CONTATO -->
-		<section class="container-fluid box_geral">
-		  <h2 class="text-center">INFORMATIVOS</h2>
-		  <div class="row">
-		    <div class="col-sm-5">
-		      <p>Deixe seu contato para receber informativos, novos investimentos e novidades.</p>
-		      <p><span class="glyphicon glyphicon-map-marker"></span> Ribeirão Preto - SP (Brasil)</p>
-		      <p><span class="glyphicon glyphicon-phone"></span> +55 16 34215213</p>
-		      <p><span class="glyphicon glyphicon-envelope"></span> contato@peercon.com.br</p>
-		    </div>
-		    <div class="col-sm-7">
-		      <div class="row">
-		        <div class="col-sm-6 form-group">
-		          <input class="form-control" id="name" name="name" placeholder="Nome" type="text" required>
-		        </div>
-		        <div class="col-sm-6 form-group">
-		          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-		        </div>
-		      </div>
-		      <textarea class="form-control" id="comments" name="comments" placeholder="Comentários" rows="5"></textarea><br>
-		      <div class="row">
-		        <div class="col-sm-12 form-group">
-		          <button class="btn btn-default pull-right" type="submit">Enviar</button>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
-		</section>
-
-		<!-- RODAPÉ -->
-		<% include partials/footer %>
-	</body>
 </html>
