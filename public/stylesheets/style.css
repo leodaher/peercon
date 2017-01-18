@@ -52,7 +52,7 @@
 }
 
 .grabbing {
-    cursor: url(../images/unblured/grabbing.png) 8 8, move
+    cursor: url(/img/unblured/grabbing.png) 8 8, move
 }
 
 .owl-carousel .owl-item,
@@ -146,7 +146,7 @@
 
 .owl-item.loading {
     min-height: 150px;
-    background: url(../images/unblured/AjaxLoader.gif) center center no-repeat
+    background: url(/img/unblured/AjaxLoader.gif) center center no-repeat
 }
 
 .owl-origin {
@@ -1013,7 +1013,7 @@ h6 {
     text-align: left;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #d9d9d9;
+    background-color: #f8f8f8;
     color: rgba(35, 35, 35, 0.9);
     border-radius: 0;
     transition: all 0.3s ease-out;
@@ -1042,7 +1042,7 @@ h6 {
 
 .single-form .input-group-addon {
     border: 0px solid;
-    background-color: #d9d9d9;
+    background-color: #f8f8f8;
     color: rgba(35, 35, 35, 0.17);
     padding-right: 0px
 }
@@ -1076,10 +1076,6 @@ h6 {
     color: rgba(35, 35, 35, 0.65);
     cursor: pointer;
     width: calc(100% + 20px)
-}
-
-.single-form input[type=checkbox] {
-    visibility: hidden
 }
 
 .single-form .checkbox {
@@ -1504,7 +1500,7 @@ h6 {
 }
 
 .image-bg-2 {
-    background-image: url("../images/background-2.jpg");
+    background-image: url("/img/background-2.jpg");
     -ms-background-size: cover;
     background-size: cover;
     background-position: top;
@@ -1514,7 +1510,7 @@ h6 {
 }
 
 .image-bg-3 {
-    background-image: url("../images/background-3.jpg");
+    background-image: url("/img/background-3.jpg");
     -ms-background-size: cover;
     background-size: cover;
     background-position: 50% 50%;
@@ -1524,7 +1520,7 @@ h6 {
 }
 
 .image-bg-4 {
-    background-image: url("../images/background-4.jpg");
+    background-image: url("/img/background-4.jpg");
     -ms-background-size: cover;
     background-size: cover;
     background-position: 50% 50%;
@@ -1534,7 +1530,7 @@ h6 {
 }
 
 .image-bg-5 {
-    background-image: url("../images/background-5.jpg");
+    background-image: url("/img/background-5.jpg");
     -ms-background-size: cover;
     background-size: cover;
     background-position: 50% 50%;
@@ -1544,7 +1540,7 @@ h6 {
 }
 
 .image-bg-6 {
-    background-image: url("../images/background-6.jpg");
+    background-image: url("/img/background-6.jpg");
     -ms-background-size: cover;
     background-size: cover;
     background-position: 50% 50%;
@@ -1554,7 +1550,7 @@ h6 {
 }
 
 .image-bg-7 {
-    background-image: url("../images/background-7.jpg");
+    background-image: url("/img/background-7.jpg");
     -ms-background-size: cover;
     background-size: cover;
     background-position: 50% 50%;
@@ -1564,7 +1560,7 @@ h6 {
 }
 
 .image-bg-8 {
-    background-image: url("../images/background-8.jpg");
+    background-image: url("/img/background-8.jpg");
     -ms-background-size: cover;
     background-size: cover;
     background-position: 50% 50%;
@@ -1574,7 +1570,7 @@ h6 {
 }
 
 .image-bg-9 {
-    background-image: url("../images/background-9.jpg");
+    background-image: url("/img/background-9.jpg");
     -ms-background-size: cover;
     background-size: cover;
     background-position: 50% 50%;
@@ -1584,7 +1580,7 @@ h6 {
 }
 
 .image-bg-10 {
-    background-image: url("../images/background-10.jpg");
+    background-image: url("/img/background-10.jpg");
     -ms-background-size: cover;
     background-size: cover;
     background-position: 50% 50%;
@@ -1594,7 +1590,7 @@ h6 {
 }
 
 .image-bg-11 {
-    background-image: url("../images/background-11.png");
+    background-image: url("/img/background-11.png");
     -ms-background-size: cover;
     background-size: cover;
     background-position: 50% 50%;
@@ -3653,7 +3649,7 @@ blockquote {
         max-width: 95px
     }
     .main-navbar-top .navbar-bottom-outer .navbar-nav>li>a {
-        margin-right: 20px
+        margin-right: 10px;
     }
     .main-navbar-top .navbar-top-outer .navbar-right {
         float: left !important
@@ -3685,7 +3681,7 @@ blockquote {
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .features-item .each-item:last-child {
         margin-bottom: 30px
     }
@@ -3740,9 +3736,7 @@ blockquote {
     .main-navbar-top .navbar-bottom-outer .sub-menu li a {
         margin: 0 !important
     }
-    .main-navbar-top .navbar-right {
-        float: right
-    }
+
     .main-navbar-top .navbar-top-outer .navbar-nav,
     .main-navbar-top .contact-address {
         padding: 10px 0 5px 0;
@@ -3921,7 +3915,7 @@ blockquote {
         padding: 30px 0px
     }
     .registration-form .btn {
-        margin: 0 !important
+        margin: 0 
     }
 }
 

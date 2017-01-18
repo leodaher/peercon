@@ -439,7 +439,11 @@ router.get("/edit", middleware.isLoggedIn, function(req, res){
               if(!empresa) {
                   res.redirect("/dashboard/cadastro-empresa");
               } else {
-                  res.render("empresas/cadastro/parte1/edit", {pessoaFisica: empresa.pessoaFisica});
+                  if(empresa.pessoaFisica.isComplete){
+                    res.render("empresas/cadastro/parte1/edit", {pessoaFisica: empresa.pessoaFisica});
+                  } else {
+                    res.redirect("/dashboard/cadastro-empresa");
+                  }
               }
           }
       })
@@ -454,7 +458,11 @@ router.get("/edit", middleware.isLoggedIn, function(req, res){
               if(!empresa){
                   res.redirect("/dashboard/cadastro-empresa");
               } else {
-                  res.render("empresas/cadastro/parte2/edit", {pessoaJuridica: empresa.pessoaJuridica});
+                  if(empresa.pessoaJuridica.isComplete){
+                    res.render("empresas/cadastro/parte2/edit", {pessoaJuridica: empresa.pessoaJuridica});
+                  } else {
+                    res.redirect("/dashboard/cadastro-empresa?parte=2");
+                  }
               }
           }
       });
@@ -469,7 +477,11 @@ router.get("/edit", middleware.isLoggedIn, function(req, res){
               if(empresa == null) {
                   res.redirect("/dashboard/cadastro-empresa");
               } else {
-                  res.render("empresas/cadastro/parte3/edit", {dadosFinanceiros: empresa.dadosFinanceiros});
+                  if(empresa.dadosFinanceiros.isComplete){
+                    res.render("empresas/cadastro/parte3/edit", {dadosFinanceiros: empresa.dadosFinanceiros});
+                  } else {
+                    res.redirect("/dashboard/cadastro-empresa?parte=3");
+                  }
               }
           }
       });
@@ -484,7 +496,11 @@ router.get("/edit", middleware.isLoggedIn, function(req, res){
             if(empresa == null) {
                 res.redirect("/dashboard/cadastro-empresa");
             } else {
-                res.render("empresas/cadastro/anexos/edit", {anexos: empresa.anexos});
+                if(empresa.anexos.isComplete){
+                  res.render("empresas/cadastro/anexos/edit", {anexos: empresa.anexos});
+                } else {
+                  res.redirect("/dashboard/cadastro-empresa?parte=anexos");
+                }
             }
         }
     });

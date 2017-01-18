@@ -1,0 +1,46 @@
+.previous {
+  margin-top: 10px !important;
+  margin-left: 0;
+  margin-right: 0;
+  float: left;
+  width: 40%;
+}
+
+.next {
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 10px !important;
+  float: right;
+}
+
+.submitbtn {
+  margin-right: 0;
+  margin-top: 10px !important;
+  width: 40%;
+  float:right;
+}
+
+@media screen and (max-width: 400px) {
+  .previous, .next, .submitbtn {
+    float: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .previous, .next, .submitbtn {
+    width: 30%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px !important;
+  }
+}
+
+@media screen and (min-width: 992px and max-width:1200px) {
+  .previous, .next, .submitbtn {
+    float: none !important;
+    width: 30%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px !important;
+  }
+}

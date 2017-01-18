@@ -2,48 +2,52 @@
 <html>
 <head>
 	<% include ../../partials/includes %>
-	<link rel="stylesheet" href="/stylesheets/propostas.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/propostas.css">
 </head>
 <body>
 	<% include ../../partials/headerEmpreendedor %>
-	<div class="container">
-		<% if(success_msg.length > 0) { %>
-					<div class="alert alert-success"><%= success_msg %></div>
-		<% } %>
-		<div class="jumbotron">
+	<% if(success_msg.length > 0) { %>
+		<div class="alert alert-success"><%= success_msg %></div>
+	<% } %>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="row form-group">
+						<div class="intro col-lg-12 col-md-12 col-xs-12">
+								<h2>Seja bem-vindo, <%= user.name %>!</h2>
+								<% if(empresa == false) { %>
+									<p>Comece agora a fazer o cadastro da sua empresa!</p>
+								<% } else { %>
+										<% if(empresa.status == "Aprovado"){ %>
+											<p>Você está pronto para fazer sua solicitação de empréstimo!</p>
+										<% } else if(empresa.status == "Análise") { %>
+											<p>Sua empresa está sendo analisada por nossa equipe especializada.</p><p> Em breve, você receberá um e-mail o informando se sua empresa foi aprovada!</p>
+										<% } else { %>
+											<p>O cadastro da sua empresa ainda não está completo</p>
+										<% } %>
+								<% } %>
+						</div>
+			      <div class="col-lg-12 col-md-12 col-xs-12">
+							<div class="each-item-big tab-item margin-b-20">
+									<div class="tab-inner">
+											<div role="tabpanel">
+													<!-- Nav tabs-->
+													<ul class="nav nav-tabs" role="tablist">
+															<li class="completed"><a href="#"><span class="glyphicon glyphicon-ok"></span>    cadastro peercon</a></li>
+															<li class="<% if(empresa != false){ if(empresa.pessoaFisica.isComplete){ %>completed<% } }%>"><a href="/dashboard/cadastro-empresa"><% if(empresa){ if(empresa.pessoaFisica.isComplete){ %><span class="glyphicon glyphicon-ok"></span>    <% } } %>pessoa física</a></li>
+															<li class="<% if(empresa != false){ if(empresa.pessoaJuridica.isComplete){ %>completed<% } else if(!empresa.pessoaFisica.isComplete){ %>disabled<% } } else { %>disabled<% } %>"><a href="/dashboard/cadastro-empresa?parte=2"><% if(empresa){ if(empresa.pessoaJuridica.isComplete){ %><span class="glyphicon glyphicon-ok"></span>    <% } } %>pessoa jurídica</a></li>
+															<li class="<% if(empresa != false){ if(empresa.dadosFinanceiros.isComplete){ %>completed<% } if(!empresa.pessoaJuridica.isComplete){ %>disabled<% } } else { %>disabled<% } %>"><a href="/dashboard/cadastro-empresa?parte=3"><% if(empresa){ if(empresa.dadosFinanceiros.isComplete){ %><span class="glyphicon glyphicon-ok"></span>    <% } } %>dados financeiros</a></li>
+															<li class="<% if(empresa != false){ if(empresa.anexos.isComplete){ %>completed<% } if(!empresa.dadosFinanceiros.isComplete){ %>disabled<% } } else { %>disabled<% } %>"><a href="/dashboard/cadastro-empresa?parte=anexos"><% if(empresa){ if(empresa.anexos.isComplete){ %><span class="glyphicon glyphicon-ok"></span>    <% } } %>anexos</a></li>
+													</ul>
+											</div>
+									</div>
+							</div>
+		        </div>
+				</div>
+			</div>
+		</div>
+		<div id="portfolios" style="height: 550px;">
 
 		</div>
-		<div class="row propostas">
-		<% propostas.forEach(function(proposta){ %>
-				<div class="proposta-wrapper col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<article class="proposta-item">
-								<div class="upperPart">
-									<div class="proposta-logo">
-											<% if(proposta.status == "Análise") { %>
-												<span class="glyphicon glyphicon-time"></span>
-											<% } else if(proposta.status == "Aprovada") { %>
-												<span style="color:green; border-color:green" class="glyphicon glyphicon-ok">
-											<% } else if(proposta.status == "Rejeitada") { %>
-												<span style="color:red; border-color:red" class="glyphicon glyphicon-remove">
-											<% } %>
-									</div>
-									<div class="proposta-title">
-											<h4 class="title"><%= proposta.emprestimo.valor %></h4>
-											<h5 class="subtitle"><%= proposta.emprestimo.proposito %></h5>
-									</div>
-								</div>
-								<div class="proposta-content">
-									<dl>
-										<dt>Prazo:</dt>
-										<dd><%= proposta.emprestimo.prazo %></dd>
-										<dt>Status:</dt>
-										<dd><%= proposta.status %></dd>
-									</dl>
-								</div>
-						</article>
-				</div>
-		<% }) %>
-		</div>
-	</div>
+		<% include ../../partials/footer %>
 </body>
 </html>

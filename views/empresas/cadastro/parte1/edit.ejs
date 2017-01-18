@@ -1,59 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" dir="ltr">
+
 <head>
-	<% include ../../../partials/includes %>
-	<script type="text/javascript" src="/scripts/empresaForm.js"></script>
+    <% include ../../../partials/includes %>
+    <link rel="stylesheet" href="/stylesheets/cadastro-investidor.css">
+    <script type="text/javascript" src="/scripts/multiStepForm.js"></script>
 </head>
-<body>
-	<% include ../../../partials/headerEmpreendedor %>
-	<div class="form-style-10">
-			<h1>Dados de pessoa física<span>Nesta etapa, recolheremos os dados da pessoa física, necessários para a análise de sua empresa.</span></h1>
-			<% if(typeof errors !== 'undefined') { %>
-			<% 		errors.forEach(function(error){ %>
-						<div class="alert alert-danger"><%= error.msg %></div>
-			<%		}); %>
-			<% } %>
-			<form action="/dashboard/cadastro-empresa/edit" method="post">
-                <input type="hidden" name="parte" value="1">
-                <div class="section"><span>1</span>Dados Pessoais</div>
-                <div class="inner-wrap">
-                    <label>Nome Completo<input type="text" name="name" value="<%= pessoaFisica.nome %>"></label>
-                    <label>Data de Nascimento<input type="text" name="date" class="dataMask" maxlength="10" value="<%= pessoaFisica.dataNasc %>"></label>
-                    <label>CPF<input type="text" name="cpf" class="cpfMask" maxlength="14" value="<%= pessoaFisica.CPF %>"></label>
-                    <label>RG<input type="text" name="rg" class="rgMask" maxlength="12" value="<%= pessoaFisica.RG %>"></label>
-                    <label>Órgão emissor<input type="text" name="orgaoEmissor" value="<%= pessoaFisica.orgaoEmissor %>"></label>
-                    <label>Cidade natal<input type="text" name="cidadeNatal" value="<%= pessoaFisica.cidadeNatal %>"></label>
-                    <label>Telefone Fixo<input type="text" class="telefoneMask" name="telephone" maxlength="14" value="<%= pessoaFisica.telefone %>"></label>
-                    <label>Celular<input type="text" name="cellphone" class="celularMask" maxlength="15" value="<%= pessoaFisica.celular %>"></label>
-                    <label>Você é uma pessoa politicamente exposta?
-                        <select name="politicamenteExposta">
-                            <option value="Sim" <% if(pessoaFisica.politicamenteExp == "Sim"){ %> selected <% } %>>Sim</option>
-                            <option value="Não"<% if(pessoaFisica.politicamenteExp == "Não"){ %> selected <% } %>>Não</option>
-                        </select>
-                    </label>
-                    <label>Você, como pessoa física, paga aluguel ou financiamento da casa onde mora?
-                        <select name="aluguel">
-                            <option value="Sim" <% if(pessoaFisica.aluguel == "Sim"){ %> selected <% } %>>Sim</option>
-                            <option value="Não"<% if(pessoaFisica.aluguel == "Não"){ %> selected <% } %>>Não</option>
-                        </select>
-                    </label>
-                    <label>Renda Mensal Declarada<input type="text" class="moneyMask" name="renda" value="<%= pessoaFisica.renda %>"></label>
-                    <label>Valor aproximado do seu patimônio<input type="text" class="moneyMask" name="patrimonio" value="<%= pessoaFisica.patrimonio %>"></label>
+
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+        <% include ../../../partials/headerEmpreendedor %>
+        <div class="registration-page">
+            <section class="features-section-1 relative image-bg-5 full-screen-js">
+                <div class="container">
+                    <div class="row inner-wrapper">
+                        <div class="col-xs-12">
+                            <div class="template-logo text-center">
+                                <a class="logo center img-responsive" href="#"><img src="/img/logo-light.png" alt="Main Logo" /></a>
+                            </div>
+                            <div class="section-header margin-t-30 margin-b-30 text-center light-text">
+                                <h4 class="section-heading text-uppercase letter-spacing-4">pessoa física</h4></div>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 col-sm-12">
+                            <div class="row">
+                                <div class="registration-form col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+                                    <div class="registration-form-outer background-1">
+                                        <% if(typeof errors !== 'undefined') { %>
+                                        <% 		errors.forEach(function(error){ %>
+                                              <div class="alert alert-danger"><%= error.msg %></div>
+                                        <%		}); %>
+                                        <% } %>
+                                        <form class="single-form" method="post" action="/dashboard/cadastro-empresa/edit">
+                                            <input type="hidden" name="parte" value="1">
+                                            <div class="form-section current">
+                                              <h6>Dados pessoais</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                          <input class="form-control" name="name" type="text" placeholder="Nome completo" value="<%= pessoaFisica.nome %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control cpfMask" name="cpf" type="text" placeholder="CPF" maxlength="14" value="<%= pessoaFisica.CPF %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control dataMask" name="date" type="text" placeholder="Data de nascimento" maxlength="10" value="<%= pessoaFisica.dataNasc %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control" name="rg" type="text" placeholder="RG" maxlength="12" value="<%= pessoaFisica.RG %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control" name="orgaoEmissor" type="text" placeholder="Órgão emissor" value="<%= pessoaFisica.orgaoEmissor %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control" name="cidadeNatal" type="text" placeholder="Cidade natal" value="<%= pessoaFisica.cidadeNatal %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control telefoneMask" name="telephone" type="text" placeholder="Telefone" maxlength="14" value="<%= pessoaFisica.telefone %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control celularMask" name="cellphone" type="text" placeholder="Celular" maxlength="15" value="<%= pessoaFisica.celular %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Você é uma pessoa politicamente exposta?</p>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="politicamenteExposta">
+                                                        <option value="Sim" <% if(pessoaFisica.politicamenteExp == "Sim"){ %> selected <% } %>>Sim</option>
+                                                        <option value="Não"<% if(pessoaFisica.politicamenteExp == "Não"){ %> selected <% } %>>Não</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Você, como pessoa física, paga aluguel ou financiamento da casa onde mora?</p>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="aluguel">
+                                                        <option value="Sim" <% if(pessoaFisica.aluguel == "Sim"){ %> selected <% } %>>Sim</option>
+                                                        <option value="Não"<% if(pessoaFisica.aluguel == "Não"){ %> selected <% } %>>Não</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control moneyMask" name="renda" type="text" placeholder="Renda mensal declarada" value="<%= pessoaFisica.renda %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control moneyMask" name="patrimonio" type="text" placeholder="Valor aproximado do seu patrimônio" value="<%= pessoaFisica.patrimonio %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-section">
+                                              <h6>Endereço residencial</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                          <input class="form-control cep" name="cep" type="text" placeholder="CEP" maxlength="8" value="<%= pessoaFisica.cep %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control logradouro" name="logradouro" type="text" placeholder="Logradouro" value="<%= pessoaFisica.logradouro %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="number" type="text" placeholder="Número" value="<%= pessoaFisica.numero %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="complement" type="text" placeholder="Complemento" value="<%= pessoaFisica.complemento %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control city" name="city" type="text" placeholder="Cidade" value="<%= pessoaFisica.cidade %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control state" name="state" type="text" placeholder="Estado" value="<%= pessoaFisica.estado %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-navigation">
+                                              <div class="btn-form input-outer col-xs-12">
+                                                  <div class="button-outer relative">
+                                                      <button type="button" class="btn btn-fill previous">Voltar</button>
+                                                      <button type="button" class="btn btn-fill next">Próximo</button>
+                                                      <button type="submit" class="btn btn-fill submitbtn">Enviar dados</button>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="section"><span>2</span>Endereço Residencial</div>
-                <div class="inner-wrap">
-                    <label>CEP <input type="text" name="cep" class="cep" maxlength="8" value="<%= pessoaFisica.cep %>"></label>
-                    <label>Logradouro <input type="text" class="logradouro" name="logradouro" value="<%= pessoaFisica.logradouro %>"></label>
-                    <label>Número <input type="text" name="number" value="<%= pessoaFisica.numero %>"></label>
-                    <label>Complemento <input type="text" name="complement" value="<%= pessoaFisica.complemento %>"></label>
-                    <label>Cidade <input type="text" class="city" name="city" value="<%= pessoaFisica.cidade %>"></label>
-                    <label>Estado <input type="text" class="state" name="state" value="<%= pessoaFisica.estado %>"></label>
-                </div>
-                <div class="button-section">
-                    <input type="submit" name="Sign Up" value="Próximo" />
-                    <span class="error"></span>
-                </div>
-            </form>
-		</div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

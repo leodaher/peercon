@@ -1,83 +1,133 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<% include ../../../partials/includes %>
-	</head>
-    <body>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <% include ../../../partials/includes %>
+    <link rel="stylesheet" href="/stylesheets/cadastro-investidor.css">
+    <script type="text/javascript" src="/scripts/multiStepForm.js"></script>
+</head>
+
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
         <% include ../../../partials/headerInvestidor %>
-        <div class="form-style-10">
-			<h1>Formulário de Suitability<span>Com este formulário, faremos uma análise do seu perfil de risco!</span></h1>
-			<% if(typeof errors !== 'undefined') { %>
-			<% 		errors.forEach(function(error){ %>
-						<div class="alert alert-danger"><%= error.msg %></div>
-			<%		}); %>
-			<% } %>
-			<form action="/dashboard/suitability" method="post">
-    			<div class="section"><span>1</span>Seus investimentos</div>
-    			<div class="inner-wrap">
-        			<label>Como você avalia seu conhecimento sobre investimentos?</label>
-                    <select name="conhecimento">
-                        <option value="Nenhum conhecimento" <% if(investor.conhecimento == "Nenhum conhecimento"){ %><%= "selected" %><% } %>>Não tenho conhecimento</option>
-                        <option value="Razoável" <% if(investor.conhecimento == "Razoável"){ %><%= "selected" %><% } %>>Razoável</option>
-                        <option value="Bom" <% if(investor.conhecimento == "Bom"){ %><%= "selected" %><% } %>>Bom</option>
-                        <option value="Excelente" <% if(investor.conhecimento == "Excelente"){ %><%= "selected" %><% } %>>Excelente</option>
-                    </select><br>
-
-                    <label>Selecione abaixo os investimentos que você tem ou já teve:</label>
-                    <input name="investimento" type="checkbox" value="Poupança" <% if(investor.investimentos.indexOf("Poupança") != -1){ %><%= "checked" %><% } %>>Poupança<br>
-                    <input name="investimento" type="checkbox" value="Renda Fixa" <% if(investor.investimentos.indexOf("Renda Fixa") != -1){ %><%= "checked" %><% } %>>Títulos de renda fixa (CDB, LCI, LCA, Debêntures, DPGE, FIDC, entre outros)<br>
-                    <input name="investimento" type="checkbox" value="Tesouro Direto" <% if(investor.investimentos.indexOf("Tesouro Direto") != -1){ %><%= "checked" %><% } %>>Tesouro Direto (LFT, LTN, NTN-B, NTN-B Principal, NTN-C, NTN-F)<br>
-                    <input name="investimento" type="checkbox" value="Fundos DI/Renda Fixa" <% if(investor.investimentos.indexOf("Fundos DI/Renda Fixa") != -1){ %><%= "checked" %><% } %>>Fundos DI e/ou de Renda Fixa<br>
-                    <input name="investimento" type="checkbox" value="Fundos Multimercados" <% if(investor.investimentos.indexOf("Fundos Multimercados") != -1){ %><%= "checked" %><% } %>>Fundos multimercados<br>
-                    <input name="investimento" type="checkbox" value="Fundos de Ações" <% if(investor.investimentos.indexOf("Fundos de Ações") != -1){ %><%= "checked" %><% } %>>Fundos de ações<br>
-                    <input name="investimento" type="checkbox" value="Fundos Imobiliários" <% if(investor.investimentos.indexOf("Fundos Imobiliários") != -1){ %><%= "checked" %><% } %>>Fundos imobiliários<br>
-                    <input name="investimento" type="checkbox" value="Previdência" <% if(investor.investimentos.indexOf("Previdência") != -1){ %><%= "checked" %><% } %>>Previdência privada<br>
-                    <input name="investimento" type="checkbox" value="Ações" <% if(investor.investimentos.indexOf("Ações") != -1){ %><%= "checked" %><% } %>>Ações<br>
-                    <input name="investimento" type="checkbox" value="Mercado Futuro" <% if(investor.investimentos.indexOf("Mercado Futuro") != -1){ %><%= "checked" %><% } %>>Mercado futuro - BM&F <br>
-                    <input name="investimento" type="checkbox" value="Derivativos" <% if(investor.investimentos.indexOf("Derivativos") != -1){ %><%= "checked" %><% } %>>Derivativos<br>
-                    <input name="investimento" type="checkbox" value="Nunca Investiu" <% if(investor.investimentos.indexOf("Nunca Investiu") != -1){ %><%= "checked" %><% } %>>Nunca investi<br><br>
-
-                    <label>Qual é o valor aproximado dos seus investimentos financeiros atualmente?</label>
-                    <select name="valorInvestido">
-                        <option value="0-20000" <% if(investor.valorInvestido == "0-20000"){ %><%= "selected" %><% } %>>R$0-20.000</option>
-                        <option value="20000-50000" <% if(investor.valorInvestido == "20000-50000"){ %><%= "selected" %><% } %>>R$20.000-50.000</option>
-                        <option value="50000-100000" <% if(investor.valorInvestido == "50000-100000"){ %><%= "selected" %><% } %>>R$50.000-100.000</option>
-                        <option value="100000-500000" <% if(investor.valorInvestido == "100000-500000"){ %><%= "selected" %><% } %>>R$100.000-500.000</option>
-                        <option value="500000-1000000" <% if(investor.valorInvestido == "500000-1000000"){ %><%= "selected" %><% } %>>R$500.000-1.000.000</option>
-                        <option value="1000000+" <% if(investor.valorInvestido == "1000000+"){ %><%= "selected" %><% } %>>R$1.000.000+</option>
-                    </select>
+        <div class="registration-page">
+            <section class="features-section-1 relative image-bg-7 full-screen-js">
+                <div class="container">
+                    <div class="row inner-wrapper">
+                        <div class="col-xs-12">
+                            <div class="template-logo text-center">
+                                <a class="logo center img-responsive" href="#"><img src="/img/logo-light.png" alt="Main Logo" /></a>
+                            </div>
+                            <div class="section-header margin-t-30 margin-b-30 text-center light-text">
+                                <h4 class="section-heading text-uppercase letter-spacing-4">perfil de suitability</h4></div>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 col-sm-12">
+                            <div class="row">
+                                <div class="registration-form col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+                                    <div class="registration-form-outer background-1">
+                                        <% if(typeof errors !== 'undefined') { %>
+                                        <% 		errors.forEach(function(error){ %>
+                                              <div class="alert alert-danger"><%= error.msg %></div>
+                                        <%		}); %>
+                                        <% } %>
+                                        <form class="single-form" method="post" action="/dashboard/suitability/edit">
+                                            <div class="form-section current">
+                                              <div class="input-outer col-xs-12">
+                                                  <h6>Como você avalia o seu conhecimento sobre investimentos?</h6>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="conhecimento">
+                                                        <option value="Nenhum conhecimento" <% if(investor.conhecimento == "Nenhum conhecimento"){ %><%= "selected" %><% } %>>Não tenho conhecimento</option>
+                                                        <option value="Razoável" <% if(investor.conhecimento == "Razoável"){ %><%= "selected" %><% } %>>Razoável</option>
+                                                        <option value="Bom" <% if(investor.conhecimento == "Bom"){ %><%= "selected" %><% } %>>Bom</option>
+                                                        <option value="Excelente" <% if(investor.conhecimento == "Excelente"){ %><%= "selected" %><% } %>>Excelente</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                        <h6>Selecione abaixo os investimentos que você tem ou já teve:</h6>
+                                                        <input name="investimento" type="checkbox" value="Poupança" <% if(investor.investimentos.indexOf("Poupança") != -1){ %><%= "checked" %><% } %>>Poupança<br>
+                                                        <input name="investimento" type="checkbox" value="Renda Fixa" <% if(investor.investimentos.indexOf("Renda Fixa") != -1){ %><%= "checked" %><% } %>>Títulos de renda fixa (CDB, LCI, LCA, Debêntures, DPGE, FIDC, entre outros)<br>
+                                                        <input name="investimento" type="checkbox" value="Tesouro Direto" <% if(investor.investimentos.indexOf("Tesouro Direto") != -1){ %><%= "checked" %><% } %>>Tesouro Direto (LFT, LTN, NTN-B, NTN-B Principal, NTN-C, NTN-F)<br>
+                                                        <input name="investimento" type="checkbox" value="Fundos DI/Renda Fixa" <% if(investor.investimentos.indexOf("Fundos DI/Renda Fixa") != -1){ %><%= "checked" %><% } %>>Fundos DI e/ou de Renda Fixa<br>
+                                                        <input name="investimento" type="checkbox" value="Fundos Multimercados" <% if(investor.investimentos.indexOf("Fundos Multimercados") != -1){ %><%= "checked" %><% } %>>Fundos multimercados<br>
+                                                        <input name="investimento" type="checkbox" value="Fundos de Ações" <% if(investor.investimentos.indexOf("Fundos de Ações") != -1){ %><%= "checked" %><% } %>>Fundos de ações<br>
+                                                        <input name="investimento" type="checkbox" value="Fundos Imobiliários" <% if(investor.investimentos.indexOf("Fundos Imobiliários") != -1){ %><%= "checked" %><% } %>>Fundos imobiliários<br>
+                                                        <input name="investimento" type="checkbox" value="Previdência" <% if(investor.investimentos.indexOf("Previdência") != -1){ %><%= "checked" %><% } %>>Previdência privada<br>
+                                                        <input name="investimento" type="checkbox" value="Ações" <% if(investor.investimentos.indexOf("Ações") != -1){ %><%= "checked" %><% } %>>Ações<br>
+                                                        <input name="investimento" type="checkbox" value="Mercado Futuro" <% if(investor.investimentos.indexOf("Mercado Futuro") != -1){ %><%= "checked" %><% } %>>Mercado futuro - BM&F <br>
+                                                        <input name="investimento" type="checkbox" value="Derivativos" <% if(investor.investimentos.indexOf("Derivativos") != -1){ %><%= "checked" %><% } %>>Derivativos<br>
+                                                        <input name="investimento" type="checkbox" value="Nunca Investiu" <% if(investor.investimentos.indexOf("Nunca Investiu") != -1){ %><%= "checked" %><% } %>>Nunca investi<br><br>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <h6>Qual é o valor aproximado dos seus investimentos financeiros atualmente?</h6>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="valorInvestido">
+                                                        <option value="0-20000" <% if(investor.valorInvestido == "0-20000"){ %><%= "selected" %><% } %>>R$0-20.000</option>
+                                                        <option value="20000-50000" <% if(investor.valorInvestido == "20000-50000"){ %><%= "selected" %><% } %>>R$20.000-50.000</option>
+                                                        <option value="50000-100000" <% if(investor.valorInvestido == "50000-100000"){ %><%= "selected" %><% } %>>R$50.000-100.000</option>
+                                                        <option value="100000-500000" <% if(investor.valorInvestido == "100000-500000"){ %><%= "selected" %><% } %>>R$100.000-500.000</option>
+                                                        <option value="500000-1000000" <% if(investor.valorInvestido == "500000-1000000"){ %><%= "selected" %><% } %>>R$500.000-1.000.000</option>
+                                                        <option value="1000000+" <% if(investor.valorInvestido == "1000000+"){ %><%= "selected" %><% } %>>R$1.000.000+</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-section">
+                                              <div class="input-outer col-xs-12">
+                                                  <h6>Qual é o seu objetivo ao investir?</h6>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="objetivo">
+                                                        <option value="preservar" <% if(investor.objetivo == "preservar"){ %><%= "selected" %><% } %>>Preservar capital: corrigir os investimentos pela variação da inflação</option>
+                                                        <option value="acumular" <% if(investor.objetivo == "acumular"){ %><%= "selected" %><% } %>>Acumular recursos: obter rentabilidade acima da inflação</option>
+                                                        <option value="especular" <% if(investor.objetivo == "escpecular"){ %><%= "selected" %><% } %>>Especular: ter alta valorização, correndo riscos maiores, se necessário</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <h6>Qual é a melhor opção para descrever sua tolerância ao risco?</h6>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="risco">
+                                                        <option value="baixa" <% if(investor.risco == "baixa"){ %><%= "selected" %><% } %>>Baixa: quero rentabilidade acima da poupança com preservação do poder de compra</option>
+                                                        <option value="regular" <% if(investor.risco == "regular"){ %><%= "selected" %><% } %>>Regular: quero rentabilidade próxima a taxa de juros DI (CDI) e aceito eventuais riscos</option>
+                                                        <option value="média" <% if(investor.risco == "média"){ %><%= "selected" %><% } %>>Média: estou disposto a assumir riscos maiores para superar a taxa de juros DI (CDI)</option>
+                                                        <option value="alta" <% if(investor.risco == "alta"){ %><%= "selected" %><% } %>>Alta: estou disposto a assumir riscos elevados para alcançar retornos expressivos</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <h6>O que você faria se suas ações caíssem 20%?</h6>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="acoes">
+                                                        <option value="venderia todas" <% if(investor.acoes == "venderia todas"){ %><%= "selected" %><% } %>>Venderia todas as minhas ações</option>
+                                                        <option value="venderia parte" <% if(investor.acoes == "venderia parte"){ %><%= "selected" %><% } %>>Venderia uma parte de minhas ações</option>
+                                                        <option value="manteria" <% if(investor.acoes == "manteria"){ %><%= "selected" %><% } %>>Venderia uma parte de minhas ações</option>
+                                                        <option value="compraria" <% if(investor.acoes == "compraria"){ %><%= "selected" %><% } %>>Compraria mais ações</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-navigation">
+                                              <div class="btn-form input-outer col-xs-12">
+                                                  <div class="button-outer relative">
+                                                      <button id="previous" type="button" class="btn btn-fill previous">Voltar</button>
+                                                      <button  id="next" type="button" class="btn btn-fill next">Próximo</button>
+                                                      <button  id="submitbtn" type="submit" class="btn btn-fill submitbtn">Enviar dados</button>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="section"><span>2</span>Análise de Risco</div>
-    			<div class="inner-wrap">
-                    <label>Qual é o seu objetivo ao investir?</label>
-                    <select name="objetivo">
-                        <option value="preservar" <% if(investor.objetivo == "preservar"){ %><%= "selected" %><% } %>>Preservar capital: corrigir os investimentos pela variação da inflação</option>
-                        <option value="acumular" <% if(investor.objetivo == "acumular"){ %><%= "selected" %><% } %>>Acumular recursos: obter rentabilidade acima da inflação</option>
-                        <option value="especular" <% if(investor.objetivo == "escpecular"){ %><%= "selected" %><% } %>>Especular: ter alta valorização, correndo riscos maiores, se necessário</option>
-                    </select><br>
-
-                    <label>Qual é a melhor opção para descrever sua tolerância ao risco?</label>
-                    <select name="risco">
-                        <option value="baixa" <% if(investor.risco == "baixa"){ %><%= "selected" %><% } %>>Baixa: quero rentabilidade acima da poupança com preservação do poder de compra</option>
-                        <option value="regular" <% if(investor.risco == "regular"){ %><%= "selected" %><% } %>>Regular: quero rentabilidade próxima a taxa de juros DI (CDI) e aceito eventuais riscos</option>
-                        <option value="média" <% if(investor.risco == "média"){ %><%= "selected" %><% } %>>Média: estou disposto a assumir riscos maiores para superar a taxa de juros DI (CDI)</option>
-                        <option value="alta" <% if(investor.risco == "alta"){ %><%= "selected" %><% } %>>Alta: estou disposto a assumir riscos elevados para alcançar retornos expressivos</option>
-                    </select><br>
-
-                    <label>O que você faria se suas ações caíssem 20%?</label>
-                    <select name="acoes">
-                        <option value="venderia todas" <% if(investor.acoes == "venderia todas"){ %><%= "selected" %><% } %>>Venderia todas as minhas ações</option>
-                        <option value="venderia parte" <% if(investor.acoes == "venderia parte"){ %><%= "selected" %><% } %>>Venderia uma parte de minhas ações</option>
-                        <option value="manteria" <% if(investor.acoes == "manteria"){ %><%= "selected" %><% } %>>Venderia uma parte de minhas ações</option>
-                        <option value="compraria" <% if(investor.acoes == "compraria"){ %><%= "selected" %><% } %>>Compraria mais ações</option>
-                    </select>
-
-                </div>
-    			<div class="button-section">
-     				<input type="submit" name="Sign Up" value="Enviar" />
-     				<span class="error"></span>
-    			</div>
-			</form>
-		</div>
-    </body>
+            </section>
+        </div>
+    </main>
+</body>
 </html>

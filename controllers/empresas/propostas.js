@@ -12,18 +12,17 @@ router.get("/", middleware.isLoggedIn, function(req, res){
       console.log(err);
     } else {
       if(!empresa) {
-        res.redirect("/dashboard/cadastro-empresa");
+        res.render("empresas/propostas/index",{empresa: false, user: req.user, propostas: []});
       } else {
         if(empresa.status != "Aprovado") {
-          console.log(empresa.status);
-          res.redirect("/dashboard/cadastro-empresa");
+          res.render("empresas/propostas/index",{empresa: empresa, user: req.user, propostas: []});
         } else {
           var query = {empresa: mongoose.Types.ObjectId(String(empresa._id))};
           Proposta.find(query, function(err, propostas){
             if(err) {
               console.log(err);
             } else {
-              res.render("empresas/propostas/index", {propostas: propostas});
+              res.render("empresas/propostas/index", {empresa: empresa, user: req.user,propostas: propostas});
             }
           })
         }

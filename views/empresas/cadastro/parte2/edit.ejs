@@ -1,81 +1,252 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" dir="ltr">
+
 <head>
-	<% include ../../../partials/includes %>
-	<script type="text/javascript" src="/scripts/empresaForm.js"></script>
+    <% include ../../../partials/includes %>
+    <link rel="stylesheet" href="/stylesheets/cadastro-investidor.css">
+    <script type="text/javascript" src="/scripts/multiStepForm.js"></script>
+    <script type="text/javascript" src="/scripts/empresaForm.js"></script>
 </head>
-<body>
-	<% include ../../../partials/headerEmpreendedor %>
-	<div class="form-style-10">
-			<h1>Dados da empresa<span></span></h1>
-			<% if(typeof errors !== 'undefined') { %>
-			<% 		errors.forEach(function(error){ %>
-						<div class="alert alert-danger"><%= error.msg %></div>
-			<%		}); %>
-			<% } %>
-			<form action="/dashboard/cadastro-empresa/edit" method="post">
-                <input type="hidden" name="parte" value="2">
-                <div class="section"><span>1</span>Dados</div>
-                <div class="inner-wrap">
-                    <label>Seu papel na empresa
-                        <select name="papel">
-                            <option value="Sócio" <% if(pessoaJuridica.papel == "Sócio"){ %> selected <% } %>>Sócio</option>
-                            <option value="Administrador ou diretor" <% if(pessoaJuridica.papel == "Administrador ou diretor"){ %> selected <% } %>>Administrador ou diretor indicado em contrato social</option>
-                            <option value="Funcionário" <% if(pessoaJuridica.papel == "Funcionário"){ %> selected <% } %>>Funcionário</option>
-                            <option value="Outro" <% if(pessoaJuridica.papel == "Outro"){ %> selected <% } %>>Outro</option>
-                        </select>
-                    </label>
-                    <label>CNPJ<input type="text" name="cnpj" maxlength="20" value="<%= pessoaJuridica.CNPJ %>"></label>
-                    <label>Nome fantasia da sua empresa<input type="text" name="nomeFantasia" value="<%= pessoaJuridica.nomeFantasia %>"></label>
-                    <label>Sua empresa é optante do Simples Nacional?
-                        <select name="simplesNacional">
-                            <option value="Sim" <% if(pessoaJuridica.simplesNacional == "Sim"){ %> selected <% } %>>Sim</option>
-                            <option value="Não" <% if(pessoaJuridica.simplesNacional == "Não"){ %> selected <% } %>>Não</option>
-                        </select>
-                    </label>
-                    <label>Inscrição estadual (quando aplicável)<input type="text" name="inscricaoEstadual" value="<%= pessoaJuridica.inscricaoEstadual %>"></label>
-                    <label>Número de funcionários<input type="text" name="funcionarios" value="<%= pessoaJuridica.funcionarios %>"></label>
-                    <label>Telefone comercial<input type="text" name="telefone" class="telefoneMask" maxlength="14" value="<%= pessoaJuridica.telefone %>"></label>
-                    <label>Telefone comercial 2 (opcional)<input type="text" name="telefone2" class="telefoneMask" maxlength="14" value="<%= pessoaJuridica.telefone2 %>"></label>
-                    <label>Endereço do site da empresa (opcional)<input type="text" name="site" value="<%= pessoaJuridica.site %>"></label>
-                    <label>Facebook da empresa (opcional)<input type="text" name="facebook" value="<%= pessoaJuridica.facebook %>"></label>
-                    <label>LinkedIn (opcional)<input type="text" name="linkedin" value="<%= pessoaJuridica.linkedin %>"></label>
-                    <label>Outra rede social (opcional)<input type="text" name="outraRede" value="<%= pessoaJuridica.outraRede %>"></label>
+
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+        <% include ../../../partials/headerEmpreendedor %>
+        <div class="registration-page">
+            <section class="features-section-1 relative image-bg-5 full-screen-js">
+                <div class="container">
+                    <div class="row inner-wrapper">
+                        <div class="col-xs-12">
+                            <div class="template-logo text-center">
+                                <a class="logo center img-responsive" href="#"><img src="/img/logo-light.png" alt="Main Logo" /></a>
+                            </div>
+                            <div class="section-header margin-t-30 margin-b-30 text-center light-text">
+                                <h4 class="section-heading text-uppercase letter-spacing-4">pessoa jurídica</h4></div>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 col-sm-12">
+                            <div class="row">
+                                <div class="registration-form col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+                                    <div class="registration-form-outer background-1">
+                                        <% if(typeof errors !== 'undefined') { %>
+                                        <% 		errors.forEach(function(error){ %>
+                                              <div class="alert alert-danger"><%= error.msg %></div>
+                                        <%		}); %>
+                                        <% } %>
+                                        <form class="single-form" method="post" action="/dashboard/cadastro-empresa/edit">
+                                            <input type="hidden" name="parte" value="2">
+                                            <div class="form-section current">
+                                              <h6>Dados empresariais</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Qual é o seu papel na empresa?</p>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="papel">
+                                                        <option value="Sócio" <% if(pessoaJuridica.papel == "Sócio"){ %> selected <% } %>>Sócio</option>
+                                                        <option value="Administrador ou diretor" <% if(pessoaJuridica.papel == "Administrador ou diretor"){ %> selected <% } %>>Administrador ou diretor indicado em contrato social</option>
+                                                        <option value="Funcionário" <% if(pessoaJuridica.papel == "Funcionário"){ %> selected <% } %>>Funcionário</option>
+                                                        <option value="Outro" <% if(pessoaJuridica.papel == "Outro"){ %> selected <% } %>>Outro</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                          <input class="form-control" name="cnpj" type="text" placeholder="CNPJ" maxlength="20" value="<%= pessoaJuridica.CNPJ %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control" name="nomeFantasia" type="text" placeholder="Nome fantasia da sua empresa" value="<%= pessoaJuridica.nomeFantasia %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Sua empresa é optante do Simples Nacional?</p>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="simplesNacional">
+                                                        <option value="Sim" <% if(pessoaJuridica.simplesNacional == "Sim"){ %> selected <% } %>>Sim</option>
+                                                        <option value="Não" <% if(pessoaJuridica.simplesNacional == "Não"){ %> selected <% } %>>Não</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control" name="inscricaoEstadual" type="text" placeholder="Inscrição estadual (quando aplicável)" value="<%= pessoaJuridica.inscricaoEstadual %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control" name="funcionarios" type="text" placeholder="Número de funcionários" value="<%= pessoaJuridica.funcionarios %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control telefoneMask" name="telefone" type="text" placeholder="Telefone comercial" maxlength="14" value="<%= pessoaJuridica.telefone %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control telefoneMask" name="telefone2" type="text" placeholder="Telefone comercial 2" maxlength="14" value="<%= pessoaJuridica.telefone2 %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="site" type="text" placeholder="Endereço do site da empresa (opcional)" value="<%= pessoaJuridica.site %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="facebook" type="text" placeholder="Facebook da empresa (opcional)" value="<%= pessoaJuridica.facebook %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="linkedin" type="text" placeholder="LinkedIn (opcional)" value="<%= pessoaJuridica.linkedin %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="outraRede" type="text" placeholder="Outra rede social (opcional)" value="<%= pessoaJuridica.outraRede %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-section">
+                                              <h6>Endereço comercial</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                          <input class="form-control cep" name="cep" type="text" placeholder="CEP" maxlength="8" value="<%= pessoaJuridica.cep %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control logradouro" name="logradouro" type="text" placeholder="Logradouro" value="<%= pessoaJuridica.logradouro %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="number" type="text" placeholder="Número" value="<%= pessoaJuridica.numero %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="complement" type="text" placeholder="Complemento" value="<%= pessoaJuridica.complemento %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control city" name="city" type="text" placeholder="Cidade" value="<%= pessoaJuridica.cidade %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control state" name="state" type="text" placeholder="Estado" value="<%= pessoaJuridica.estado %>"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-section" id="dadosSoc">
+                                              <h6>Dados dos sócios</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Número de sócios</p>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="numeroSocios">
+                                                        <option value="1" <% if(pessoaJuridica.dadosSocios.numeroSocios == 1){ %> selected <% } %>>1</option>
+                                                        <option value="2" <% if(pessoaJuridica.dadosSocios.numeroSocios == 2){ %> selected <% } %>>2</option>
+                                                        <option value="3" <% if(pessoaJuridica.dadosSocios.numeroSocios == 3){ %> selected <% } %>>3</option>
+                                                        <option value="4" <% if(pessoaJuridica.dadosSocios.numeroSocios == 4){ %> selected <% } %>>4</option>
+                                                        <option value="5" <% if(pessoaJuridica.dadosSocios.numeroSocios == 5){ %> selected <% } %>>5</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <% var i = 0;
+                          										 	 for(i = 0; i < pessoaJuridica.dadosSocios.numeroSocios; i++) { %>
+                          												 <div class='input-outer col-xs-12 socio'>
+                                                    <div class="form-group">
+                                                      <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                          												 		  <input type='text' class="form-control" name='nomeSoc' value="<%= pessoaJuridica.dadosSocios.nomes[i] %>">
+                                                      </div>
+                                                    </div>
+                          												 </div>
+                                                   <div class='input-outer col-xs-12 socio'>
+                                                    <div class="form-group">
+                                                      <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                          												 		  <input type='text' class="form-control" name='emailSoc' value="<%= pessoaJuridica.dadosSocios.emails[i] %>">
+                                                      </div>
+                                                    </div>
+                          												 </div>
+                                                   <div class='input-outer col-xs-12 socio'>
+                                                    <div class="form-group">
+                                                      <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                          												 		  <input type='text' class='form-control celularMask' name='celularSoc' value="<%= pessoaJuridica.dadosSocios.celulares[i] %>">
+                                                      </div>
+                                                    </div>
+                          												 </div>
+                          										<% } %>
+                                            </div>
+                                            <div class="form-navigation">
+                                              <div class="btn-form input-outer col-xs-12">
+                                                  <div class="button-outer relative">
+                                                      <button type="button" class="btn btn-fill previous">Voltar</button>
+                                                      <button type="button" class="btn btn-fill next">Próximo</button>
+                                                      <button type="submit" class="btn btn-fill submitbtn">Enviar dados</button>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="section"><span>2</span>Endereço Comercial</div>
-                <div class="inner-wrap">
-                    <label>CEP <input type="text" name="cep" class="cep" maxlength="8" value="<%= pessoaJuridica.cep %>"></label>
-                    <label>Logradouro <input type="text" class="logradouro" name="logradouro" value="<%= pessoaJuridica.logradouro %>"></label>
-                    <label>Número <input type="text" name="number" value="<%= pessoaJuridica.numero %>"></label>
-                    <label>Complemento <input type="text" name="complement" value="<%= pessoaJuridica.complemento %>"></label>
-                    <label>Cidade <input type="text" class="city" name="city" value="<%= pessoaJuridica.cidade %>"></label>
-                    <label>Estado <input type="text" class="state" name="state" value="<%= pessoaJuridica.estado %>"></label>
-                </div>
-                <div class="section"><span>3</span>Dados societários</div>
-                <div class="inner-wrap" id="dadosSoc">
-                    <label>Número de sócios
-                        <select name="numeroSocios">
-                            <option value="1" <% if(pessoaJuridica.dadosSocios.numeroSocios == 1){ %> selected <% } %>>1</option>
-                            <option value="2" <% if(pessoaJuridica.dadosSocios.numeroSocios == 2){ %> selected <% } %>>2</option>
-                            <option value="3" <% if(pessoaJuridica.dadosSocios.numeroSocios == 3){ %> selected <% } %>>3</option>
-                            <option value="4" <% if(pessoaJuridica.dadosSocios.numeroSocios == 4){ %> selected <% } %>>4</option>
-                            <option value="5" <% if(pessoaJuridica.dadosSocios.numeroSocios == 5){ %> selected <% } %>>5</option>
-                        </select>
-                    </label>
-										<% var i = 0;
-										 	 for(i = 0; i < pessoaJuridica.dadosSocios.numeroSocios; i++) { %>
-												 <div class='socio'>
-												 		<label>Nome do sócio<input type='text' name='nomeSoc' value="<%= pessoaJuridica.dadosSocios.nomes[i] %>"></label>
-												 		<label>E-mail do sócio<input type='text' name='emailSoc' value="<%= pessoaJuridica.dadosSocios.emails[i] %>"></label>
-												 		<label>Celular do sócio<input type='text' class='celularMask' name='celularSoc' value="<%= pessoaJuridica.dadosSocios.celulares[i] %>"></label>
-												 </div>
-										<% } %>
-                </div>
-                <div class="button-section">
-                    <input type="submit" name="Sign Up" value="Próximo" />
-                    <span class="error"></span>
-                </div>
-            </form>
-		</div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

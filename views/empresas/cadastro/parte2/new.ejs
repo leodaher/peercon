@@ -1,73 +1,225 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" dir="ltr">
+
 <head>
-	<% include ../../../partials/includes %>
-	<script type="text/javascript" src="/scripts/empresaForm.js"></script>
+    <% include ../../../partials/includes %>
+    <link rel="stylesheet" href="/stylesheets/cadastro-investidor.css">
+    <script type="text/javascript" src="/scripts/multiStepForm.js"></script>
+    <script type="text/javascript" src="/scripts/empresaForm.js"></script>
 </head>
-<body>
-	<% include ../../../partials/headerEmpreendedor %>
-	<div class="form-style-10">
-			<h1>Dados da empresa<span></span></h1>
-			<% if(typeof errors !== 'undefined') { %>
-			<% 		errors.forEach(function(error){ %>
-						<div class="alert alert-danger"><%= error.msg %></div>
-			<%		}); %>
-			<% } %>
-			<form action="/dashboard/cadastro-empresa" method="post">
-                <input type="hidden" name="parte" value="2">
-                <div class="section"><span>1</span>Dados</div>
-                <div class="inner-wrap">
-                    <label>Seu papel na empresa
-                        <select name="papel">
-                            <option value="Sócio">Sócio</option>
-                            <option value="Administrador ou diretor">Administrador ou diretor indicado em contrato social</option>
-                            <option value="Funcionário">Funcionário</option>
-                            <option value="Outro">Outro</option>
-                        </select>
-                    </label>
-                    <label>CNPJ<input type="text" name="cnpj" maxlength="20"></label>
-                    <label>Nome fantasia da sua empresa<input type="text" name="nomeFantasia"></label>
-                    <label>Sua empresa é optante do Simples Nacional?
-                        <select name="simplesNacional">
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                    </label>
-                    <label>Inscrição estadual (quando aplicável)<input type="text" name="inscricaoEstadual"></label>
-                    <label>Número de funcionários<input type="text" name="funcionarios"></label>
-                    <label>Telefone comercial<input type="text" name="telefone" class="telefoneMask" maxlength="14"></label>
-                    <label>Telefone comercial 2 (opcional)<input type="text" name="telefone2" class="telefoneMask" maxlength="14"></label>
-                    <label>Endereço do site da empresa (opcional)<input type="text" name="site"></label>
-                    <label>Facebook da empresa (opcional)<input type="text" name="facebook"></label>
-                    <label>LinkedIn (opcional)<input type="text" name="linkedin"></label>
-                    <label>Outra rede social (opcional)<input type="text" name="outraRede"></label>
+
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+        <% include ../../../partials/headerEmpreendedor %>
+        <div class="registration-page">
+            <section class="features-section-1 relative image-bg-5 full-screen-js">
+                <div class="container">
+                    <div class="row inner-wrapper">
+                        <div class="col-xs-12">
+                            <div class="template-logo text-center">
+                                <a class="logo center img-responsive" href="#"><img src="/img/logo-light.png" alt="Main Logo" /></a>
+                            </div>
+                            <div class="section-header margin-t-30 margin-b-30 text-center light-text">
+                                <h4 class="section-heading text-uppercase letter-spacing-4">pessoa jurídica</h4></div>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 col-sm-12">
+                            <div class="row">
+                                <div class="registration-form col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+                                    <div class="registration-form-outer background-1">
+                                        <% if(typeof errors !== 'undefined') { %>
+                                        <% 		errors.forEach(function(error){ %>
+                                              <div class="alert alert-danger"><%= error.msg %></div>
+                                        <%		}); %>
+                                        <% } %>
+                                        <form class="single-form" method="post" action="/dashboard/cadastro-empresa">
+                                            <input type="hidden" name="parte" value="2">
+                                            <div class="form-section current">
+                                              <h6>Dados empresariais</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Qual é o seu papel na empresa?</p>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="papel">
+                                                        <option value="Sócio">Sócio</option>
+                                                        <option value="Administrador ou diretor">Administrador ou diretor indicado em contrato social</option>
+                                                        <option value="Funcionário">Funcionário</option>
+                                                        <option value="Outro">Outro</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                          <input class="form-control" name="cnpj" type="text" placeholder="CNPJ" maxlength="20"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control" name="nomeFantasia" type="text" placeholder="Nome fantasia da sua empresa"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Sua empresa é optante do Simples Nacional?</p>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="simplesNacional">
+                                                        <option value="Sim">Sim</option>
+                                                        <option value="Não">Não</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control" name="inscricaoEstadual" type="text" placeholder="Inscrição estadual (quando aplicável)"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control" name="funcionarios" type="text" placeholder="Número de funcionários"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control telefoneMask" name="telefone" type="text" placeholder="Telefone comercial" maxlength="14"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control telefoneMask" name="telefone2" type="text" placeholder="Telefone comercial 2" maxlength="14"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="site" type="text" placeholder="Endereço do site da empresa (opcional)"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="facebook" type="text" placeholder="Facebook da empresa (opcional)"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="linkedin" type="text" placeholder="LinkedIn (opcional)"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="outraRede" type="text" placeholder="Outra rede social (opcional)"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-section">
+                                              <h6>Endereço comercial</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                          <input class="form-control cep" name="cep" type="text" placeholder="CEP" maxlength="8" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                                          <input class="form-control logradouro" name="logradouro" type="text" placeholder="Logradouro"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="number" type="text" placeholder="Número"/>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="complement" type="text" placeholder="Complemento" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control city" name="city" type="text" placeholder="Cidade" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control state" name="state" type="text" placeholder="Estado" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-section" id="dadosSoc">
+                                              <h6>Dados dos sócios</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Número de sócios</p>
+                                                  <div class="select-outer">
+                                                      <select class="form-control contact-plan" name="numeroSocios">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-navigation">
+                                              <div class="btn-form input-outer col-xs-12">
+                                                  <div class="button-outer relative">
+                                                      <button type="button" class="btn btn-fill previous">Voltar</button>
+                                                      <button type="button" class="btn btn-fill next">Próximo</button>
+                                                      <button type="submit" class="btn btn-fill submitbtn">Enviar dados</button>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="section"><span>2</span>Endereço Comercial</div>
-                <div class="inner-wrap">
-                    <label>CEP <input type="text" name="cep" class="cep" maxlength="8"></label>
-                    <label>Logradouro <input type="text" class="logradouro" name="logradouro"></label>
-                    <label>Número <input type="text" name="number"></label>
-                    <label>Complemento <input type="text" name="complement"></label>
-                    <label>Cidade <input type="text" class="city" name="city"></label>
-                    <label>Estado <input type="text" class="state" name="state"></label>
-                </div>
-                <div class="section"><span>3</span>Dados societários</div>
-                <div class="inner-wrap" id="dadosSoc">
-                    <label>Número de sócios
-                        <select name="numeroSocios">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="button-section">
-                    <input type="submit" name="Sign Up" value="Próximo" />
-                    <span class="error"></span>
-                </div>
-            </form>
-		</div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

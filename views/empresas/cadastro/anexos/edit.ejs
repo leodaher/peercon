@@ -1,53 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" dir="ltr">
+
 <head>
-	<% include ../../../partials/includes %>
-	<script type="text/javascript" src="/scripts/empresaForm.js"></script>
+    <% include ../../../partials/includes %>
+    <link rel="stylesheet" href="/stylesheets/cadastro-investidor.css">
+    <script type="text/javascript" src="/scripts/multiStepForm.js"></script>
 </head>
-<body>
-	<% include ../../../partials/headerEmpreendedor %>
-	<div class="form-style-10">
-			<h1>Anexos<span>Nesta etapa, recolheremos os dados da pessoa física, necessários para a análise de sua empresa.</span></h1>
-			<% if(typeof errors !== 'undefined') { %>
-			<% 		errors.forEach(function(error){ %>
-						<div class="alert alert-danger"><%= error.msg %></div>
-			<%		}); %>
-			<% } %>
-			<form action="/dashboard/cadastro-empresa/edit" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="parte" value="anexos">
-                <div class="section"><span>1</span>Pessoa Física</div>
-                <div class="inner-wrap">
-                    <label for="rg" class="fileButton <% if(anexos.pessoaFisica.rg){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.pessoaFisica.rg){ %> <%= anexos.pessoaFisica.rg %><% } else { %> Escolha o arquivo <% } %></label>
-                    <input type="file" name="rg" id="rg" style="visibility:hidden">
-                    <label for="rgverso" class="fileButton <% if(anexos.pessoaFisica.rgverso){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.pessoaFisica.rgverso){ %> <%= anexos.pessoaFisica.rgverso %><% } else { %> Escolha o arquivo <% } %></label>
-                    <input type="file" name="rgverso" id="rgverso" style="visibility:hidden">
-                    <label for="residencia" class="fileButton  <% if(anexos.pessoaFisica.residencia){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.pessoaFisica.residencia){ %> <%= anexos.pessoaFisica.residencia %><% } else { %> Escolha o arquivo <% } %></label>
-                    <input type="file" name="residencia" id="residencia" style="visibility:hidden">
+
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+        <% include ../../../partials/headerInvestidor %>
+        <div class="registration-page">
+            <section class="features-section-1 relative image-bg-5 full-screen-js">
+                <div class="container">
+                    <div class="row inner-wrapper">
+                        <div class="col-xs-12">
+                            <div class="template-logo text-center">
+                                <a class="logo center img-responsive" href="#"><img src="/img/logo-light.png" alt="Main Logo" /></a>
+                            </div>
+                            <div class="section-header margin-t-30 margin-b-30 text-center light-text">
+                                <h4 class="section-heading text-uppercase letter-spacing-4">anexos</h4></div>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 col-sm-12">
+                            <div class="row">
+                                <div class="registration-form col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+                                    <div class="registration-form-outer background-1">
+                                        <% if(typeof errors !== 'undefined') { %>
+                                        <% 		errors.forEach(function(error){ %>
+                                              <div class="alert alert-danger"><%= error.msg %></div>
+                                        <%		}); %>
+                                        <% } %>
+                                        <form class="single-form" method="post" action="/dashboard/cadastro-empresa" enctype="multipart/form-data">
+                                            <input type="hidden" name="parte" value="anexos">
+                                            <h6>*DICA: só faça upload dos documentos que deseja alterar</h6>
+                                            <div class="form-section current">
+                                              <h6>Pessoa física</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Anexo do RG</p>
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="rg" type="file" placeholder="Anexo do RG" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Anexo do RG (verso)</p>
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="rgverso" type="file" placeholder="RG (verso)" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Anexo do comprovante de residência</p>
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="residencia" type="file" placeholder="Comprovante de residência" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <h6>Empresa</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Contrato social (completo)</p>
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="contratoSocial" type="file" placeholder="Contrato social completo" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <h6>Relacionamento com o banco</h6>
+                                              <div class="input-outer col-xs-12">
+                                                  <p>Extrato dos últimos 4 meses</p>
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="extratoCompleto" type="file" placeholder="Extrato dos últimos 4 meses" />
+                                                      </div>
+                                                  </div>
+                                                  <p>OU</p>
+                                                  <p>Extrato de Dezembro</p>
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="extrato1" type="file" placeholder="Extrato dos últimos 4 meses" />
+                                                      </div>
+                                                  </div>
+                                                  <p>Extrato de Dezembro</p>
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="extrato2" type="file" placeholder="Extrato dos últimos 4 meses" />
+                                                      </div>
+                                                  </div>
+                                                  <p>Extrato de Dezembro</p>
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="extrato3" type="file" placeholder="Extrato dos últimos 4 meses" />
+                                                      </div>
+                                                  </div>
+                                                  <p>Extrato de Dezembro</p>
+                                                  <div class="form-group">
+                                                      <div class="input-group">
+                                                          <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                          <input class="form-control" name="extrato4" type="file" placeholder="Extrato dos últimos 4 meses" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-navigation">
+                                              <div class="btn-form input-outer col-xs-12">
+                                                  <div class="button-outer relative">
+                                                      <button type="button" class="btn btn-fill previous">Voltar</button>
+                                                      <button type="button" class="btn btn-fill next">Próximo</button>
+                                                      <button type="submit" class="btn btn-fill submitbtn">Enviar dados</button>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="section"><span>2</span>Empresa</div>
-                <div class="inner-wrap">
-                  <label for="contratoSocial" class="fileButton <% if(anexos.empresa.contratoSocial){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.empresa.contratoSocial){ %> <%= anexos.empresa.contratoSocial %><% } else { %> Escolha o arquivo <% } %></label>
-                  <input type="file" name="contratoSocial" id="contratoSocial" style="visibility:hidden">
-                </div>
-                <div class="section"><span>3</span>Relacionamento com o banco</div>
-                <div class="inner-wrap">
-                  <label for="extratoCompleto" class="fileButton <% if(anexos.banco.extratoCompleto){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extratoCompleto){ %> <%= anexos.banco.extratoCompleto %><% } else { %> Escolha o arquivo <% } %></label>
-                  <input type="file" name="extratoCompleto" id="extratoCompleto" style="visibility:hidden">
-                    <br><br>OU<br><br>
-										<label for="extrato1" class="fileButton <% if(anexos.banco.extrato1){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extrato1){ %> <%= anexos.banco.extrato1 %><% } else { %> Escolha o arquivo <% } %></label>
-	                  <input type="file" name="extrato1" id="extrato1" style="visibility:hidden">
-										<label for="extrato2" class="fileButton <% if(anexos.banco.extrato2){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extrato2){ %> <%= anexos.banco.extrato2 %><% } else { %> Escolha o arquivo <% } %></label>
-	                  <input type="file" name="extrato2" id="extrato2" style="visibility:hidden">
-										<label for="extrato3" class="fileButton <% if(anexos.banco.extrato3){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extrato3){ %> <%= anexos.banco.extrato3 %><% } else { %> Escolha o arquivo <% } %></label>
-	                  <input type="file" name="extrato3" id="extrato3" style="visibility:hidden">
-										<label for="extrato4" class="fileButton <% if(anexos.banco.extrato4){ %>fileUploaded<% } %>"><span class="glyphicon glyphicon-upload"></span><% if(anexos.banco.extrato4){ %> <%= anexos.banco.extrato4 %><% } else { %> Escolha o arquivo <% } %></label>
-	                  <input type="file" name="extrato4" id="extrato4" style="visibility:hidden">
-                </div>
-                <div class="button-section">
-                    <input type="submit" name="Sign Up" value="Próximo" />
-                    <span class="error"></span>
-                </div>
-            </form>
-		</div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

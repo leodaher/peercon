@@ -9,7 +9,7 @@ router.get("/", middleware.isLoggedIn, function(req, res){
 			if(!investor) {
 				res.render("investidores/portfolios/index",{isFormComplete: false, user: req.user});
 			} else {
-				res.render("investidores/portfolios/index",{isFormComplete: true, user: req.user});
+				res.render("investidores/portfolios/index",{isFormComplete: true, user: req.user, investor: investor});
 			}
     });
 });
