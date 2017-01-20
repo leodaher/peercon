@@ -4,7 +4,8 @@ var propostaSchema = new mongoose.Schema({
     emprestimo: {
       valor: String,
       prazo: String,
-      proposito: String
+      proposito: String,
+      taxa: String
     },
     dadosBancarios: {
       banco: String,

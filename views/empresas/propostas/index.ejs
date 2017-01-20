@@ -45,8 +45,29 @@
 				</div>
 			</div>
 		</div>
-		<div id="portfolios" style="height: 550px;">
-
+		<div id="propostas" class="container" style="height: 550px;">
+				<% if(empresa.status == "Aprovado"){ %>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+					<a href="/dashboard/propostas/new">
+						<div class="create-proposta">
+							<h3>Fazer uma nova solicitação de empréstimo</h3>
+							<hr>
+							<span class="glyphicon glyphicon-plus"></span>
+						</div>
+					</a>
+				</div>
+				<% } %>
+				<% propostas.forEach(function(proposta){ %>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+					<div class="proposta <% if(proposta.status == 'Aprovada'){ %>aprovada<% } else if(proposta.status == 'Análise'){ %>analise<% } else if(proposta.status == 'Financiada'){ %>financiada<% } %>">
+						<h5><% if(proposta.status == "Aprovada"){ %><span class="glyphicon glyphicon-ok"></span>       Proposta aprovada!<% } else if(proposta.status == "Análise"){ %><span class="glyphicon glyphicon-time"></span>       Proposta em análise<% } else if(proposta.status == "Financiada"){ %><span class="glyphicon glyphicon-usd"></span>       Proposta financiada<% } %></h5>
+						<hr>
+						<h6>Valor: <%= proposta.emprestimo.valor %></h6>
+						<h6>Prazo: <%= proposta.emprestimo.prazo %></h6>
+						<h6>Taxa de juros: <%= proposta.emprestimo.taxa %></h6>
+					</div>
+				</div>
+				<% }) %>
 		</div>
 		<% include ../../partials/footer %>
 </body>

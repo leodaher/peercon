@@ -1,41 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" dir="ltr">
+
 <head>
-	<% include ../../partials/includes %>
+    <% include ../../partials/includes %>
 </head>
-<body>
-  <% include ../../partials/headerEmpreendedor %>
-  <div class="form-style-10">
-      <h1>Anexos<span>Nesta etapa, recolheremos os dados da pessoa física, necessários para a análise de sua empresa.</span></h1>
-      <% if(typeof errors !== 'undefined') { %>
-      <% 		errors.forEach(function(error){ %>
-            <div class="alert alert-danger"><%= error.msg %></div>
-      <%		}); %>
-      <% } %>
-      <form action="/dashboard/propostas/new" method="post">
-          <div class="section"><span>1</span>O seu empréstimo</div>
-          <div class="inner-wrap">
-              <label>Qual o valor que a sua empresa necessita?<input type="text" class="moneyMask" name="valor"></label>
-              <label>Em quantos meses gostaria de pagar por este valor?
-                  <select name="prazo">
-                      <option value="3 meses">3 meses</option>
-                      <option value="6 meses">6 meses</option>
-                      <option value="12 meses">12 meses</option>
-                      <option value="18 meses">18 meses</option>
-                      <option value="24 meses">24 meses</option>
-                  </select>
-              </label>
-              <label>Qual é o propósito deste crédito?<input type="text" name="proposito"></label>
-          </div>
-          <div class="section"><span>2</span>Dados bancários onde gostaria de receber o valor</div>
-          <div class="inner-wrap">
-              <label>Banco<input type="text" name="banco"></label>
-              <label>Agência<input type="text" name="agencia"></label>
-              <label>Conta corrente<input type="text" name="conta"></label>
-          </div>
-          <div class="button-section">
-              <input type="submit" value="Enviar">
-          </div>
-      </form>
+
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+        <div class="registration-page">
+            <section class="features-section-1 relative image-bg-1 full-screen-js">
+                <div class="container">
+                    <div class="row inner-wrapper">
+                        <div class="col-xs-12">
+                            <div class="template-logo text-center">
+                                <a class="logo center img-responsive" href="#"><img src="/img/logo-light.png" alt="Main Logo" /></a>
+                            </div>
+                            <div class="section-header margin-t-30 margin-b-30 text-center light-text">
+                                <h4 class="section-heading text-uppercase letter-spacing-4">solicitação de empréstimo</h4></div>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 col-sm-12">
+                            <div class="row">
+                                <div class="registration-form col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12">
+                                    <div class="registration-form-outer background-1">
+                                        <% if(typeof errors !== 'undefined') { %>
+                                        <% 		errors.forEach(function(error){ %>
+                                              <div class="alert alert-danger"><%= error.msg %></div>
+                                        <%		}); %>
+                                        <% } %>
+                                        <form class="single-form" method="post" action="/dashboard/propostas/new">
+                                            <h6>Empréstimo</h6>
+                                            <div class="input-outer col-xs-12">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                        <input class="form-control moneyMask" name="valor" type="text" placeholder="Valor do empéstimo solicitado" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-outer col-xs-12">
+                                                <p>Em quanto tempo você gostaria de pagar por esse valor?</p>
+                                                <div class="select-outer">
+                                                    <select class="form-control contact-plan" name="prazo">
+                                                      <option value="3 meses">3 meses</option>
+                                                      <option value="6 meses">6 meses</option>
+                                                      <option value="12 meses">12 meses</option>
+                                                      <option value="18 meses">18 meses</option>
+                                                      <option value="24 meses">24 meses</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="input-outer col-xs-12">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                        <textarea class="form-control" name="proposito" style="height:120px;" type="text" placeholder="Nesta área você deve descrever o propósito do empréstimo"/></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h6>Dados bancários</h6>
+                                            <div class="input-outer col-xs-12">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                        <input class="form-control" name="banco" type="text" placeholder="Banco" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-outer col-xs-12">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                        <input class="form-control" name="agencia" type="text" placeholder="Agência" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="input-outer col-xs-12">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                        <input class="form-control" name="conta" type="text" placeholder="Conta" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-form input-outer col-xs-12">
+                                                <div class="button-outer relative">
+                                                    <button class="btn btn-fill full-width">Enviar dados</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 </body>
+
 </html>

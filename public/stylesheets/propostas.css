@@ -15,3 +15,41 @@
 	pointer-events: none;
 	cursor: default;
 }
+
+.create-proposta {
+	height:
+	-webkit-transition: background-color 0.5s ease;
+	transition: background-color 0.5s ease;
+	border: 1px dashed #2a3855;
+	border-radius: 4px;
+	color: #2a3855;
+	text-align: center;
+	padding: 10px;
+}
+
+.create-proposta hr {
+	border-color: #2a3855;
+	width: 80%;
+}
+
+.create-proposta:hover {
+	background-color: #679dbf;
+}
+
+.proposta {
+	padding: 10px;
+	border: 1px solid #2a3855;
+	border-radius: 4px;
+}
+
+.analise {
+	background-color: #d0d3d8;
+}
+
+.aprovada {
+	background-color: #74bf67;
+}
+
+.financiada {
+	background-color: #679dbf;
+}
